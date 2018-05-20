@@ -1,0 +1,9 @@
+[build]
+  publish = "dist"
+  command = "npm run generate"
+
+[context.production]
+  command = "npm run generate"
+  [context.production.environment]
+    HOST = "127.0.0.1"
+    PORT = "80"
