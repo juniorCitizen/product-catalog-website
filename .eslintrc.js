@@ -22,8 +22,8 @@ module.exports = {
   // add your custom rules here
   rules: {
     // 'prettier/prettier': ['error', {semi: false}],
-    // 'no-console': 'off',
     // semi: ['error', 'never'],
+    'no-console': 'off',
     'vue/max-attributes-per-line': [
       'error',
       {
