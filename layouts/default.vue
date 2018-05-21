@@ -1,50 +1,66 @@
 <template>
-  <div>
-    <nuxt/>
+  <div id="default-layout">
+    <div id="header-grid-pane">
+      header grid
+    </div>
+    <div id="content-grid-pane">
+      <nuxt/>
+    </div>
+    <div id="footer-grid-pane">
+      <copyright-text/>
+    </div>
   </div>
 </template>
 
+<script>
+import CopyrightText from '../components/CopyrightText'
+export default {
+  name: 'DefaultLayout',
+  components: {CopyrightText},
+}
+</script>
+
+
 <style>
-html {
-  font-family: 'Source Sans Pro', -apple-system, BlinkMacSystemFont, 'Segoe UI',
-    Roboto, 'Helvetica Neue', Arial, sans-serif;
-  font-size: 16px;
-  word-spacing: 1px;
+html,
+body {
   -ms-text-size-adjust: 100%;
   -webkit-text-size-adjust: 100%;
-  -moz-osx-font-smoothing: grayscale;
+  -moz-text-size-adjust: 100%;
   -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow: hidden;
   box-sizing: border-box;
-}
-*,
-*:before,
-*:after {
-  box-sizing: border-box;
+  height: 100vh;
+  width: 100vw;
+  padding: 0;
   margin: 0;
 }
-.button--green {
-  display: inline-block;
-  border-radius: 4px;
-  border: 1px solid #3b8070;
-  color: #3b8070;
-  text-decoration: none;
-  padding: 10px 30px;
+
+#default-layout {
+  height: 100vh;
+  width: 100vw;
+  display: grid;
+  grid-gap: 0;
+  grid-template-columns: 100%;
+  grid-template-rows: min-content auto min-content;
 }
-.button--green:hover {
-  color: #fff;
-  background-color: #3b8070;
+
+#header-grid-pane {
+  padding: 0;
 }
-.button--grey {
-  display: inline-block;
-  border-radius: 4px;
-  border: 1px solid #35495e;
-  color: #35495e;
-  text-decoration: none;
-  padding: 10px 30px;
-  margin-left: 15px;
+
+#content-grid-pane {
+  padding: 0;
+  overflow-y: scroll;
+  overflow-x: hidden;
 }
-.button--grey:hover {
-  color: #fff;
-  background-color: #35495e;
+
+#content-grid-pane::-webkit-scrollbar {
+  width: 0;
+}
+
+#footer-grid-pane {
+  padding: 0;
 }
 </style>

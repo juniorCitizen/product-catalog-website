@@ -5,8 +5,9 @@
   "author": "David Tsai <chiayu.tsai.personal@gmail.com>",
   "private": false,
   "dependencies": {
-    "nuxt": "^1.4.0",
-    "express": "^4.16.3"
+    "express": "^4.16.3",
+    "mobile-detect": "^1.4.1",
+    "nuxt": "^1.4.0"
   },
   "devDependencies": {
     "babel-eslint": "^8.2.3",
@@ -17,8 +18,10 @@
     "eslint-loader": "^2.0.0",
     "eslint-plugin-prettier": "^2.6.0",
     "eslint-plugin-vue": "^4.5.0",
+    "node-sass": "^4.9.0",
     "nodemon": "^1.17.4",
-    "prettier": "^1.12.1"
+    "prettier": "^1.12.1",
+    "sass-loader": "^7.0.1"
   },
   "scripts": {
     "dev": "nodemon server/index.js --watch server",
