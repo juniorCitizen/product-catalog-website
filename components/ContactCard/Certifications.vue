@@ -49,7 +49,8 @@ export default {
 
 .wrapper {
   display: inline-block;
-  border: 1px solid lightgray;
+  border: 1px solid rgb(36, 145, 145);
+  box-shadow: 3px 3px rgba(36, 145, 145, 0.2);
   margin-right: 5px;
   width: 50px;
   height: 50px;
@@ -57,9 +58,4 @@ export default {
   background-size: contain;
   background-repeat: no-repeat;
 }
-
-/* .logo {
-  width: 100%;
-  height: 100%;
-} */
 </style>
