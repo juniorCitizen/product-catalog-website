@@ -1,4 +1,4 @@
-# product-catalog-nuxt-storyblok
+# product-catalog-website-nuxt
 
 > SSR Product catalog website using Nuxt.js frontend and Storyblok backend
 
@@ -13,7 +13,7 @@ $ npm run dev
 
 # build for production and launch server
 $ npm run build
-$ npm start
+$ npm run prod
 
 # generate static project
 $ npm run generate
