@@ -1,8 +1,6 @@
 <template>
   <section id="registration-view">
-    <div>index page</div>
-    <div>index page</div>
-    <div>index page</div>
+    <div>registration page</div>
   </section>
 </template>
 
