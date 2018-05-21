@@ -14,8 +14,8 @@
 <script>
 import vuexMappers from 'vuex'
 import MobileDetect from 'mobile-detect'
-import CopyrightText from '../components/CopyrightText'
-import NavHeader from '../components/NavHeader'
+import CopyrightText from '~/components/CopyrightText'
+import NavHeader from '~/components/NavHeader'
 
 export default {
   name: 'ParallaxLayout',
