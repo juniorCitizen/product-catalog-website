@@ -1,7 +1,8 @@
 {
   "name": "product-catalog-nuxt-storyblok",
   "version": "0.1.0",
-  "description": "SSR Product catalog website using Nuxt.js frontend and Storyblok backend",
+  "description":
+    "SSR Product catalog website using Nuxt.js frontend and Storyblok backend",
   "author": "David Tsai <chiayu.tsai.personal@gmail.com>",
   "private": false,
   "dependencies": {
