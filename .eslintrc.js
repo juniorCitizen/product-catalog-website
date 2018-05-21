@@ -21,18 +21,18 @@ module.exports = {
   plugins: ['vue'],
   // add your custom rules here
   rules: {
-    'prettier/prettier': ['error', {semi: false}],
-    'no-console': 'off',
-    semi: ['error', 'never'],
-    'vue/max-attributes-per-line': [
-      'error',
-      {
-        singleline: 1,
-        multiline: {
-          max: 1,
-          allowFirstLine: true,
-        },
-      },
-    ],
+    // 'prettier/prettier': ['error', {semi: false}],
+    // 'no-console': 'off',
+    // semi: ['error', 'never'],
+    // 'vue/max-attributes-per-line': [
+    //   'error',
+    //   {
+    //     singleline: 1,
+    //     multiline: {
+    //       max: 1,
+    //       allowFirstLine: true,
+    //     },
+    //   },
+    // ],
   },
 }
