@@ -7,6 +7,6 @@
 <script>
 export default {
   name: 'CatalogPage',
-  layout: 'parallax',
+  layout: 'default',
 }
 </script>

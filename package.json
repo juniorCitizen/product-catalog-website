@@ -7,7 +7,8 @@
   "dependencies": {
     "express": "^4.16.3",
     "mobile-detect": "^1.4.1",
-    "nuxt": "^1.4.0"
+    "nuxt": "^1.4.0",
+    "vue-mq": "^0.2.1"
   },
   "devDependencies": {
     "babel-eslint": "^8.2.3",

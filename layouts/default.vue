@@ -13,10 +13,28 @@
 </template>
 
 <script>
+import vuexMappers from 'vuex'
+import MobileDetect from 'mobile-detect'
 import CopyrightText from '../components/CopyrightText'
+
 export default {
   name: 'DefaultLayout',
   components: {CopyrightText},
+  mounted() {
+    let md = new MobileDetect(window.navigator.userAgent)
+    this.register({
+      mobile: md.mobile(),
+      phone: md.phone(),
+      tablet: md.tablet(),
+      os: md.os(),
+      userAgent: md.userAgent(),
+    })
+  },
+  methods: {
+    ...vuexMappers.mapMutations('mobileDetect', {
+      register: 'registerDetectionResults',
+    }),
+  },
 }
 </script>
 
@@ -62,5 +80,6 @@ body {
 
 #footer-grid-pane {
   padding: 0;
+  display: flex;
 }
 </style>

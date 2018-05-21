@@ -47,7 +47,7 @@ module.exports = {
   /*
   ** Plugins to load before mounting the App
   */
-  plugins: [],
+  plugins: [{src: '~/plugins/vueMq', ssr: false}],
 
   /*
   ** Nuxt.js modules
@@ -58,7 +58,7 @@ module.exports = {
   ** Build configuration
   */
   build: {
-    vendor: ['mobile-detect'],
+    vendor: ['mobile-detect', 'vue-mq'],
     /*
     ** You can extend webpack config here
     */

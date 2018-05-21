@@ -7,6 +7,6 @@
 <script>
 export default {
   name: 'ContactPage',
-  layout: 'parallax',
+  layout: 'default',
 }
 </script>
