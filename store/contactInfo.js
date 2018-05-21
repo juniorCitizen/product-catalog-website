@@ -20,7 +20,7 @@ const actions = {
       method: 'get',
       url: `${apiUrl}/cdn/stories/contact-page`,
       params: {
-        version: 'draft',
+        version: process.env.NODE_ENV === 'production' ? 'published' : 'draft',
         is_startpage: true,
         token: process.env.apiToken,
       },
