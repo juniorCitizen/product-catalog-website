@@ -10,10 +10,4 @@ module.exports = {
   arrowParens: 'avoid',
   parser: 'babylon',
   proseWrap: 'never',
-  overrides: [
-    {
-      files: 'prettier.config.js',
-      options: {parser: 'babylon'},
-    },
-  ],
 }
