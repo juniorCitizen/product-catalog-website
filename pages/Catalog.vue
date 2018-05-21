@@ -79,7 +79,7 @@
 
 <script>
 export default {
-  name: 'CatalogPage',
+  name: 'CatalogView',
   layout: 'default',
 }
 </script>

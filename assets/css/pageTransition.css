@@ -1,6 +1,6 @@
 /* different types of route switching transitions*/
 
-/* .page-enter-active,
+.page-enter-active,
 .page-leave-active {
   transition: all 0.3s ease-out;
 }
@@ -8,23 +8,23 @@
 .page-leave-active {
   opacity: 0;
   transform-origin: 50% 50%;
-} */
+}
 
 /* for route switching */
-.page-enter-active, .page-leave-active {
+/* .page-enter-active, .page-leave-active {
   transition: opacity 0.5s;
 }
 .page-enter, .page-leave-to {
   opacity: 0;
-}
+} */
 
 /* for layout switching */
-.layout-enter-active, .layout-leave-active {
+/* .layout-enter-active, .layout-leave-active {
   transition: opacity 0.5s;
 }
 .layout-enter, .layout-leave-to {
   opacity: 0;
-}
+} */
 
 /* .page-enter-active {
   animation: acrossIn .40s ease-out both;

@@ -1,18 +1,15 @@
 <template>
-  <transition name="layout"
-              mode="out-in">
-    <div id="default-layout">
-      <div id="header-grid-pane">
-        <nav-header/>
-      </div>
-      <div id="content-grid-pane">
-        <nuxt/>
-      </div>
-      <div id="footer-grid-pane">
-        <copyright-text/>
-      </div>
+  <div id="default-layout">
+    <div id="header-grid-pane">
+      <nav-header/>
     </div>
-  </transition>
+    <div id="content-grid-pane">
+      <nuxt/>
+    </div>
+    <div id="footer-grid-pane">
+      <copyright-text/>
+    </div>
+  </div>
 </template>
 
 <script>
@@ -48,8 +45,8 @@ export default {
 
 <style scoped>
 #default-layout {
-  height: 100vh;
   width: 100vw;
+  height: 100vh;
   display: grid;
   grid-gap: 0;
   grid-template-columns: 100%;
@@ -57,11 +54,12 @@ export default {
 }
 
 #header-grid-pane {
-  padding: 0;
+  position: -webkit-sticky;
+  position: sticky;
+  top: 0px;
 }
 
 #content-grid-pane {
-  padding: 0;
   overflow-y: scroll;
   overflow-x: hidden;
 }
@@ -71,7 +69,9 @@ export default {
 }
 
 #footer-grid-pane {
-  padding: 0;
   display: flex;
+  position: -webkit-sticky;
+  position: sticky;
+  bottom: 0px;
 }
 </style>

@@ -18,6 +18,7 @@ export default {
 <style scoped>
 div {
   flex-grow: 1;
+  background-color: white;
 }
 
 span {
