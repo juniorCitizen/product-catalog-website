@@ -1,6 +1,6 @@
 <template>
   <div id="copyright-text">
-    <span>Copyright© {{ year }} Gentry Way Co., Ltd.</span>
+    <span>Copyright© {{ new Date().getFullYear() }} Gentry Way Co., Ltd.</span>
   </div>
 </template>
 
@@ -18,12 +18,11 @@ export default {
 <style scoped>
 div {
   flex-grow: 1;
-  font-weight: 100;
-  font-size: xx-small;
 }
 
 span {
   display: inline-block;
+  font-size: xx-small;
   transform: scale(0.8);
 }
 
@@ -33,6 +32,7 @@ span {
     margin-right: 3px;
   }
   span {
+    font-weight: 100;
     transform-origin: bottom right;
   }
 }

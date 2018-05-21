@@ -1,16 +1,29 @@
 // const pkg = require('./package')
 
+const isDevMode = process.env.NODE_ENV === 'development'
+
 module.exports = {
   mode: 'universal',
-
+  env: {
+    spaceId: process.env.STORYBLOK_SPACE_ID,
+    apiUrl: 'https://api.storyblok.com/v1',
+    apiToken: isDevMode
+      ? process.env.STORYBLOK_API_PREVIEW_TOKEN
+      : process.env.STORYBLOK_API_PUBLIC_TOKEN,
+  },
   /*
   ** Headers of the page
   */
   head: {
     title: process.env.WEBSITE_NAME,
     meta: [
-      {charset: 'utf-8'},
-      {name: 'viewport', content: 'width=device-width, initial-scale=1'},
+      {
+        charset: 'utf-8',
+      },
+      {
+        name: 'viewport',
+        content: 'width=device-width, initial-scale=1',
+      },
       {
         hid: 'description',
         name: 'description',
@@ -18,7 +31,11 @@ module.exports = {
       },
     ],
     link: [
-      {rel: 'icon', type: 'image/x-icon', href: '/favicon.ico'},
+      {
+        rel: 'icon',
+        type: 'image/x-icon',
+        href: '/favicon.ico',
+      },
       {
         rel: 'stylesheet',
         href:
@@ -42,7 +59,10 @@ module.exports = {
   /*
   ** Global CSS
   */
-  css: [],
+  css: [
+    {src: '~/assets/css/global.css'},
+    {src: '~/assets/css/pageTransition.css'},
+  ],
 
   /*
   ** Plugins to load before mounting the App
@@ -52,13 +72,23 @@ module.exports = {
   /*
   ** Nuxt.js modules
   */
-  modules: [],
+  modules: [
+    [
+      'storyblok-nuxt',
+      {
+        accessToken: isDevMode
+          ? process.env.STORYBLOK_API_PREVIEW_TOKEN
+          : process.env.STORYBLOK_API_PUBLIC_TOKEN,
+        cacheProvider: 'memory',
+      },
+    ],
+  ],
 
   /*
   ** Build configuration
   */
   build: {
-    vendor: ['mobile-detect', 'vue-mq'],
+    vendor: ['axios', 'mobile-detect', 'vue-mq'],
     /*
     ** You can extend webpack config here
     */

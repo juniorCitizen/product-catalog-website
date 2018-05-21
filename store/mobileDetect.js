@@ -18,9 +18,9 @@ const getters = {
     return state.tablet !== null
   },
 }
-// const actions = {}
+const actions = {}
 const mutations = {
-  registerDetectionResults(state, payload) {
+  register(state, payload) {
     for (let key in state) {
       state[key] = payload[key] || null
     }
@@ -31,6 +31,6 @@ export default {
   namespaced: true,
   state,
   getters,
-  // actions,
+  actions,
   mutations,
 }

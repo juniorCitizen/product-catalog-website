@@ -1,7 +1,80 @@
 <template>
-  <div>
-    catalog page
-  </div>
+  <section id="catalog-view">
+    <div>top</div>
+    <div>catalog page</div>
+    <div>catalog page</div>
+    <div>catalog page</div>
+    <div>catalog page</div>
+    <div>catalog page</div>
+    <div>catalog page</div>
+    <div>catalog page</div>
+    <div>catalog page</div>
+    <div>catalog page</div>
+    <div>catalog page</div>
+    <div>catalog page</div>
+    <div>catalog page</div>
+    <div>catalog page</div>
+    <div>catalog page</div>
+    <div>catalog page</div>
+    <div>catalog page</div>
+    <div>catalog page</div>
+    <div>catalog page</div>
+    <div>catalog page</div>
+    <div>catalog page</div>
+    <div>catalog page</div>
+    <div>catalog page</div>
+    <div>catalog page</div>
+    <div>catalog page</div>
+    <div>catalog page</div>
+    <div>catalog page</div>
+    <div>catalog page</div>
+    <div>catalog page</div>
+    <div>catalog page</div>
+    <div>catalog page</div>
+    <div>catalog page</div>
+    <div>catalog page</div>
+    <div>catalog page</div>
+    <div>catalog page</div>
+    <div>catalog page</div>
+    <div>catalog page</div>
+    <div>catalog page</div>
+    <div>catalog page</div>
+    <div>catalog page</div>
+    <div>catalog page</div>
+    <div>catalog page</div>
+    <div>catalog page</div>
+    <div>catalog page</div>
+    <div>catalog page</div>
+    <div>catalog page</div>
+    <div>catalog page</div>
+    <div>catalog page</div>
+    <div>catalog page</div>
+    <div>catalog page</div>
+    <div>catalog page</div>
+    <div>catalog page</div>
+    <div>catalog page</div>
+    <div>catalog page</div>
+    <div>catalog page</div>
+    <div>catalog page</div>
+    <div>catalog page</div>
+    <div>catalog page</div>
+    <div>catalog page</div>
+    <div>catalog page</div>
+    <div>catalog page</div>
+    <div>catalog page</div>
+    <div>catalog page</div>
+    <div>catalog page</div>
+    <div>catalog page</div>
+    <div>catalog page</div>
+    <div>catalog page</div>
+    <div>catalog page</div>
+    <div>catalog page</div>
+    <div>catalog page</div>
+    <div>catalog page</div>
+    <div>catalog page</div>
+    <div>catalog page</div>
+    <div>end</div>
+  </section>
 </template>
 
 <script>

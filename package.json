@@ -5,9 +5,11 @@
   "author": "David Tsai <chiayu.tsai.personal@gmail.com>",
   "private": false,
   "dependencies": {
+    "axios": "^0.18.0",
     "express": "^4.16.3",
     "mobile-detect": "^1.4.1",
     "nuxt": "^1.4.0",
+    "storyblok-nuxt": "0.0.3",
     "vue-mq": "^0.2.1"
   },
   "devDependencies": {

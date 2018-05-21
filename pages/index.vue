@@ -1,15 +1,138 @@
 <template>
-  <div id="home-page-view">
+  <section id="home-view">
+    <div>top</div>
     <div>index page</div>
     <div>index page</div>
     <div>index page</div>
-  </div>
+    <div>index page</div>
+    <div>index page</div>
+    <div>index page</div>
+    <div>index page</div>
+    <div>index page</div>
+    <div>index page</div>
+    <div>index page</div>
+    <div>index page</div>
+    <div>index page</div>
+    <div>index page</div>
+    <div>index page</div>
+    <div>index page</div>
+    <div>index page</div>
+    <div>index page</div>
+    <div>index page</div>
+    <div>index page</div>
+    <div>index page</div>
+    <div>index page</div>
+    <div>index page</div>
+    <div>index page</div>
+    <div>index page</div>
+    <div>index page</div>
+    <div>index page</div>
+    <div>index page</div>
+    <div>index page</div>
+    <div>index page</div>
+    <div>index page</div>
+    <div>index page</div>
+    <div>index page</div>
+    <div>index page</div>
+    <div>index page</div>
+    <div>index page</div>
+    <div>index page</div>
+    <div>index page</div>
+    <div>index page</div>
+    <div>index page</div>
+    <div>index page</div>
+    <div>index page</div>
+    <div>index page</div>
+    <div>index page</div>
+    <div>index page</div>
+    <div>index page</div>
+    <div>index page</div>
+    <div>index page</div>
+    <div>index page</div>
+    <div>index page</div>
+    <div>index page</div>
+    <div>index page</div>
+    <div>index page</div>
+    <div>index page</div>
+    <div>index page</div>
+    <div>index page</div>
+    <div>index page</div>
+    <div>index page</div>
+    <div>index page</div>
+    <div>index page</div>
+    <div>index page</div>
+    <div>index page</div>
+    <div>index page</div>
+    <div>index page</div>
+    <div>index page</div>
+    <div>index page</div>
+    <div>index page</div>
+    <div>index page</div>
+    <div>index page</div>
+    <div>index page</div>
+    <div>index page</div>
+    <div>index page</div>
+    <div>index page</div>
+    <div>index page</div>
+    <div>index page</div>
+    <div>index page</div>
+    <div>index page</div>
+    <div>index page</div>
+    <div>index page</div>
+    <div>index page</div>
+    <div>index page</div>
+    <div>index page</div>
+    <div>index page</div>
+    <div>index page</div>
+    <div>index page</div>
+    <div>index page</div>
+    <div>index page</div>
+    <div>index page</div>
+    <div>index page</div>
+    <div>index page</div>
+    <div>index page</div>
+    <div>index page</div>
+    <div>index page</div>
+    <div>index page</div>
+    <div>index page</div>
+    <div>index page</div>
+    <div>index page</div>
+    <div>index page</div>
+    <div>index page</div>
+    <div>index page</div>
+    <div>index page</div>
+    <div>index page</div>
+    <div>index page</div>
+    <div>index page</div>
+    <div>index page</div>
+    <div>index page</div>
+    <div>index page</div>
+    <div>index page</div>
+    <div>index page</div>
+    <div>index page</div>
+    <div>index page</div>
+    <div>index page</div>
+    <div>index page</div>
+    <div>index page</div>
+    <div>index page</div>
+    <div>index page</div>
+    <div>index page</div>
+    <div>index page</div>
+    <div>index page</div>
+    <div>index page</div>
+    <div>index page</div>
+    <div>index page</div>
+    <div>index page</div>
+    <div>index page</div>
+    <div>index page</div>
+    <div>end</div>
+  </section>
 </template>
 
 <script>
 export default {
-  name: 'IndexPage',
-  layout: 'default',
+  name: 'HomePage',
+  layout: 'parallax',
   components: {},
 }
 </script>
