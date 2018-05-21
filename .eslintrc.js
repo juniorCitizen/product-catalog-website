@@ -24,15 +24,15 @@ module.exports = {
     // 'prettier/prettier': ['error', {semi: false}],
     // 'no-console': 'off',
     // semi: ['error', 'never'],
-    // 'vue/max-attributes-per-line': [
-    //   'error',
-    //   {
-    //     singleline: 1,
-    //     multiline: {
-    //       max: 1,
-    //       allowFirstLine: true,
-    //     },
-    //   },
-    // ],
+    'vue/max-attributes-per-line': [
+      'error',
+      {
+        singleline: 1,
+        multiline: {
+          max: 1,
+          allowFirstLine: true,
+        },
+      },
+    ],
   },
 }
