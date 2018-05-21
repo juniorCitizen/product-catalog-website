@@ -7,3 +7,5 @@
   [context.production.environment]
     HOST = "127.0.0.1"
     PORT = "80"
+    WEBSITE_NAME = "Gentry Way Co., Ltd."
+    WEBSITE_DESC = "Gentry Way Product Catalog Website"
