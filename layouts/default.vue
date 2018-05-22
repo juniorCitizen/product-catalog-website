@@ -22,8 +22,9 @@ export default {
     PageFooter,
   },
   computed: {
+    ...vuexMappers.mapGetters('mobileDetect', {isMobile: 'isMobile'}),
     classBinding() {
-      return {'grid-layout': this.$route.name !== 'index'}
+      return {'grid-layout': this.$route.name !== 'index' || this.isMobile}
     },
   },
   mounted() {

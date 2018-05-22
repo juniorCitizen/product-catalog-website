@@ -19,7 +19,6 @@ export default {
       },
     },
   },
-  computed: {},
   mounted() {
     let el = window.document.getElementById('page-footer')
     this.register({
@@ -63,5 +62,8 @@ div {
   margin: 0;
   padding: 0;
   background-color: whitesmoke;
+  position: -webkit-sticky;
+  position: sticky;
+  bottom: 0;
 }
 </style>

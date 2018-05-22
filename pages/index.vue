@@ -147,23 +147,6 @@ export default {
     })
   },
   methods: {
-    parallaxShift(index) {
-      let totalPortions = this.parallaxSections.reduce((a, b) => {
-        return a + b.heightRatio
-      }, 0)
-      let pixelsPerPortion = this.totalHeight / totalPortions
-      let leadingPortions = this.parallaxSections.reduce((a, b, c) => {
-        return c < index ? a + b.heightRatio : a
-      }, 0)
-      let startPixel = leadingPortions * pixelsPerPortion
-      let endPixel =
-        (leadingPortions + this.parallaxSections[index]) * pixelsPerPortion
-      let shiftAmount =
-        this.yOffset >= startPixel && this.yOffset <= endPixel
-          ? (this.yOffset - startPixel) / this.parallaxSections[index].shiftRate
-          : 0
-      return shiftAmount
-    },
     leadingVSlices(index) {
       return this.parallaxSections.reduce((a, b, c) => {
         return c < index ? a + b.heightRatio : a
@@ -184,6 +167,3 @@ export default {
   },
 }
 </script>
-
-<style scoped>
-</style>
