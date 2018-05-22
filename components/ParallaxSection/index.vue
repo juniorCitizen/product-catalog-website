@@ -6,6 +6,7 @@
 </template>
 
 <script>
+import vuexMappers from 'vuex'
 export default {
   name: 'ParallaxSection',
   props: {
@@ -50,6 +51,7 @@ export default {
     },
   },
   computed: {
+    ...vuexMappers.mapGetters('mobileDetect', {isMobile: 'isMobile'}),
     pixelsPerVSlice() {
       return this.totalHeight / this.screenVSlices
     },
@@ -73,7 +75,10 @@ export default {
         height: `${this.heightRatio}vh`,
         'background-color': this.background.color,
         'background-size': this.background.contained ? 'contain' : 'cover',
-        'background-position': `50% -${this.shiftAmount}px`,
+        'background-position': this.isMobile
+          ? 'center'
+          : `50% -${this.shiftAmount}px`,
+        'background-attachment': this.isMobile ? 'scroll' : 'fixed',
       }
       if (this.background.imageUrl)
         style['background-image'] = `url(${this.background.imageUrl})`
@@ -89,15 +94,8 @@ export default {
 <style scoped>
 .parallax-section {
   background-repeat: no-repeat;
-  background-attachment: fixed;
   display: grid;
   align-content: center;
   justify-content: center;
 }
-/* @media screen and (orientation: portrait) {
-  .parallax-section {
-    background-position: center !important;
-    background-attachment: scroll;
-  }
-} */
 </style>
