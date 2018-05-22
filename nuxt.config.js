@@ -1,4 +1,4 @@
-// const pkg = require('./package')
+require('dotenv-safe').config()
 
 const isDevMode = process.env.NODE_ENV === 'development'
 
