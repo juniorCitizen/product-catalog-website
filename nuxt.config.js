@@ -6,7 +6,7 @@ module.exports = {
   mode: 'universal',
   env: {
     spaceId: process.env.STORYBLOK_SPACE_ID,
-    apiUrl: 'https://api.storyblok.com/v1',
+    apiUrl: 'https://api.storyblok.com/v1/cdn/stories',
     apiToken: isDevMode
       ? process.env.STORYBLOK_API_PREVIEW_TOKEN
       : process.env.STORYBLOK_API_PUBLIC_TOKEN,
@@ -72,23 +72,13 @@ module.exports = {
   /*
   ** Nuxt.js modules
   */
-  modules: [
-    [
-      'storyblok-nuxt',
-      {
-        accessToken: isDevMode
-          ? process.env.STORYBLOK_API_PREVIEW_TOKEN
-          : process.env.STORYBLOK_API_PUBLIC_TOKEN,
-        cacheProvider: 'memory',
-      },
-    ],
-  ],
+  modules: [],
 
   /*
   ** Build configuration
   */
   build: {
-    vendor: ['axios', 'mobile-detect', 'vue-mq'],
+    vendor: ['axios', 'bluebird', 'mobile-detect', 'vue-mq'],
     /*
     ** You can extend webpack config here
     */
