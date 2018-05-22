@@ -30,9 +30,3 @@ export default {
   },
 }
 </script>
-
-<style scoped>
-#contact-view {
-  background-color: whitesmoke;
-}
-</style>
