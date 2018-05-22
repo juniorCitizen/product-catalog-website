@@ -96,32 +96,6 @@ export default {
         this.totalHeight = document.body.scrollHeight
       })
     },
-    // page scrolling proximity snap to position
-    // disabled due to mobile issues
-    // yOffset(a, b) {
-    //   let pImageCount = 5
-    //   let range = [{begin: 0, bkPoint: 0, end: 50}]
-    //   for (let x = 1; x < pImageCount; x++) {
-    //     let bkPoint = document.body.scrollHeight / 5 * x
-    //     range.push({
-    //       begin: bkPoint - 50,
-    //       bkPoint,
-    //       end: bkPoint + 50,
-    //     })
-    //   }
-    //   for (let y = 0; y < pImageCount; y++) {
-    //     if (a >= range[y].begin && a <= range[y].bkPoint && b < a) {
-    //       window.scrollTo(0, range[y].bkPoint)
-    //       this.yOffset = window.pageYOffset
-    //       break
-    //     }
-    //     if (a >= range[y].bkPoint && a <= range[y].end && a < b) {
-    //       window.scrollTo(0, range[y].bkPoint)
-    //       this.yOffset = window.pageYOffset
-    //       break
-    //     }
-    //   }
-    // },
   },
   mounted() {
     this.yOffset = window.pageYOffset
