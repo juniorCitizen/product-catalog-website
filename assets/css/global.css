@@ -19,3 +19,7 @@ html::-webkit-scrollbar,
 body::-webkit-scrollbar {
   width: 0;
 }
+
+body {
+  scroll-behavior: auto;
+}
