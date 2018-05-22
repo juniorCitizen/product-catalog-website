@@ -12,13 +12,14 @@ const getters = {
 }
 const actions = {
   fetch(context) {
+    let isDevMode = process.env.NODE_ENV === 'development'
     let apiUrl = process.env.apiUrl
-    let accessUrl = apiUrl + '/cdn/stories/contact-page'
+    let accessUrl = apiUrl + '/contact-page'
     return axios({
       method: 'get',
       url: accessUrl,
       params: {
-        version: process.env.NODE_ENV === 'production' ? 'published' : 'draft',
+        version: isDevMode ? 'draft' : 'published',
         is_startpage: true,
         token: process.env.apiToken,
       },
