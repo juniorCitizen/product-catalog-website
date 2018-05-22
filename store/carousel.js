@@ -12,13 +12,14 @@ const getters = {
 }
 const actions = {
   fetch(context) {
+    let isDevMode = process.env.NODE_ENV === 'development'
     let apiUrl = process.env.apiUrl
-    let accessUrl = apiUrl + '/cdn/stories/home-page'
+    let accessUrl = apiUrl + '/home-page'
     return axios({
       method: 'get',
       url: accessUrl,
       params: {
-        version: process.env.NODE_ENV === 'production' ? 'published' : 'draft',
+        version: isDevMode ? 'draft' : 'published',
         is_startpage: true,
         token: process.env.apiToken,
       },
@@ -81,8 +82,23 @@ const mutations = {
         color: 'transparent',
       },
     ]
-    state.carouselSlides[3].content = []
-    state.carouselSlides[4].heightRatio = 50
+    state.carouselSlides[3].content = [
+      {
+        heading: 'Quality Product Manufactured with Experience:',
+        paragraph:
+          "<u>Gentry Way Co., Ltd</u> is a Taiwanese manufacturer of  aluminum alloy products since since 1980's, and it is fully invested in the home-care market sector for the last 30 years.  Tightly integrated production facility starting from aluminum extrusion, anodizing treatment to the final assembly and quality control provides efficient and consistent productions.\nSince the addition of its sister operation - <u>Gentry Hardware Products Co., Ltd.</u> at Zhongshen, Guangzhou, Gentry's output had greatly increased and its product range is broadened by the availability of steel and other plastic components.",
+        list: null,
+      },
+      {
+        heading: 'Our business scope:',
+        paragraph: null,
+        list: `
+              <li>Rehabilitation equipment, including crutches, canes, walkers, shower/bath seats, commode chairs, safty railing, patient-aids, etc...</li>
+              <li>Aluminum extrusion parts and products</li>
+              <li>Houseware & excercise equipment</li>`,
+      },
+    ]
+    state.carouselSlides[4].heightRatio = 100
     state.carouselSlides[4].shiftRate = 32
     state.carouselSlides[4].background = [
       {
@@ -93,30 +109,6 @@ const mutations = {
       },
     ]
     state.carouselSlides[4].content = []
-    state.carouselSlides.push({})
-    state.carouselSlides[5].heightRatio = 75
-    state.carouselSlides[5].shiftRate = 0
-    state.carouselSlides[5].background = [
-      {
-        imageUrl: null,
-        contained: false,
-        color: 'white',
-        grayscaleLevel: 100,
-      },
-    ]
-    state.carouselSlides[5].content = []
-    state.carouselSlides.push({})
-    state.carouselSlides[6].heightRatio = 100
-    state.carouselSlides[6].shiftRate = 0
-    state.carouselSlides[6].background = [
-      {
-        imageUrl: null,
-        contained: false,
-        grayscaleLevel: 0,
-        color: 'black',
-      },
-    ]
-    state.carouselSlides[6].content = []
   },
 }
 
