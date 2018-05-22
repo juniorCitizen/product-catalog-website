@@ -1,6 +1,5 @@
 <template>
-  <div id="navbar-menu"
-       :class="{'is-active':mobileMenuIsActive}"
+  <div :class="{'is-active':mobileMenuIsActive}"
        class="navbar-menu">
     <navbar-start/>
     <navbar-end/>
@@ -39,7 +38,7 @@ export default {
 
 <style scoped>
 @media only screen and (max-width: 1087px) {
-  #navbar-menu {
+  .navbar-menu {
     position: absolute;
     width: 100%;
   }

@@ -1,15 +1,18 @@
 <template>
-  <header id="nav-header">
-    <nav class="navbar"
-         role="navigation">
-      <div class="navbar-brand">
-        <company-logo/>
-        <hamburger-button :is-active="mobileMenuIsActive"
-                          @clicked="mobileMenuIsActive=!mobileMenuIsActive"/>
-      </div>
-      <navbar-menu :mobile-menu-is-active="mobileMenuIsActive"/>
-    </nav>
-  </header>
+  <div id="navbar-container"
+       :class="classBinding">
+    <header>
+      <nav class="navbar"
+           role="navigation">
+        <div class="navbar-brand">
+          <company-logo/>
+          <hamburger-button :is-active="mobileMenuIsActive"
+                            @clicked="mobileMenuIsActive=!mobileMenuIsActive"/>
+        </div>
+        <navbar-menu :mobile-menu-is-active="mobileMenuIsActive"/>
+      </nav>
+    </header>
+  </div>
 </template>
 
 <script>
@@ -28,6 +31,11 @@ export default {
     return {
       mobileMenuIsActive: false,
     }
+  },
+  computed: {
+    classBinding() {
+      return {fixed: this.$route.name === 'index'}
+    },
   },
   watch: {
     $mq(newSize, prevSize) {
@@ -49,3 +57,15 @@ export default {
   },
 }
 </script>
+
+<style scoped>
+#navbar-container {
+  width: 100vw;
+}
+
+#navbar-container.fixed {
+  position: fixed;
+  top: 0;
+  z-index: 1;
+}
+</style>

@@ -6,9 +6,6 @@ const state = () => {
   }
 }
 const getters = {
-  content(state) {
-    return state.content
-  },
   contactList(state) {
     return state.contactList
   },
@@ -16,9 +13,10 @@ const getters = {
 const actions = {
   fetch(context) {
     let apiUrl = process.env.apiUrl
+    let accessUrl = apiUrl + '/cdn/stories/contact-page'
     return axios({
       method: 'get',
-      url: `${apiUrl}/cdn/stories/contact-page`,
+      url: accessUrl,
       params: {
         version: process.env.NODE_ENV === 'production' ? 'published' : 'draft',
         is_startpage: true,
@@ -34,9 +32,9 @@ const actions = {
   },
 }
 const mutations = {
-  register(state, payload) {
+  register(state, {contactList}) {
     state.contactList = []
-    payload.contactList.forEach(contact => {
+    contactList.forEach(contact => {
       state.contactList.push(contact)
     })
   },

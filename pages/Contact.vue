@@ -1,10 +1,8 @@
 <template>
   <section id="contact-view">
-    <div class="content">
-      <contact-card v-for="company in companies"
-                    :key="company._uid"
-                    :company="company"/>
-    </div>
+    <contact-card v-for="company in companies"
+                  :key="company._uid"
+                  :company="company"/>
   </section>
 </template>
 
@@ -32,3 +30,9 @@ export default {
   },
 }
 </script>
+
+<style scoped>
+#contact-view {
+  background-color: whitesmoke;
+}
+</style>

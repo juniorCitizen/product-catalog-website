@@ -54,8 +54,9 @@ ul.tabs {
 }
 
 li {
+  font-size: 90%;
+  font-weight: 900;
   margin-left: 25px;
-  border-bottom-width: 5px;
 }
 
 li.is-active {

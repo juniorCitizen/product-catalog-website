@@ -66,7 +66,6 @@ export default {
 }
 
 .staff-card {
-  background-color: whitesmoke;
   max-width: max-content;
   min-width: 250px;
   border-left: 3px solid rgb(36, 145, 145);

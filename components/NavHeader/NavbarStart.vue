@@ -59,20 +59,25 @@ export default {
 </script>
 
 <style scoped>
-.dropdown-catalog-frame {
-  border-radius: 5px;
-  margin-left: 10px;
-  margin-right: 0px;
-  padding: 5px;
-}
-
 @media only screen and (min-width: 1088px) {
   #navbar-start {
     display: none;
   }
 }
 
+a {
+  font-size: 90%;
+  font-weight: 900;
+}
+
 a.is-active {
   pointer-events: none;
+}
+
+.dropdown-catalog-frame {
+  border-radius: 5px;
+  margin-left: 10px;
+  margin-right: 0px;
+  padding: 5px;
 }
 </style>
