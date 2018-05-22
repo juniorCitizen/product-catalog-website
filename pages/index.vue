@@ -9,7 +9,7 @@
                       :total-height="totalHeight"
                       :y-offset="yOffset"
                       :leading-v-slices="leadingVSlices(index)">
-      <span/>
+      <section-content :section="section"/>
     </parallax-section>
   </section>
 </template>
@@ -17,16 +17,25 @@
 <script>
 import vuexMappers from 'vuex'
 import ParallaxSection from '~/components/ParallaxSection'
+import SectionContent from '~/components/parallaxSection/SectionContent'
 export default {
   name: 'HomeView',
   layout: 'default',
-  components: {ParallaxSection},
+  components: {
+    ParallaxSection,
+    SectionContent,
+  },
   fetch({store}) {
     let carouselSlides = store.getters['carousel/carouselSlides']
+    let catalog = store.getters['catalog/catalog']
     if (carouselSlides.length === 0) {
       return store
         .dispatch('carousel/fetch')
-        .then(() => Promise.resolve())
+        .then(() => {
+          return store.dispatch('catalog/fetchCategory', {
+            category: catalog,
+          })
+        })
         .catch(error => {
           console.log(error)
           return Promise.reject(error)
@@ -38,30 +47,14 @@ export default {
       yOffset: 0,
       windowHeight: 0,
       totalHeight: 0,
-      companyProfile: {
-        title: 'COMPANY PROFILE',
-        sections: [
-          {
-            heading: 'Affordable Quality and Service:',
-            paragraph:
-              "<u>Gentry Way Co., Ltd</u> is a Taiwanese manufacturer of  aluminum alloy products since since 1980's, and it is fully invested in the home-care market sector for the last 30 years.  Tightly integrated production facility starting from aluminum extrusion, anodizing treatment to the final assembly and quality control provides efficient and consistent productions.\nSince the addition of its sister operation - <u>Gentry Hardware Products Co., Ltd.</u> at Zhongshen, Guangzhou, Gentry's output had greatly increased and its product range is broadened by the availability of steel and other plastic components.",
-            list: null,
-          },
-          {
-            heading: 'Our business scope:',
-            paragraph: null,
-            list: `
-              <li>Rehabilitation equipment, including crutches, canes, walkers, shower/bath seats, commode chairs, safty railing, patient-aids, etc...</li>
-              <li>Aluminum extrusion parts and products</li>
-              <li>Houseware & excercise equipment</li>`,
-          },
-        ],
-      },
     }
   },
   computed: {
     ...vuexMappers.mapGetters('carousel', {
       parallaxSections: 'carouselSlides',
+    }),
+    ...vuexMappers.mapGetters('catalog', {
+      catalog: 'catalog',
     }),
     imageUrls() {
       return this.parallaxSections.map(slide => {
@@ -98,6 +91,12 @@ export default {
     },
   },
   mounted() {
+    this.fetchRootCategories()
+      .then(res => {
+        console.log(res)
+        return Promise.resolve()
+      })
+      .catch(error => Promise.reject(error))
     this.yOffset = window.pageYOffset
     this.windowHeight = window.innerHeight
     this.totalHeight = document.body.scrollHeight
@@ -121,6 +120,9 @@ export default {
     })
   },
   methods: {
+    ...vuexMappers.mapActions('catalog', {
+      fetchRootCategories: 'fetchRootCategories',
+    }),
     leadingVSlices(index) {
       return this.parallaxSections.reduce((a, b, c) => {
         return c < index ? a + b.heightRatio : a
