@@ -56,13 +56,9 @@ export default {
       return this.totalHeight / this.screenVSlices
     },
     shiftBoundaries() {
-      let start = this.pixelsPerVSlice * this.leadingVSlices
-      let end = this.pixelsPerVSlice * (this.leadingVSlices + this.heightRatio)
       return {
-        start,
-        end,
-        proximityTopEdge: start - 100,
-        proximityBottomEdge: start + 250,
+        start: this.pixelsPerVSlice * this.leadingVSlices,
+        end: this.pixelsPerVSlice * (this.leadingVSlices + this.heightRatio),
       }
     },
     shiftAmount() {
@@ -89,24 +85,6 @@ export default {
       if (this.background.grayscaleLevel)
         style.filter = `grayscale(${this.background.grayscaleLevel}%)`
       return style
-    },
-  },
-  watch: {
-    yOffset(a, b) {
-      if (
-        a >= this.shiftBoundaries.proximityTopEdge &&
-        a <= this.shiftBoundaries.start &&
-        a > b
-      ) {
-        window.scrollTo(0, this.shiftBoundaries.start)
-      }
-      if (
-        a >= this.shiftBoundaries.start &&
-        a <= this.shiftBoundaries.proximityBottomEdge &&
-        a < b
-      ) {
-        window.scrollTo(0, this.shiftBoundaries.start)
-      }
     },
   },
 }
