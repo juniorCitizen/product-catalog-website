@@ -9,8 +9,7 @@
                       :total-height="totalHeight"
                       :y-offset="yOffset"
                       :leading-v-slices="leadingVSlices(index)">
-      <!-- <section-content :section="section"/> -->
-      <span/>
+      <section-content :section="section"/>
     </parallax-section>
   </section>
 </template>
@@ -18,13 +17,13 @@
 <script>
 import vuexMappers from 'vuex'
 import ParallaxSection from '~/components/ParallaxSection'
-// import SectionContent from '~/components/parallaxSection/SectionContent'
+import SectionContent from '~/components/ParallaxSection/SectionContent'
 export default {
   name: 'HomeView',
   layout: 'default',
   components: {
     ParallaxSection,
-    // SectionContent,
+    SectionContent,
   },
   fetch({store}) {
     let carouselSlides = store.getters['carousel/carouselSlides']
@@ -92,12 +91,12 @@ export default {
     },
   },
   mounted() {
-    // this.fetchRootCategories()
-    //   .then(res => {
-    //     console.log(res)
-    //     return Promise.resolve()
-    //   })
-    //   .catch(error => Promise.reject(error))
+    this.fetchRootCategories()
+      .then(res => {
+        console.log(res)
+        return Promise.resolve()
+      })
+      .catch(error => Promise.reject(error))
     this.yOffset = window.pageYOffset
     this.windowHeight = window.innerHeight
     this.totalHeight = document.body.scrollHeight
