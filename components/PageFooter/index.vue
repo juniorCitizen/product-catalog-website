@@ -5,7 +5,7 @@
 </template>
 
 <script>
-import vuexMapper from 'vuex'
+// import vuexMapper from 'vuex'
 import CopyrightText from './CopyrightText'
 export default {
   name: 'PageFooter',
@@ -20,37 +20,37 @@ export default {
     },
   },
   mounted() {
-    let el = window.document.getElementById('page-footer')
-    this.register({
-      offsetTop: el.offsetTop,
-      offsetHeight: el.offsetHeight,
-    })
-    window.addEventListener('scroll', () => {
-      this.register({
-        offsetTop: el.offsetTop,
-        offsetHeight: el.offsetHeight,
-      })
-    })
-    window.addEventListener('resize', () => {
-      this.register({
-        offsetTop: el.offsetTop,
-        offsetHeight: el.offsetHeight,
-      })
-    })
+    // let el = window.document.getElementById('page-footer')
+    // this.register({
+    //   offsetTop: el.offsetTop,
+    //   offsetHeight: el.offsetHeight,
+    // })
+    // window.addEventListener('scroll', () => {
+    //   this.register({
+    //     offsetTop: el.offsetTop,
+    //     offsetHeight: el.offsetHeight,
+    //   })
+    // })
+    // window.addEventListener('resize', () => {
+    //   this.register({
+    //     offsetTop: el.offsetTop,
+    //     offsetHeight: el.offsetHeight,
+    //   })
+    // })
   },
   destroyed() {
-    window.removeEventListener('scroll', () => {
-      this.reset()
-    })
-    window.removeEventListener('resize', () => {
-      this.reset()
-    })
+    //   window.removeEventListener('scroll', () => {
+    //     this.reset()
+    //   })
+    //   window.removeEventListener('resize', () => {
+    //     this.reset()
+    //   })
   },
   methods: {
-    ...vuexMapper.mapMutations('dimensions', {
-      register: 'registerPageFooterDimensions',
-      reset: 'resetPageFooterDimensions',
-    }),
+    // ...vuexMapper.mapMutations('dimensions', {
+    //   register: 'registerPageFooterDimensions',
+    //   reset: 'resetPageFooterDimensions',
+    // }),
   },
 }
 </script>
