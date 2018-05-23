@@ -87,11 +87,9 @@ const mutations = {
         heading: 'Quality Product Manufactured with Experience:',
         paragraph:
           "<u>Gentry Way Co., Ltd</u> is a Taiwanese manufacturer of  aluminum alloy products since since 1980's, and it is fully invested in the home-care market sector for the last 30 years.  Tightly integrated production facility starting from aluminum extrusion, anodizing treatment to the final assembly and quality control provides efficient and consistent productions.\nSince the addition of its sister operation - <u>Gentry Hardware Products Co., Ltd.</u> at Zhongshen, Guangzhou, Gentry's output had greatly increased and its product range is broadened by the availability of steel and other plastic components.",
-        list: null,
       },
       {
         heading: 'Our business scope:',
-        paragraph: null,
         list: `
               <li>Rehabilitation equipment, including crutches, canes, walkers, shower/bath seats, commode chairs, safty railing, patient-aids, etc...</li>
               <li>Aluminum extrusion parts and products</li>
@@ -109,6 +107,24 @@ const mutations = {
       },
     ]
     state.carouselSlides[4].content = []
+    state.carouselSlides.unshift({
+      heightRatio: 100,
+      shiftRate: 1,
+      background: [
+        {
+          imageUrl: null,
+          contained: false,
+          grayscaleLevel: 0,
+          color: 'white',
+        },
+      ],
+      content: [
+        {
+          heading: '',
+          carousel: JSON.parse(JSON.stringify(state.carouselSlides)),
+        },
+      ],
+    })
   },
 }
 

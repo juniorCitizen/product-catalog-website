@@ -1,6 +1,6 @@
 <template>
   <section id="home-view">
-    <parallax-section v-for="(section,index) in parallaxSections"
+    <parallax-section v-for="(section,parallaxSectionIndex) in parallaxSections"
                       :key="section._uid"
                       :background="section.background[0]"
                       :shift-rate="section.shiftRate"
@@ -8,8 +8,15 @@
                       :screen-v-slices="screenVSlices"
                       :total-height="totalHeight"
                       :y-offset="yOffset"
-                      :leading-v-slices="leadingVSlices(index)">
-      <section-content :section="section"/>
+                      :leading-v-slices="leadingVSlices(parallaxSectionIndex)">
+      <template v-for="(contentItem,contentItemIndex) in section.content">
+        <div :key="'a'+contentItemIndex">
+          content {{ contentItemIndex+1 }}
+        </div>
+        <div :key="'b'+contentItemIndex">
+          {{ contentItem.heading }}
+        </div>
+      </template>
     </parallax-section>
   </section>
 </template>
@@ -17,13 +24,20 @@
 <script>
 import vuexMappers from 'vuex'
 import ParallaxSection from '~/components/ParallaxSection'
-import SectionContent from '~/components/ParallaxSection/SectionContent'
+import Carousel from '~/components/content/Carousel'
+import List from '~/components/content/List'
+import Paragraph from '~/components/content/Paragraph'
+import Profile from '~/components/content/Profile'
+
 export default {
   name: 'HomeView',
   layout: 'default',
   components: {
     ParallaxSection,
-    SectionContent,
+    Carousel,
+    List,
+    Paragraph,
+    Profile,
   },
   fetch({store}) {
     let carouselSlides = store.getters['carousel/carouselSlides']
@@ -57,7 +71,7 @@ export default {
     ...vuexMappers.mapGetters('catalog', {
       catalog: 'catalog',
     }),
-    imageUrls() {
+    carouselImages() {
       return this.parallaxSections.map(slide => {
         return slide.imageUrl
       })
@@ -66,6 +80,7 @@ export default {
       return this.parallaxSections.map(slide => {
         return {
           titleText: slide.titleText,
+          mobileTitleText: slide.mobileTitleText,
           mottoText: slide.mottoText,
         }
       })
