@@ -47,6 +47,7 @@ export default {
       yOffset: 0,
       windowHeight: 0,
       totalHeight: 0,
+      rootCategories: [],
     }
   },
   computed: {
@@ -92,8 +93,8 @@ export default {
   },
   mounted() {
     this.fetchRootCategories()
-      .then(res => {
-        console.log(res)
+      .then(rootCategories => {
+        this.rootCategories = rootCategories
         return Promise.resolve()
       })
       .catch(error => Promise.reject(error))
