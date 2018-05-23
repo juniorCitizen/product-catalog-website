@@ -18,6 +18,9 @@ const getters = {
   isTablet(state) {
     return state.tablet !== null
   },
+  mq(state) {
+    return state.mq
+  },
 }
 const actions = {}
 const mutations = {
