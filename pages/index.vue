@@ -46,9 +46,13 @@ export default {
       return store
         .dispatch('carousel/fetch')
         .then(() => {
-          return store.dispatch('catalog/fetchCategory', {
-            category: catalog,
-          })
+          if (!catalog.isActive) {
+            return store.dispatch('catalog/fetchCategory', {
+              category: catalog,
+            })
+          } else {
+            return Promise.resolve()
+          }
         })
         .catch(error => {
           console.log(error)
