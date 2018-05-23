@@ -35,6 +35,7 @@ export default {
       tablet: md.tablet(),
       os: md.os(),
       userAgent: md.userAgent(),
+      mq: this.$mq,
     })
   },
   methods: {

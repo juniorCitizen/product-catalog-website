@@ -5,6 +5,7 @@ const state = () => {
     tablet: null,
     os: null,
     userAgent: null,
+    mq: null,
   }
 }
 const getters = {
