@@ -1,5 +1,5 @@
 <template>
-  <div :class="{'is-active':mobileMenuIsActive}"
+  <div :class="classBinding"
        class="navbar-menu">
     <navbar-start/>
     <navbar-end/>
@@ -7,16 +7,15 @@
 </template>
 
 <script>
+import vuexMappers from 'vuex'
 import NavbarStart from './NavbarStart'
 import NavbarEnd from './NavbarEnd'
-// import VerticalMenu from '~/components/catalogPage/VerticalMenu'
 
 export default {
   name: 'NavbarMenu',
   components: {
     NavbarStart,
     NavbarEnd,
-    // VerticalMenu,
   },
   props: {
     mobileMenuIsActive: {
@@ -25,22 +24,30 @@ export default {
     },
   },
   computed: {
-    mobileMenuEnabled() {
+    ...vuexMappers.mapGetters('mobileDetect', {isMobile: 'isMobile'}),
+    isUnderBulmaNavLimit() {
       return (
         this.$mq === 'mobile' ||
         this.$mq === 'tablet' ||
         this.$mq === 'bulmaNavLimit'
       )
     },
+    classBinding() {
+      return {
+        'mobile-layout': this.mobileMenuEnabled,
+        'is-active': this.mobileMenuIsActive,
+      }
+    },
+    mobileMenuEnabled() {
+      return this.isMobile || this.isUnderBulmaNavLimit
+    },
   },
 }
 </script>
 
 <style scoped>
-@media only screen and (max-width: 1087px) {
-  .navbar-menu {
-    position: absolute;
-    width: 100%;
-  }
+.navbar-menu.mobile-layout {
+  position: absolute;
+  width: 100%;
 }
 </style>
