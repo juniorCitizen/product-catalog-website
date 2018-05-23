@@ -1,14 +1,17 @@
 <template>
-  <div class="product-card">
-    <div class="photo-container-frame">
-      <div class="photo-container"/>
-    </div>
-    <div class="product-information">
-      <div class="product-code">
-        test code
+  <div class="product-card-container">
+    <div class="product-card">
+      <div class="photo-container-frame">
+        <div :style="setupImage(product.primaryPhoto)"
+             class="photo-container"/>
       </div>
-      <div class="product-name">
-        test name
+      <div class="product-information">
+        <div class="product-code">
+          {{ product.code }}
+        </div>
+        <div class="product-name">
+          {{ product.name }}
+        </div>
       </div>
     </div>
   </div>
@@ -25,21 +28,51 @@ export default {
       },
     },
   },
+  methods: {
+    urlHelper(url) {
+      return url.replace(
+        '//a.storyblok.com',
+        '//img2.storyblok.com/filters:quality\\(50\\):format\\(jpg\\):fill\\(white\\)'
+      )
+    },
+    setupImage(url) {
+      if (url) {
+        return {
+          'background-image': `url(${this.urlHelper(url)})`,
+        }
+      } else {
+        return {
+          background: `url(${require('~/assets/placeholder.svg')})`,
+          'background-size': 'contain',
+          'background-position': 'center',
+          'background-repeat': 'no-repeat',
+        }
+      }
+    },
+  },
 }
 </script>
 
 
 <style scoped>
+.product-card-container {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+.product-card-container:hover .product-card {
+  border: 1px solid white;
+  transform: translate(1px, 1px);
+}
+
 .product-card {
+  box-sizing: border-box;
   border: 1px solid darkgray;
   border-radius: 5px;
   padding: 5px;
   background-color: lightgray;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-}
-
-.product-card:hover {
-  border: 1px solid white;
 }
 
 .photo-container-frame {
