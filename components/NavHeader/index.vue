@@ -51,8 +51,10 @@ export default {
         this.mobileMenuIsActive = false
       }
     },
-    $route() {
-      this.mobileMenuIsActive = false
+    $route(newRoute) {
+      if (newRoute.name !== 'catalog') {
+        this.mobileMenuIsActive = false
+      }
     },
   },
 }
