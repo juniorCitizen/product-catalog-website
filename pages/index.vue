@@ -40,25 +40,23 @@ export default {
     Profile,
   },
   fetch({store}) {
-    let carouselSlides = store.getters['carousel/carouselSlides']
+    let initJobs = []
     let catalog = store.getters['catalog/catalog']
-    if (carouselSlides.length === 0) {
-      return store
-        .dispatch('carousel/fetch')
-        .then(() => {
-          if (!catalog.isActive) {
-            return store.dispatch('catalog/fetchCategory', {
-              category: catalog,
-            })
-          } else {
-            return Promise.resolve()
-          }
+    if (!catalog.isActive) {
+      initJobs.push(
+        store.dispatch('catalog/fetchCategory', {
+          category: catalog,
         })
-        .catch(error => {
-          console.log(error)
-          return Promise.reject(error)
-        })
+      )
     }
+    let carouselSlides = store.getters['carousel/carouselSlides']
+    if (carouselSlides.length === 0) {
+      initJobs.push(store.dispatch('carousel/fetch'))
+    }
+    return Promise.all(initJobs).catch(error => {
+      console.log(error)
+      return Promise.reject(error)
+    })
   },
   data() {
     return {
