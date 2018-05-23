@@ -4,7 +4,7 @@
       <product-card v-for="product in products"
                     :key="product.code"
                     :product="product"/>
-                    <!-- <div class="spacer"/> -->
+      <div class="spacer"/>
     </div>
   </div>
 </template>
