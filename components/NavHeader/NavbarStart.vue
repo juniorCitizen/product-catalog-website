@@ -1,20 +1,16 @@
 <template>
-  <div id="navbar-start"
-       class="navbar-start">
+  <div class="navbar-start">
     <nuxt-link
       :class="{'is-active':$route.name==='index'}"
       class="navbar-item"
       to="/"
-      tag="a"
-      @click.native="null/*activateInProgressOverlay*/">
+      tag="a">
       <span>HOME</span>
     </nuxt-link>
     <nuxt-link v-if="$route.name!=='catalog'"
-               :class="{'is-active':$route.name==='catalog'}"
                class="navbar-item"
                to="/catalog"
-               tag="a"
-               @click.native="null/*activateInProgressOverlay*/">
+               tag="a">
       <span>CATALOG</span>
     </nuxt-link>
     <div v-else
@@ -33,16 +29,13 @@
       :class="{'is-active':$route.name==='contact'}"
       class="navbar-item"
       to="/contact"
-      tag="a"
-      @click.native="null/*activateInProgressOverlay*/">
+      tag="a">
       <span>CONTACT</span>
     </nuxt-link>
   </div>
 </template>
 
 <script>
-// import vuexMappers from 'vuex'
-
 // import CategoryMenu from '~/components/catalog/CategoryMenu'
 
 export default {
@@ -50,21 +43,10 @@ export default {
   components: {
     // CategoryMenu,
   },
-  methods: {
-    // ...vuexMappers.mapMutations('inProgress', {
-    //   activateInProgressOverlay: 'activateInProgressOverlay',
-    // }),
-  },
 }
 </script>
 
 <style scoped>
-@media only screen and (min-width: 1088px) {
-  #navbar-start {
-    display: none;
-  }
-}
-
 a {
   font-size: 90%;
   font-weight: 900;

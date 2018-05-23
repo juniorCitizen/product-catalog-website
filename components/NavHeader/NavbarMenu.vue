@@ -1,7 +1,8 @@
 <template>
   <div :class="classBinding"
        class="navbar-menu">
-    <navbar-start/>
+    <!-- DO NOT CHANGE TO 'v-if' -->
+    <navbar-start v-show="isUnderBulmaNavLimit"/>
     <navbar-end/>
   </div>
 </template>
