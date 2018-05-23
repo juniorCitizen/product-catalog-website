@@ -25,14 +25,10 @@ export default {
     },
   },
   computed: {
-    ...vuexMappers.mapGetters('mobileDetect', {isMobile: 'isMobile'}),
-    isUnderBulmaNavLimit() {
-      return (
-        this.$mq === 'mobile' ||
-        this.$mq === 'tablet' ||
-        this.$mq === 'bulmaNavLimit'
-      )
-    },
+    ...vuexMappers.mapGetters('mobileDetect', {
+      isMobile: 'isMobile',
+      isUnderBulmaNavLimit: 'isUnderBulmaNavLimit',
+    }),
     classBinding() {
       return {
         'mobile-layout': this.mobileMenuEnabled,

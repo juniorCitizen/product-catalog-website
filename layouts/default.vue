@@ -27,6 +27,11 @@ export default {
       return {'grid-layout': this.$route.name !== 'index' || this.isMobile}
     },
   },
+  watch: {
+    $mq() {
+      this.register({mq: this.$mq})
+    },
+  },
   mounted() {
     let md = new MobileDetect(window.navigator.userAgent)
     this.register({

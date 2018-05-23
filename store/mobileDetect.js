@@ -21,6 +21,13 @@ const getters = {
   mq(state) {
     return state.mq
   },
+  isUnderBulmaNavLimit(state) {
+    return (
+      state.mq === 'mobile' ||
+      state.mq === 'tablet' ||
+      state.mq === 'bulmaNavLimit'
+    )
+  },
 }
 const actions = {}
 const mutations = {

@@ -1,48 +1,71 @@
 <template>
   <section id="catalog-view"
            :class="classBinding">
-    <aside>
-      catalog menu
-    </aside>
-    <header>
-      breadcrumbs
-    </header>
-    <article>
-      product browser
-    </article>
-    <footer>
-      pagination
-    </footer>
+    <catalog-tree-menu/>
+    <breadcrumb/>
+    <product-browser/>
+    <pagination/>
   </section>
 </template>
 
 <script>
 import vuexMappers from 'vuex'
+import CatalogTreeMenu from '~/components/CatalogTreeMenu'
+import Breadcrumb from '~/components/Breadcrumb'
+import ProductBrowser from '~/components/ProductBrowser'
+import Pagination from '~/components/Pagination'
 export default {
   name: 'CatalogView',
   layout: 'default',
+  components: {
+    CatalogTreeMenu,
+    Breadcrumb,
+    ProductBrowser,
+    Pagination,
+  },
+  fetch({store}) {
+    let catalog = store.getters['catalog/catalog']
+    if (!catalog.isActive) {
+      return store
+        .dispatch('catalog/fetchCategory', {
+          category: catalog,
+        })
+        .catch(error => {
+          console.log(error)
+          return Promise.reject(error)
+        })
+    } else {
+      return Promise.resolve()
+    }
+  },
   computed: {
-    ...vuexMappers.mapGetters('mobileDetect', {isMobile: 'isMobile'}),
+    ...vuexMappers.mapGetters('mobileDetect', {
+      isMobile: 'isMobile',
+      mq: 'mq',
+    }),
+    ...vuexMappers.mapGetters('catalog', {catalog: 'catalog'}),
+    mobileLayouteEnabled() {
+      return this.isMobile || this.mq === 'mobile'
+    },
     classBinding() {
       return {
-        'desktop-layout': !this.isMobile && this.$mq !== 'mobile',
-        'mobile-layout': this.isMobile || this.$mq === 'mobile',
+        'desktop-layout': !this.mobileLayouteEnabled,
+        'mobile-layout': this.mobileLayouteEnabled,
       }
     },
+  },
+  methods: {
+    ...vuexMappers.mapActions('catalog', {
+      fetchCategory: 'fetchCategory',
+    }),
   },
 }
 </script>
 
 <style scoped>
-#catalog-view,
-aside,
-header,
-article,
-footer {
-  border: 1px solid blue;
-  box-sizing: border-box;
-}
 #catalog-view {
+  box-sizing: border-box;
+  padding: 0;
   width: 100%;
   height: 100%;
   display: grid;
@@ -51,29 +74,18 @@ footer {
   grid-column-gap: 5px;
   grid-row-gap: 5px;
   grid-template-columns: max-content min-content auto;
-  grid-template-rows: min-content auto min-content;
+  grid-template-rows: auto auto auto;
+  grid-template-areas:
+    'tree-menu . breadcrumb'
+    'tree-menu . product-browser'
+    'tree-menu . pagination';
 }
 #catalog-view.mobile-layout {
   grid-template-columns: auto;
   grid-template-rows: min-content auto min-content;
-}
-#catalog-view.desktop-layout aside {
-  grid-column: 1/2;
-  grid-row: 1/-1;
-}
-#catalog-view.mobile-layout aside {
-  display: none;
-}
-header {
-  grid-column: -2/-1;
-  grid-row: 1/2;
-}
-article {
-  grid-column: -2/-1;
-  grid-row: 2/3;
-}
-footer {
-  grid-column: -2/-1;
-  grid-row: 3/4;
+  grid-template-areas:
+    'breadcrumb'
+    'product-browser'
+    'pagination';
 }
 </style>

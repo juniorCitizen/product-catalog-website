@@ -38,6 +38,7 @@ export default {
     },
   },
   watch: {
+    // keep this out of the vuex store due to the complexity to implement tracking before and after states
     $mq(newSize, prevSize) {
       let wasUnderLimit =
         prevSize === 'mobile' ||
