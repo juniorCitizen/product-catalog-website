@@ -1,22 +1,17 @@
 <template>
   <div :class="classBinding"
        class="navbar-menu">
-    <!-- DO NOT CHANGE TO 'v-if' -->
-    <navbar-start v-show="isUnderBulmaNavLimit"/>
-    <navbar-end/>
+    <navbar-start-end/>
   </div>
 </template>
 
 <script>
 import vuexMappers from 'vuex'
-import NavbarStart from './NavbarStart'
-import NavbarEnd from './NavbarEnd'
-
+import NavbarStartEnd from './NavbarStartEnd'
 export default {
   name: 'NavbarMenu',
   components: {
-    NavbarStart,
-    NavbarEnd,
+    NavbarStartEnd,
   },
   props: {
     mobileMenuIsActive: {
@@ -29,14 +24,14 @@ export default {
       isMobile: 'isMobile',
       isUnderBulmaNavLimit: 'isUnderBulmaNavLimit',
     }),
+    mobileMenuEnabled() {
+      return this.isMobile || this.isUnderBulmaNavLimit
+    },
     classBinding() {
       return {
         'mobile-layout': this.mobileMenuEnabled,
         'is-active': this.mobileMenuIsActive,
       }
-    },
-    mobileMenuEnabled() {
-      return this.isMobile || this.isUnderBulmaNavLimit
     },
   },
 }

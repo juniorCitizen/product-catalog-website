@@ -21,7 +21,7 @@ import HamburgerButton from './HamburgerButton'
 import NavbarMenu from './NavbarMenu'
 
 export default {
-  name: 'NavHeader',
+  name: 'Navbar',
   components: {
     CompanyLogo,
     HamburgerButton,

@@ -1,7 +1,7 @@
 <template>
   <div id="default-layout"
        :class="classBinding">
-    <nav-header/>
+    <navbar/>
     <div id="content-grid-pane">
       <nuxt/>
     </div>
@@ -12,13 +12,13 @@
 <script>
 import vuexMappers from 'vuex'
 import MobileDetect from 'mobile-detect'
-import NavHeader from '~/components/NavHeader'
+import Navbar from '~/components/Navbar'
 import PageFooter from '~/components/PageFooter'
 
 export default {
   name: 'DefaultLayout',
   components: {
-    NavHeader,
+    Navbar,
     PageFooter,
   },
   computed: {

@@ -130,6 +130,7 @@ export default {
     })
   },
   destroyed() {
+    console.log('removed')
     window.removeEventListener('scroll', () => {
       this.yOffset = 0
     })

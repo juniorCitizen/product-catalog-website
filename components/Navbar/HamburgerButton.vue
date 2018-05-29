@@ -2,7 +2,6 @@
   <span id="hamburger-button"
         :class="{'is-active':isActive}"
         class="navbar-burger burger"
-        data-target="header-menu"
         @click="$emit('clicked')">
     <span/>
     <span/>
