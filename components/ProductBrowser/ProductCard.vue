@@ -73,7 +73,7 @@ export default {
   padding: 5px;
   background-color: lightgray;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-  height: 100%;
+  min-height: 100%;
 }
 
 .photo-container-frame {
@@ -102,11 +102,13 @@ export default {
 }
 
 .product-code {
-  font-weight: 700;
+  color: red;
   font-size: 70%;
+  letter-spacing: 0.15em;
 }
 
 .product-name {
+  font-weight: 300;
   font-size: 70%;
 }
 </style>

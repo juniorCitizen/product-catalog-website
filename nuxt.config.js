@@ -48,6 +48,10 @@ module.exports = {
           'sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp',
         crossorigin: 'anonymous',
       },
+      {
+        rel: 'stylesheet',
+        href: 'https://fonts.googleapis.com/css?family=Montserrat:300,400',
+      },
     ],
   },
 

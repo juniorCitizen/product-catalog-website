@@ -3,8 +3,8 @@
        class="pagination-container">
     <nav class="pagination is-small"
          role="navigation">
-      <a class="pagination-previous">Previous</a>
-      <a class="pagination-next">Next page</a>
+      <a class="pagination-previous">PREVIOUS</a>
+      <a class="pagination-next">NEXT PAGE</a>
       <ul class="pagination-list">
         <li><a class="pagination-link">1</a></li>
         <li><span class="pagination-ellipsis">&hellip;</span></li>

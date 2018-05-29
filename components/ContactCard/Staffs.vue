@@ -67,18 +67,14 @@ export default {
 
 .staff-card {
   max-width: max-content;
-  min-width: 250px;
   border-left: 3px solid rgb(36, 145, 145);
   padding-top: 5px;
   padding-left: 10px;
   padding-bottom: 5px;
-  border-top-right-radius: 8px;
-  border-bottom-right-radius: 8px;
 }
 
 .name-text {
   font-weight: 900;
-  font-style: italic;
 }
 
 .email-text,

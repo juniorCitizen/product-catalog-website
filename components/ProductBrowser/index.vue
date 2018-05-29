@@ -41,7 +41,6 @@ div.product-browser {
   display: grid;
   grid-gap: 25px;
   grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-  grid-auto-rows: 300px;
   padding: 25px;
   width: 100%;
 }
