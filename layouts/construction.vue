@@ -39,9 +39,9 @@ export default {
   position: absolute;
   top: 0;
   left: 0;
-  background-color: #ffffff;
+  background-color: #000000;
   z-index: 0;
-  opacity: 0.45;
+  opacity: 0.65;
 }
 .caption-content {
   height: 100vh;
@@ -55,7 +55,15 @@ export default {
   justify-content: center;
 }
 p {
+  margin-left: 5rem;
+  margin-right: 5rem;
   line-height: 1.5rem;
+}
+@media only screen and(max-width:640px) {
+  p {
+    margin-left: 5px;
+    margin-right: 5px;
+  }
 }
 .content-wrapper {
   text-align: center;
