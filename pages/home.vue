@@ -109,7 +109,7 @@ export default {
     },
   },
   mounted() {
-    this.fetchRootCategories()
+    this.fetchSubcatagories({category: this.catalog})
       .then(rootCategories => {
         this.rootCategories = rootCategories
         return Promise.resolve()
@@ -130,7 +130,6 @@ export default {
     })
   },
   destroyed() {
-    console.log('removed')
     window.removeEventListener('scroll', () => {
       this.yOffset = 0
     })
@@ -140,7 +139,7 @@ export default {
   },
   methods: {
     ...vuexMappers.mapActions('catalog', {
-      fetchRootCategories: 'fetchRootCategories',
+      fetchSubcatagories: 'fetchSubcatagories',
     }),
     leadingVSlices(index) {
       return this.parallaxSections.reduce((a, b, c) => {

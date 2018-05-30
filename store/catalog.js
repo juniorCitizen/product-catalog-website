@@ -1,7 +1,7 @@
 import axios from 'axios'
 import Promise from 'bluebird'
 
-const productsPerPage = 40
+const productsPerPage = 15
 const catalogRootSlug = 'product-catalog-page/'
 
 const state = () => {
@@ -50,16 +50,6 @@ const actions = {
         return context.dispatch('getProducts', {category})
       })
       .then(products => Promise.resolve({category, products}))
-      .catch(error => Promise.reject(error))
-  },
-  fetchRootCategories(context) {
-    let subcategories = context.state.catalog.subcategories
-    return Promise.mapSeries(subcategories, subcategory => {
-      return context.dispatch('fetchCategory', {category: subcategory})
-    })
-      .then(rootCategories => {
-        return Promise.resolve(rootCategories)
-      })
       .catch(error => Promise.reject(error))
   },
   fetchSubcatagories(context, {category = context.state.catalog}) {
