@@ -33,7 +33,7 @@ export default {
       return this.isMobile || this.isUnderBulmaNavLimit
     },
     isAtCatalogPage() {
-      return this.$route.name === 'catalog'
+      return this.$route.name.toLowerCase() === 'catalog'
     },
     classBinding() {
       return {

@@ -1,6 +1,6 @@
 <template>
   <nuxt-link
-    :class="{'is-active':$route.name==='contact'}"
+    :class="{'is-active':$route.name.toLowerCase()==='contact'}"
     class="navbar-item"
     to="/contact"
     tag="a">

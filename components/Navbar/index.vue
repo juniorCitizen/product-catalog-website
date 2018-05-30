@@ -34,7 +34,7 @@ export default {
   },
   computed: {
     classBinding() {
-      return {fixed: this.$route.name === 'index'}
+      return {fixed: this.$route.name.toLowerCase() === 'index'}
     },
   },
   watch: {

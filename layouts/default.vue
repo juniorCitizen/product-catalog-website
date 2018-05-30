@@ -24,7 +24,10 @@ export default {
   computed: {
     ...vuexMappers.mapGetters('mobileDetect', {isMobile: 'isMobile'}),
     classBinding() {
-      return {'grid-layout': this.$route.name !== 'index' || this.isMobile}
+      return {
+        'grid-layout':
+          this.$route.name.toLowerCase() !== 'index' || this.isMobile,
+      }
     },
   },
   watch: {
