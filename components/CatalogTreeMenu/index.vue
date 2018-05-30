@@ -51,7 +51,7 @@ div.menu-container {
 @media only screen and (max-width: 1087px) {
   div.menu-container {
     max-height: 50vh;
-    padding: 0;
+    padding: 5px 0 5px 10px;
   }
 }
 div.menu-container::-webkit-scrollbar {
