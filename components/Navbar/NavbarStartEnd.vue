@@ -1,11 +1,9 @@
 <template>
   <div :class="classBinding">
     <home-menu-item/>
-    <catalog-end-menu-item v-if="$route.name!=='catalog'"/>
-    <catalog-end-menu-item v-else-if="!mobileMenuEnabled"/>
-    <catalog-start-menu-item v-else/>
-    <!-- <catalog-start-menu-item v-if="$route.name==='catalog'&&mobileMenuEnabled"/> -->
-    <!-- <catalog-end-menu-item v-else/> -->
+    <!-- <catalog-end-menu-item v-if="!mobileMenuEnabled||$route.name!=='catalog'"/> -->
+    <!-- <catalog-start-menu-item v-else/> -->
+    <catalog-menu-item/>
     <contact-menu-item/>
   </div>
 </template>
@@ -13,16 +11,18 @@
 <script>
 import vuexMappers from 'vuex'
 import HomeMenuItem from './HomeMenuItem'
-import CatalogStartMenuItem from './CatalogNavbarStartMenuItem'
-import CatalogEndMenuItem from './CatalogNavbarEndMenuItem'
+// import CatalogStartMenuItem from './CatalogNavbarStartMenuItem'
+// import CatalogEndMenuItem from './CatalogNavbarEndMenuItem'
+import CatalogMenuItem from './CatalogMenuItem'
 import ContactMenuItem from './ContactMenuItem'
 
 export default {
   name: 'NavbarStart',
   components: {
     HomeMenuItem,
-    CatalogStartMenuItem,
-    CatalogEndMenuItem,
+    // CatalogStartMenuItem,
+    // CatalogEndMenuItem,
+    CatalogMenuItem,
     ContactMenuItem,
   },
   computed: {
@@ -39,6 +39,10 @@ export default {
         'navbar-end': !this.mobileMenuEnabled,
       }
     },
+  },
+  mounted() {
+    console.log('mobileMenuEnabled: ', this.mobileMenuEnabled)
+    console.log('route name: ', this.$route.name)
   },
 }
 </script>
