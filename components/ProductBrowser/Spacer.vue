@@ -78,7 +78,8 @@ export default {
   display: flex;
   justify-content: center;
 }
-a.page-number-indicator {
+a.page-number-indicator,
+a.button:disabled {
   pointer-events: none;
 }
 @media only screen and (max-width: 640px) {
