@@ -12,12 +12,18 @@
         </span>
       </a>
       <a v-if="isFirstPage"
-         class="first-page button is-small">
+         class="page-number-indicator button is-small">
         <span>YOU ARE AT THE FIRST PAGE</span>
       </a>
-      <a v-if="isLastPage"
-         class="last-page button is-small">
+      <a v-else-if="isLastPage"
+         class="page-number-indicator button is-small">
         <span>YOU ARE AT THE LAST PAGE</span>
+      </a>
+      <a v-else
+         class="page-number-indicator button is-small">
+        <span>
+          YOU ARE AT PAGE {{ paginationInfo.currentPage }}
+        </span>
       </a>
       <a :disabled="isLastPage"
          class="button is-small"
@@ -72,8 +78,7 @@ export default {
   display: flex;
   justify-content: center;
 }
-a.first-page,
-a.last-page {
+a.page-number-indicator {
   pointer-events: none;
 }
 @media only screen and (max-width: 640px) {
