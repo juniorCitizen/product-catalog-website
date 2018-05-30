@@ -30,7 +30,7 @@ export default {
       let el = document.getElementById('product-browser-container')
       el.scroll({
         top: 0,
-        behavior: 'smooth',
+        behavior: 'instant',
       })
     },
   },

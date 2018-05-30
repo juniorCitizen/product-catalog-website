@@ -22,7 +22,7 @@
       <a v-else
          class="page-number-indicator button is-small">
         <span>
-          YOU ARE AT PAGE {{ paginationInfo.currentPage }}
+          PAGE {{ paginationInfo.currentPage }}
         </span>
       </a>
       <a :disabled="isLastPage"
