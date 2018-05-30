@@ -1,23 +1,25 @@
 <template>
   <div class="spacer">
     <div class="buttons has-addons is-centered">
-      <a :disabled="isFirstPage"
-         class="button is-small"
-         @click="toPage(paginationInfo.currentPage-1)">
-        <span class="icon is-small">
+      <button :disabled="isFirstPage"
+              class="button is-small"
+              @click="toPage(paginationInfo.currentPage-1)">
+        <span class="icon is-small"
+              @click.prevent>
           <i class="fas fa-angle-left"/>
         </span>
-        <span class="direction-button-text">
+        <span class="direction-button-text"
+              @click.prevent>
           GO TO PREVIOUS PAGE
         </span>
-      </a>
+      </button>
       <a v-if="isFirstPage"
          class="page-number-indicator button is-small">
-        <span>YOU ARE AT THE FIRST PAGE</span>
+        <span>FIRST PAGE</span>
       </a>
       <a v-else-if="isLastPage"
          class="page-number-indicator button is-small">
-        <span>YOU ARE AT THE LAST PAGE</span>
+        <span>LAST PAGE</span>
       </a>
       <a v-else
          class="page-number-indicator button is-small">
@@ -25,16 +27,16 @@
           PAGE {{ paginationInfo.currentPage }}
         </span>
       </a>
-      <a :disabled="isLastPage"
-         class="button is-small"
-         @click="toPage(paginationInfo.currentPage+1)">
+      <button :disabled="isLastPage"
+              class="button is-small"
+              @click="toPage(paginationInfo.currentPage+1)">
         <span class="direction-button-text">
           GO TO NEXT PAGE
         </span>
         <span class="icon is-small">
           <i class="fas fa-angle-right"/>
         </span>
-      </a>
+      </button>
     </div>
   </div>
 </template>
@@ -78,8 +80,7 @@ export default {
   display: flex;
   justify-content: center;
 }
-a.page-number-indicator,
-a.button:disabled {
+a.page-number-indicator {
   pointer-events: none;
 }
 @media only screen and (max-width: 640px) {
