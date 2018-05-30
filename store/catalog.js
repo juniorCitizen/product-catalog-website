@@ -52,6 +52,15 @@ const getters = {
   catalog(state) {
     return state.catalog
   },
+  paginationInfo(state) {
+    let products = state.products
+    return {
+      currentPage: products.currentPage,
+      totalPages: Math.ceil(products.totalProductCount / products.perPage),
+      perPage: products.perPage,
+      totalProductCount: products.totalProductCount,
+    }
+  },
   products(state) {
     return state.products.data
   },
@@ -132,7 +141,7 @@ const mutations = {
       activeProductIndex: null,
       currentPage: 1,
       perPage: productsPerPage,
-      totalProducts: 0,
+      totalProductCount: 0,
     }
   },
   deactivateCategory(state, {category = state.catalog}) {
@@ -176,7 +185,7 @@ const mutations = {
     state.products.activeProductIndex = null
     state.products.currentPage = parseInt(payload.config.params.page)
     state.products.perPage = parseInt(payload.headers['per-page'])
-    state.products.totalProducts = parseInt(payload.headers.total)
+    state.products.totalProductCount = parseInt(payload.headers.total)
     // deal with product data retrieval
     state.products.data = payload.data.stories.map(story => {
       let data = story.content

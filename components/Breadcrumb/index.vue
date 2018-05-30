@@ -1,31 +1,30 @@
 <template>
+  <!-- <nav class="breadcrumb is-centered">
+    <ul>
+      <crumb-segment v-for="(crumbSegment,index) in breadcrumb"
+                     :key="index"
+                     :is-final-crumb="index===breadcrumb.length-1"
+                     :category="crumbSegment">
+        {{ crumbSegment.name.toUpperCase() }}
+      </crumb-segment>
+    </ul>
+  </nav> -->
   <div :class="classBinding"
        class="breadcrumb-container">
-    <nav class="breadcrumb is-small">
+    <nav class="breadcrumb is-small is-centered">
       <ul>
-        <li>
-          <a>
-            <span class="icon is-small">
-              <i class="fas fa-home"/>
-            </span>
-            <span>Bulma</span>
-          </a>
-        </li>
-        <li>
-          <a>
-            Documentation
-          </a>
-        </li>
-        <li>
-          <a>
-            Components
-          </a>
-        </li>
-        <li class="is-active">
-          <a>
-            Breadcrumb
-          </a>
-        </li>
+        <crumb-segment v-for="(crumbSegment,index) in breadcrumb"
+                       :key="index"
+                       :is-final-crumb="index===(breadcrumb.length-1)"
+                       :category="crumbSegment">
+          <span v-if="index===0"
+                class="icon is-small">
+            <i class="fas fa-home"/>
+          </span>
+          <span class="crumb-name">
+            {{ crumbSegment.name.toUpperCase() }}
+          </span>
+        </crumb-segment>
       </ul>
     </nav>
   </div>
@@ -33,12 +32,17 @@
 
 <script>
 import vuexMappers from 'vuex'
+import CrumbSegment from './CrumbSegment'
 export default {
   name: 'Breadcrumb',
+  components: {CrumbSegment},
   computed: {
     ...vuexMappers.mapGetters('mobileDetect', {
       isMobile: 'isMobile',
       mq: 'mq',
+    }),
+    ...vuexMappers.mapGetters('catalog', {
+      breadcrumb: 'breadcrumb',
     }),
     classBinding() {
       return {
@@ -66,5 +70,8 @@ div.breadcrumb-container.mobile-view {
 nav.breadcrumb {
   box-sizing: border-box;
   margin: 0;
+}
+span.crumb-name {
+  white-space: nowrap;
 }
 </style>
