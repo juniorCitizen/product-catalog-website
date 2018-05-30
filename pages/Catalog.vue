@@ -1,7 +1,7 @@
 <template>
   <section id="catalog-view"
            :class="classBinding">
-    <catalog-tree-menu/>
+    <catalog-tree-menu v-if="!mobileLayouteEnabled"/>
     <breadcrumb/>
     <product-browser/>
     <pagination/>
@@ -41,11 +41,13 @@ export default {
   computed: {
     ...vuexMappers.mapGetters('mobileDetect', {
       isMobile: 'isMobile',
-      mq: 'mq',
+      isUnderBulmaNavLimit: 'isUnderBulmaNavLimit',
     }),
-    ...vuexMappers.mapGetters('catalog', {catalog: 'catalog'}),
+    ...vuexMappers.mapGetters('catalog', {
+      catalog: 'catalog',
+    }),
     mobileLayouteEnabled() {
-      return this.isMobile || this.mq === 'mobile'
+      return this.isMobile || this.isUnderBulmaNavLimit
     },
     classBinding() {
       return {

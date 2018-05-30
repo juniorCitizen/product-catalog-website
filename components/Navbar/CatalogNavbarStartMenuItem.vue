@@ -7,18 +7,21 @@
     <a class="navbar-link">
       CATALOG
     </a>
-    <div class="navbar-dropdown">
-      <div class="navbar-item dropdown-catalog-frame">
-        category menu placeholder
-        <!-- <category-menu/> -->
+    <div class="navbar-dropdown is-paddingless">
+      <div class="navbar-item dropdown-catalog-frame is-paddingless">
+        <catalog-tree-menu/>
       </div>
     </div>
   </nuxt-link>
 </template>
 
 <script>
+import CatalogTreeMenu from '~/components/CatalogTreeMenu'
 export default {
   name: 'CatalogNavbarStartMenuItem',
+  components: {
+    CatalogTreeMenu,
+  },
 }
 </script>
 
