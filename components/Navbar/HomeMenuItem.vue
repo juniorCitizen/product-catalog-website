@@ -13,3 +13,9 @@ export default {
   name: 'HomeMenuItem',
 }
 </script>
+
+<style scoped>
+a.is-active span {
+  color: #3273dc;
+}
+</style>

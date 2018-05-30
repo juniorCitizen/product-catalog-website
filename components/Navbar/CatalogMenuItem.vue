@@ -1,13 +1,15 @@
 <template>
   <nuxt-link
     :class="classBinding"
-    class="navbar-item"
-    to="/catalog"
-    tag="a">
+    :tag="isAtCatalogPage&&mobileMenuEnabled?'div':'a'"
+    class="nuxt-link-container navbar-item"
+    to="/catalog">
     <template v-if="isAtCatalogPage&&mobileMenuEnabled">
-      <a class="navbar-link">CATALOG</a>
+      <a class="navbar-link">
+        CATALOG
+      </a>
       <div class="navbar-dropdown is-paddingless">
-        <div class="navbar-item dropdown-catalog-frame is-paddingless">
+        <div class="navbar-item is-paddingless">
           <catalog-tree-menu/>
         </div>
       </div>
@@ -46,7 +48,18 @@ export default {
 </script>
 
 <style scoped>
-.dropdown-catalog-frame {
+.navbar-dropdown div.navbar-item {
   margin-left: 10px;
+}
+.nuxt-link-container {
+  font-weight: 900;
+  font-size: 14.4px;
+}
+.nuxt-link-container.is-active span {
+  color: #3273dc;
+}
+a.navbar-link {
+  color: #3273dc;
+  background-color: #fafafa;
 }
 </style>

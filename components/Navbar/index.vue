@@ -53,7 +53,7 @@ export default {
       }
     },
     $route(newRoute) {
-      if (newRoute.name !== 'catalog') {
+      if (newRoute.name.toLowerCase() !== 'catalog') {
         this.mobileMenuIsActive = false
       }
     },
@@ -65,7 +65,6 @@ export default {
 #navbar-container {
   width: 100vw;
 }
-
 #navbar-container.fixed {
   position: fixed;
   top: 0;
