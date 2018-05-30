@@ -43,6 +43,7 @@ export default {
   mounted() {
     console.log('mobileMenuEnabled: ', this.mobileMenuEnabled)
     console.log('route name: ', this.$route.name)
+    console.log(this.$route.name === 'catalog')
   },
 }
 </script>
