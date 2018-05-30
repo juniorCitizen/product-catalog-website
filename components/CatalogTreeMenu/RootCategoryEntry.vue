@@ -1,7 +1,7 @@
 <template>
-  <p :class="{'is-active': category.isActive}"
+  <p :class="{'is-active':category.isActive}"
      class="menu-label"
-     @click="$emit('clicked')">
+     @click="handleSelection">
     <span class="icon is-small">
       <i :class="classBinding"/>
     </span>
@@ -18,6 +18,7 @@
 </template>
 
 <script>
+import vuexMappers from 'vuex'
 export default {
   name: 'RootCategoryEntry',
   props: {
@@ -29,11 +30,34 @@ export default {
     },
   },
   computed: {
+    ...vuexMappers.mapGetters('catalog', {
+      catalog: 'catalog',
+      activeRootCategoryIndex: 'activeRootCategoryIndex',
+    }),
     classBinding() {
       return {
         fas: true,
         'fa-caret-up': this.category.isActive,
         'fa-caret-down': !this.category.isActive,
+      }
+    },
+  },
+  methods: {
+    ...vuexMappers.mapActions('catalog', {
+      fetchCategory: 'fetchCategory',
+    }),
+    ...vuexMappers.mapMutations('catalog', {
+      deactivateSubcategories: 'deactivateSubcategories',
+    }),
+    handleSelection() {
+      if (this.activeRootCategoryIndex === null) {
+        this.fetchCategory({category: this.category})
+      } else if (this.category.isActive) {
+        this.deactivateSubcategories({category: this.catalog})
+        this.fetchCategory({category: this.catalog})
+      } else {
+        this.deactivateSubcategories({category: this.catalog})
+        this.fetchCategory({category: this.category})
       }
     },
   },
@@ -53,18 +77,9 @@ span {
 .fade-leave-to {
   opacity: 0;
 }
-
-/* p.is-active > span:not(.icon),
+p.is-active > span:not(.icon),
 p:not(.is-active):hover > span:not(.icon) {
-  font-weight: 600;
+  font-weight: 400;
   text-shadow: 1px 1px lightgray;
-} */
-
-/* @media all and (max-width: 1087px) {
-  span.root-menu-label {
-    color: black;
-    font-size: 70%;
-    font-weight: 300;
-  }
-} */
+}
 </style>

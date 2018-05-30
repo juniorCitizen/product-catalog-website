@@ -19,13 +19,36 @@ const state = () => {
     products: {
       data: [],
       activeProductIndex: null,
-      currentPage: null,
+      currentPage: 1,
       perPage: productsPerPage,
       totalProductCount: 0,
     },
   }
 }
 const getters = {
+  activeRootCategoryIndex(state) {
+    let rootCategories = state.catalog.subcategories
+    if (rootCategories.length === 0) return null
+    let index = rootCategories.findIndex(subcategory => {
+      return subcategory.isActive === true
+    })
+    return index === -1 ? null : index
+  },
+  breadcrumb(state) {
+    let breadcrumb = []
+    breadcrumb.push(state.catalog)
+    if (!state.catalog.subcategories) return breadcrumb
+    do {
+      let subcategories = breadcrumb[breadcrumb.length - 1].subcategories
+      let activeSubcategoryIndex = subcategories.findIndex(subcategory => {
+        return subcategory.isActive
+      })
+      if (activeSubcategoryIndex !== -1) {
+        breadcrumb.push(subcategories[activeSubcategoryIndex])
+      } else break
+    } while (breadcrumb[breadcrumb.length - 1].subcategories.length !== 0)
+    return breadcrumb
+  },
   catalog(state) {
     return state.catalog
   },
@@ -35,6 +58,10 @@ const getters = {
 }
 const actions = {
   fetchCategory(context, {category = context.state.catalog}) {
+    context.commit('setLoadingState', {
+      category,
+      isLoading: true,
+    })
     let isDevMode = process.env.NODE_ENV === 'development'
     return axios({
       method: 'get',
@@ -47,21 +74,18 @@ const actions = {
     })
       .then(res => {
         context.commit('registerCategory', {category, data: res.data})
-        return context.dispatch('getProducts', {category})
+        return context.dispatch('fetchProducts', {category})
       })
-      .then(products => Promise.resolve({category, products}))
-      .catch(error => Promise.reject(error))
-  },
-  fetchSubcatagories(context, {category = context.state.catalog}) {
-    return Promise.mapSeries(category.subcategories, subcategory => {
-      return context.dispatch('fetchCategory', {category: subcategory})
-    })
-      .then(subcategories => {
-        return Promise.resolve(subcategories)
+      .then(products => {
+        context.commit('setLoadingState', {
+          category,
+          isLoading: false,
+        })
+        return Promise.resolve({category, products})
       })
       .catch(error => Promise.reject(error))
   },
-  getProducts(context, {category = context.state.catalog, page = 1}) {
+  fetchProducts(context, {category = context.state.catalog, page = 1}) {
     let isDevMode = process.env.NODE_ENV === 'development'
     return axios({
       method: 'get',
@@ -83,8 +107,47 @@ const actions = {
       .then(() => Promise.resolve(context.getters['products']))
       .catch(error => Promise.reject(error))
   },
+  fetchSubcatagories(context, {category = context.state.catalog}) {
+    context.commit('setLoadingState', {
+      category,
+      isLoading: true,
+    })
+    return Promise.mapSeries(category.subcategories, subcategory => {
+      return context.dispatch('fetchCategory', {category: subcategory})
+    })
+      .then(subcategories => {
+        context.commit('setLoadingState', {
+          category,
+          isLoading: false,
+        })
+        return Promise.resolve(subcategories)
+      })
+      .catch(error => Promise.reject(error))
+  },
 }
 const mutations = {
+  clearProductList(state) {
+    state.products = {
+      data: [],
+      activeProductIndex: null,
+      currentPage: 1,
+      perPage: productsPerPage,
+      totalProducts: 0,
+    }
+  },
+  deactivateCategory(state, {category = state.catalog}) {
+    category.isActive = false
+    category.subcategories = []
+  },
+  deactivateSubcategories(state, {category = state.catalog}) {
+    let activeIndex = category.subcategories.findIndex(subcategory => {
+      return subcategory.isActive === true
+    })
+    if (activeIndex !== -1) {
+      category.subcategories[activeIndex].isActive = false
+      category.subcategories[activeIndex].subcategories = []
+    }
+  },
   registerCategory(state, {category = state.catalog, data}) {
     let fullSlug = data.story.full_slug
     let content = data.story.content
@@ -107,7 +170,6 @@ const mutations = {
       }
     })
     category.isActive = true
-    category.isLoading = false
   },
   registerProducts(state, payload) {
     // deal with pagination
@@ -157,6 +219,9 @@ const mutations = {
         }),
       }
     })
+  },
+  setLoadingState(state, {category = state.catalog, isLoading = false}) {
+    category.isLoading = isLoading
   },
 }
 

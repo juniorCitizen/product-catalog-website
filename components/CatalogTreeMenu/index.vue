@@ -6,6 +6,10 @@
       <template v-for="category in catalog.subcategories">
         <root-category-entry :key="category.slug+'-root-category'"
                              :category="category"/>
+        <subcategory-section v-if="category.isActive&&category.subcategories.length>0"
+                             :key="category.slug+'-subcategories'"
+                             :parent-category="category"
+                             :categories="category.subcategories"/>
       </template>
       <p class="menu-label">&nbsp;</p>
       <p class="menu-label">&nbsp;</p>
@@ -16,9 +20,13 @@
 <script>
 import vuexMappers from 'vuex'
 import RootCategoryEntry from './RootCategoryEntry'
+import SubcategorySection from './SubcategorySection'
 export default {
   name: 'CatalogTreeMenu',
-  components: {RootCategoryEntry},
+  components: {
+    RootCategoryEntry,
+    SubcategorySection,
+  },
   computed: {
     ...vuexMappers.mapGetters('catalog', {
       catalog: 'catalog',
