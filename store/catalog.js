@@ -1,7 +1,7 @@
 import axios from 'axios'
 import Promise from 'bluebird'
 
-const productsPerPage = 15
+const productsPerPage = 20
 const catalogRootSlug = 'product-catalog-page/'
 
 const state = () => {
