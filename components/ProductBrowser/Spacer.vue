@@ -1,38 +1,34 @@
 <template>
   <div class="spacer">
-    <div class="field has-addons">
-      <p class="control">
-        <a :disabled="isFirstPage"
-           class="button is-small"
-           @click="toPage(paginationInfo.currentPage-1)">
-          <span class="icon is-small">
-            <i class="fas fa-angle-left"/>
-          </span>
-          <span>GO TO PREVIOUS PAGE</span>
-        </a>
-      </p>
-      <p v-if="isFirstPage"
-         class="control">
-        <a class="first-page button is-small">
-          <span>YOU ARE AT THE FIRST PAGE</span>
-        </a>
-      </p>
-      <p v-if="isLastPage"
-         class="control">
-        <a class="last-page button is-small">
-          <span>YOU ARE AT THE LAST PAGE</span>
-        </a>
-      </p>
-      <p class="control">
-        <a :disabled="isLastPage"
-           class="button is-small"
-           @click="toPage(paginationInfo.currentPage+1)">
-          <span>GO TO NEXT PAGE</span>
-          <span class="icon is-small">
-            <i class="fas fa-angle-right"/>
-          </span>
-        </a>
-      </p>
+    <div class="buttons has-addons is-centered">
+      <a :disabled="isFirstPage"
+         class="button is-small"
+         @click="toPage(paginationInfo.currentPage-1)">
+        <span class="icon is-small">
+          <i class="fas fa-angle-left"/>
+        </span>
+        <span class="direction-button-text">
+          GO TO PREVIOUS PAGE
+        </span>
+      </a>
+      <a v-if="isFirstPage"
+         class="first-page button is-small">
+        <span>YOU ARE AT THE FIRST PAGE</span>
+      </a>
+      <a v-if="isLastPage"
+         class="last-page button is-small">
+        <span>YOU ARE AT THE LAST PAGE</span>
+      </a>
+      <a :disabled="isLastPage"
+         class="button is-small"
+         @click="toPage(paginationInfo.currentPage+1)">
+        <span class="direction-button-text">
+          GO TO NEXT PAGE
+        </span>
+        <span class="icon is-small">
+          <i class="fas fa-angle-right"/>
+        </span>
+      </a>
     </div>
   </div>
 </template>
@@ -76,12 +72,13 @@ export default {
   display: flex;
   justify-content: center;
 }
-div.pagination-nav-button-container {
-  margin-left: 15px;
-  margin-right: 15px;
-}
 a.first-page,
 a.last-page {
   pointer-events: none;
+}
+@media only screen and (max-width: 640px) {
+  .direction-button-text {
+    display: none;
+  }
 }
 </style>
