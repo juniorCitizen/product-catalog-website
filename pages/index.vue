@@ -4,7 +4,6 @@
            autoplay="true"
            loop="true"
            type="video/mp4"
-           preload="auto"
            muted/>
   </div>
 </template>
