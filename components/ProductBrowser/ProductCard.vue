@@ -62,22 +62,20 @@ export default {
 }
 
 .product-card-container:hover .product-card {
-  border: 1px solid white;
   transform: translate(1px, 1px);
 }
 
 .product-card {
   box-sizing: border-box;
-  border: 1px solid darkgray;
+  border: 1px solid whitesmoke;
   border-radius: 5px;
   padding: 5px;
-  background-color: lightgray;
+  background-color: whitesmoke;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
   min-height: 100%;
 }
 
 .photo-container-frame {
-  border: 1px solid lightgray;
   border-radius: 5px;
   background-color: white;
   margin: 1px 1px 10px 1px;

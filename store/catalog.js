@@ -60,7 +60,16 @@ const actions = {
       .then(rootCategories => {
         return Promise.resolve(rootCategories)
       })
-      .catch(error => Promise.resolve(error))
+      .catch(error => Promise.reject(error))
+  },
+  fetchSubcatagories(context, {category = context.state.catalog}) {
+    return Promise.mapSeries(category.subcategories, subcategory => {
+      return context.dispatch('fetchCategory', {category: subcategory})
+    })
+      .then(subcategories => {
+        return Promise.resolve(subcategories)
+      })
+      .catch(error => Promise.reject(error))
   },
   getProducts(context, {category = context.state.catalog, page = 1}) {
     let isDevMode = process.env.NODE_ENV === 'development'

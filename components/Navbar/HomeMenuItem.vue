@@ -1,8 +1,8 @@
 <template>
   <nuxt-link
-    :class="{'is-active':$route.name==='index'}"
+    :class="{'is-active':$route.name==='home'}"
     class="navbar-item"
-    to="/"
+    to="/home"
     tag="a">
     <span>HOME</span>
   </nuxt-link>

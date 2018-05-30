@@ -19,7 +19,7 @@ export default {
 </script>
 
 <style scoped>
-@import url(https://fonts.googleapis.com/css?family=Anton);
+/* @import url(https://fonts.googleapis.com/css?family=Anton); */
 .icon-info {
   /* border: 1px solid black; */
   display: flex;

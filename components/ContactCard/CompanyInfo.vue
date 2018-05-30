@@ -66,10 +66,10 @@ export default {
 </script>
 
 <style scoped>
-@import url(https://fonts.googleapis.com/css?family=Anton);
+/* @import url(https://fonts.googleapis.com/css?family=Anton); */
 .company-title-text {
-  font-family: 'Anton';
-  font-style: italic;
+  /* font-family: 'Anton'; */
+  /* font-style: italic; */
   font-size: 140%;
   text-decoration: underline;
 }
