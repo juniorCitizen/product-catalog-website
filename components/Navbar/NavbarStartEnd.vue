@@ -1,8 +1,10 @@
 <template>
   <div :class="classBinding">
     <home-menu-item/>
-    <catalog-end-menu-item v-if="!mobileMenuEnabled||$route.name!=='catalog'"/>
-    <catalog-start-menu-item v-else/>
+    <!-- <catalog-end-menu-item v-if="!mobileMenuEnabled||$route.name!=='catalog'"/> -->
+    <!-- <catalog-start-menu-item v-else/> -->
+    <catalog-start-menu-item v-if="mobileMenuEnabled&&$route.name==='catalog'"/>
+    <catalog-end-menu-item v-else/>
     <contact-menu-item/>
   </div>
 </template>
