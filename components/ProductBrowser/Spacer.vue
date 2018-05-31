@@ -15,7 +15,7 @@
       </button>
       <a v-if="isFirstPage"
          class="page-number-indicator button is-small">
-        <span>FIRST PAGE</span>
+        <span>`FIRST PAGE</span>
       </a>
       <a v-else-if="isLastPage"
          class="page-number-indicator button is-small">

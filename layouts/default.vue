@@ -1,5 +1,5 @@
 <template>
-  <div id="default-layout"
+  <div id="default-layout-container"
        :class="classBinding">
     <navbar/>
     <div id="content-grid-pane">
@@ -54,14 +54,13 @@ export default {
 }
 </script>
 
-
 <style scoped>
-#default-layout {
+#default-layout-container {
   width: 100vw;
   height: 100vh;
 }
 
-#default-layout.grid-layout {
+#default-layout-container.grid-layout {
   display: grid;
   grid-template-rows: min-content auto min-content;
 }
