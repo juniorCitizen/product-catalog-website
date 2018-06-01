@@ -75,7 +75,6 @@ export default {
 
 <style scoped>
 .gallery {
-  border: 1px solid black;
   padding: 2px;
   margin-left: auto;
   margin-right: auto;

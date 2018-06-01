@@ -31,9 +31,9 @@ export default {
 .product-details-modal::-webkit-scrollbar {
   width: 0;
 }
-/* @media only screen and (max-width: 640px) {
+@media only screen and (max-width: 640px) {
   .product-details-modal {
-    flex-direction: column;
+    background-color: white;
   }
-} */
+}
 </style>
