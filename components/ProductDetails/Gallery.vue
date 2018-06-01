@@ -105,28 +105,36 @@ export default {
 }
 @media only screen and (max-width: 460px) {
   .gallery-container {
-    max-height: 150px;
+    background-color: white;
     margin: 0 5px;
     overflow-x: scroll;
     overflow-y: hidden;
+    border-left: 1px solid lightgray;
+    border-right: 1px solid lightgray;
+    border-bottom: 1px solid lightgray;
   }
   .gallery-container::-webkit-scrollbar {
     width: 0;
   }
   .gallery {
-    margin-left: 0 5px 5px 5px;
-    max-height: 130px;
+    background-color: white;
+    margin: 0;
+    max-height: min-content;
     display: flex;
   }
   .gallery-photo-frame {
+    background-color: white;
     border: 1px solid lightgray;
     padding: 5px;
     margin: 0 2px;
-    height: 100px;
-    flex: 1 0 100px;
+    height: 70px;
+    flex: 0 0 70px;
   }
   .gallery-photo-frame.on-display {
     border: 1px solid blue;
+  }
+  .gallery-photo {
+    background-color: white;
   }
 }
 </style>

@@ -40,7 +40,9 @@ export default {
 }
 @media only screen and (max-width: 460px) {
   .photo-on-display {
-    border: 1px solid lightgray;
+    border-top: 1px solid lightgray;
+    border-left: 1px solid lightgray;
+    border-right: 1px solid lightgray;
     min-height: 50%;
     margin: 5px 5px 0 5px;
     background-color: white;
