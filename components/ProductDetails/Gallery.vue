@@ -1,20 +1,19 @@
 <template>
   <div class="gallery-container">
-    <div class="gallery">
-      <p v-if="photos.length===0"
-         class="placeholder-text">
-        PRODUCT IMAGES UNAVAILABLE
-      </p>
-      <template v-else>
-        <div v-for="(processedUrl,index) in processedUrls"
-             :key="index"
-             :class="classBinding(index)"
-             class="gallery-photo-frame"
-             @click="$emit('clicked', photos[index])">
-          <div :style="styleBinding(processedUrl)"
-               class="gallery-photo"/>
-        </div>
-      </template>
+    <p v-if="photos.length===0"
+       class="placeholder-text">
+      product images unavailable
+    </p>
+    <div v-else
+         class="gallery">
+      <div v-for="(processedUrl,index) in processedUrls"
+           :key="index"
+           :class="classBinding(index)"
+           class="gallery-photo-frame"
+           @click="$emit('clicked', photos[index])">
+        <div :style="styleBinding(processedUrl)"
+             class="gallery-photo"/>
+      </div>
     </div>
   </div>
 </template>
@@ -76,6 +75,7 @@ export default {
 
 <style scoped>
 .gallery {
+  border: 1px solid black;
   padding: 2px;
   margin-left: auto;
   margin-right: auto;
@@ -100,21 +100,20 @@ export default {
   background-repeat: no-repeat;
 }
 .placeholder-text {
+  font-size: 75%;
+  margin-left: auto;
+  margin-right: auto;
   width: max-content;
-  font-weight: 900;
 }
 @media only screen and (max-width: 460px) {
   .gallery-container {
     background-color: white;
     margin: 0 5px;
-    overflow-x: scroll;
+    overflow-x: auto;
     overflow-y: hidden;
     border-left: 1px solid lightgray;
     border-right: 1px solid lightgray;
     border-bottom: 1px solid lightgray;
-  }
-  .gallery-container::-webkit-scrollbar {
-    width: 0;
   }
   .gallery {
     background-color: white;
