@@ -13,7 +13,7 @@
           GO TO PREVIOUS PAGE
         </span>
       </button>
-      <a v-if="isFirstPage"
+      <a v-if="isFirstPage&&!isOnlyPage"
          class="page-number-indicator button is-small">
         <span>`FIRST PAGE</span>
       </a>
@@ -50,6 +50,9 @@ export default {
       paginationInfo: 'paginationInfo',
       breadcrumb: 'breadcrumb',
     }),
+    isOnlyPage() {
+      return this.paginationInfo.totalPages === 1
+    },
     isFirstPage() {
       return this.paginationInfo.currentPage === 1
     },

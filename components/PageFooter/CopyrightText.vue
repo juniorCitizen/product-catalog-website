@@ -19,9 +19,8 @@ export default {
 div {
   box-sizing: border-box;
   max-width: max-content;
-  font-weight: 100;
-  font-size: xx-small;
   margin-left: auto;
+  font-size: 75%;
 }
 
 @media only screen and (min-width: 481px) {

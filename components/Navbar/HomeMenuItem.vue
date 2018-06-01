@@ -1,8 +1,8 @@
 <template>
   <nuxt-link
-    :class="{'is-active':$route.name.toLowerCase()==='home'}"
+    :class="{'is-active':$route.name.toLowerCase()==='index'}"
     class="navbar-item"
-    to="/home"
+    to="/"
     tag="a">
     <span>HOME</span>
   </nuxt-link>

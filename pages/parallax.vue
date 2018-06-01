@@ -1,6 +1,11 @@
 <template>
   <div class="parallax-group-container">
     <div class="parallax-group group-1">
+      <div class="parallax-layer foreground-layer">
+        <div class="text-indicator">
+          Foreground Layer - group 1
+        </div>
+      </div>
       <div class="parallax-layer base-layer">
         <div class="text-indicator">
           Base Layer - group 1
@@ -33,12 +38,17 @@
     </div>
     <div class="parallax-group group-4">
       <div class="parallax-layer foreground-layer">
-        <div class="text-indicator">
+        <div class="text-indicator"
+             style="background: red;"
+             data-aos="flip-up"
+             data-aos-anchor="#trigger-target"
+             data-aos-anchor-placement="center-center">
           Foreground Layer - group 4
         </div>
       </div>
       <div class="parallax-layer base-layer">
-        <div class="text-indicator">
+        <div id="trigger-target"
+             class="text-indicator">
           Base Layer - group 4
         </div>
       </div>
@@ -89,10 +99,11 @@
 
 <script>
 export default {
-  name: 'Parallax',
+  name: 'ParallaxView',
   layout: 'blank',
 }
 </script>
+
 
 <style scoped>
 .parallax-group-container {
@@ -129,6 +140,11 @@ export default {
   background-color: rgba(0, 0, 0, 0.7);
   color: white;
 }
+.foreground-layer {
+  -webkit-transform: translateZ(90px) scale(0.7);
+  transform: translateZ(90px) scale(0.7);
+  z-index: 1;
+}
 .base-layer {
   -webkit-transform: translateZ(0);
   transform: translateZ(0);
@@ -144,11 +160,6 @@ export default {
   transform: translateZ(-600px) scale(3);
   z-index: 2;
 }
-.foreground-layer {
-  -webkit-transform: translateZ(90px) scale(0.7);
-  transform: translateZ(90px) scale(0.7);
-  z-index: 1;
-}
 
 /* style the groups */
 
@@ -157,16 +168,6 @@ export default {
 }
 .parallax-group.group-1 .base-layer {
   background-image: url(//img2.storyblok.com/1920x1080/f/44812/fbf00a931a/0.jpeg);
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-}
-
-.parallax-group.group-3 {
-  z-index: 4; /* slide over group 2 and 4 */
-}
-.parallax-group.group-3 .base-layer {
-  background-image: url(//a.storyblok.com/f/44812/f6f9d907a5/2.jpeg);
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -182,20 +183,10 @@ export default {
   background-repeat: no-repeat;
 }
 
-.parallax-group.group-5 {
-  z-index: 3; /* slide over group 4 and 6 */
+.parallax-group.group-3 {
+  z-index: 4; /* slide over group 2 and 4 */
 }
-.parallax-group.group-5 .base-layer {
-  background-image: url(//a.storyblok.com/f/44812/50937d0c9d/4.jpeg);
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-}
-
-.parallax-group.group-7 {
-  z-index: 3; /* slide over group 7 */
-}
-.parallax-group.group-7 .base-layer {
+.parallax-group.group-3 .base-layer {
   background-image: url(//a.storyblok.com/f/44812/f6f9d907a5/2.jpeg);
   background-size: cover;
   background-position: center;
@@ -212,11 +203,31 @@ export default {
   background-repeat: no-repeat;
 }
 
+.parallax-group.group-5 {
+  z-index: 3; /* slide over group 4 and 6 */
+}
+.parallax-group.group-5 .base-layer {
+  background-image: url(//a.storyblok.com/f/44812/50937d0c9d/4.jpeg);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
 .parallax-group.group-6 {
   z-index: 2; /* slide under group 5 and 7 */
 }
 .parallax-group.group-6 .background-layer {
   background-image: url(//a.storyblok.com/f/44812/d8f2eace4b/3.jpeg);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.parallax-group.group-7 {
+  z-index: 3; /* slide over group 7 */
+}
+.parallax-group.group-7 .base-layer {
+  background-image: url(//a.storyblok.com/f/44812/f6f9d907a5/2.jpeg);
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;

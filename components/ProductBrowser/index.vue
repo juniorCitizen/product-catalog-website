@@ -2,9 +2,11 @@
   <div id="product-browser-container"
        class="product-browser-container">
     <div class="product-browser">
-      <product-card v-for="product in products"
+      <product-card v-for="(product,index) in products"
                     :key="product.code"
-                    :product="product"/>
+                    :product="product"
+                    :product-index="index"
+                    @clicked="setActiveProductIndex(index)"/>
       <spacer/>
     </div>
   </div>
@@ -33,6 +35,11 @@ export default {
         behavior: 'instant',
       })
     },
+  },
+  methods: {
+    ...vuexMappers.mapMutations('catalog', {
+      setActiveProductIndex: 'setActiveProductIndex',
+    }),
   },
 }
 </script>

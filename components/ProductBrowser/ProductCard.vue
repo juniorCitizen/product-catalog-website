@@ -1,8 +1,9 @@
 <template>
-  <div class="product-card-container">
+  <div class="product-card-container"
+       @click="$emit('clicked')">
     <div class="product-card">
       <div class="photo-container-frame">
-        <div :style="setupImage(product.primaryPhoto)"
+        <div :style="styleBinding(product.primaryPhoto)"
              class="photo-container"/>
       </div>
       <div class="product-information">
@@ -35,14 +36,14 @@ export default {
         '//img2.storyblok.com/filters:quality\\(50\\):format\\(jpg\\):fill\\(white\\)'
       )
     },
-    setupImage(url) {
+    styleBinding(url) {
       if (url) {
         return {
           'background-image': `url(${this.urlHelper(url)})`,
         }
       } else {
         return {
-          background: `url(${require('~/assets/placeholder.svg')})`,
+          'background-image': `url(${require('~/assets/placeholder.svg')})`,
           'background-size': 'contain',
           'background-position': 'center',
           'background-repeat': 'no-repeat',
@@ -52,7 +53,6 @@ export default {
   },
 }
 </script>
-
 
 <style scoped>
 .product-card-container {
@@ -95,18 +95,16 @@ export default {
   margin: 5px;
   text-align: left;
   font-weight: 600;
-  color: rgba(54, 54, 54, 0.7);
   cursor: default;
 }
 
 .product-code {
-  color: red;
-  font-size: 70%;
+  font-size: 75%;
   letter-spacing: 0.15em;
 }
 
 .product-name {
   font-weight: 300;
-  font-size: 70%;
+  font-size: 75%;
 }
 </style>

@@ -4,7 +4,8 @@
     <catalog-tree-menu v-if="!mobileLayouteEnabled"/>
     <breadcrumb/>
     <product-browser/>
-    <pagination/>
+    <pagination v-if="paginationInfo.totalPages>1"/>
+    <product-details v-if="activeProduct"/>
   </section>
 </template>
 
@@ -14,6 +15,7 @@ import CatalogTreeMenu from '~/components/CatalogTreeMenu'
 import Breadcrumb from '~/components/Breadcrumb'
 import ProductBrowser from '~/components/ProductBrowser'
 import Pagination from '~/components/Pagination'
+import ProductDetails from '~/components/ProductDetails'
 export default {
   name: 'CatalogView',
   layout: 'default',
@@ -22,6 +24,7 @@ export default {
     Breadcrumb,
     ProductBrowser,
     Pagination,
+    ProductDetails,
   },
   fetch({store}) {
     let catalog = store.getters['catalog/catalog']
@@ -44,7 +47,9 @@ export default {
       isUnderBulmaNavLimit: 'isUnderBulmaNavLimit',
     }),
     ...vuexMappers.mapGetters('catalog', {
+      activeProduct: 'activeProduct',
       catalog: 'catalog',
+      paginationInfo: 'paginationInfo',
     }),
     mobileLayouteEnabled() {
       return this.isMobile || this.isUnderBulmaNavLimit

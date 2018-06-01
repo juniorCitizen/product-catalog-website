@@ -8,9 +8,7 @@
         <h1 class="title is-5 has-text-white">
           UNDER CONSTRUCTION
         </h1>
-        <p>
-          Gentry Way's website is being renovated, and will be back online soon!
-        </p>
+        <p/>
         <nuxt-link class="button is-white is-outlined"
                    to="/home"
                    tag="a">
@@ -42,6 +40,7 @@ export default {
   background-color: #000000;
   z-index: 0;
   opacity: 0.65;
+  pointer-events: none;
 }
 .caption-content {
   height: 100vh;
@@ -59,7 +58,7 @@ p {
   margin-right: 5rem;
   line-height: 1.5rem;
 }
-@media only screen and(max-width:640px) {
+@media only screen and (max-width: 640px) {
   p {
     margin-left: 5px;
     margin-right: 5px;

@@ -22,11 +22,14 @@ export default {
     PageFooter,
   },
   computed: {
-    ...vuexMappers.mapGetters('mobileDetect', {isMobile: 'isMobile'}),
+    ...vuexMappers.mapGetters('mobileDetect', {
+      isMobile: 'isMobile',
+    }),
     classBinding() {
       return {
-        'grid-layout':
-          this.$route.name.toLowerCase() !== 'index' || this.isMobile,
+        'grid-layout': !this.$route.name
+          ? false
+          : this.$route.name.toLowerCase() !== 'home' || this.isMobile,
       }
     },
   },

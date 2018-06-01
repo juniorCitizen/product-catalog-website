@@ -34,6 +34,14 @@ const getters = {
     })
     return index === -1 ? null : index
   },
+  activeProduct(state) {
+    let products = state.products
+    if (products.activeProductIndex === null) return null
+    else return products.data[products.activeProductIndex]
+  },
+  activeProductIndex(state) {
+    return state.products.activeProductIndex
+  },
   breadcrumb(state) {
     let breadcrumb = []
     breadcrumb.push(state.catalog)
@@ -228,6 +236,9 @@ const mutations = {
         }),
       }
     })
+  },
+  setActiveProductIndex(state, productIndex = null) {
+    state.products.activeProductIndex = productIndex
   },
   setLoadingState(state, {category = state.catalog, isLoading = false}) {
     category.isLoading = isLoading
