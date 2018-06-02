@@ -83,7 +83,7 @@ export default {
 }
 
 .photo-container {
-  min-height: 200px;
+  min-height: 130px;
   background-color: white;
   background-size: contain;
   background-position: center;
