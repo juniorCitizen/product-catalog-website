@@ -91,6 +91,12 @@ export default {
   margin: 0;
 }
 
+@media only screen and (max-width: 640px) {
+  .photo-container {
+    min-height: 200px;
+  }
+}
+
 .product-information {
   margin: 5px;
   text-align: left;
