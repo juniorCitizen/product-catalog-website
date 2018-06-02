@@ -13,7 +13,14 @@
       <div class="caption">
         WEBSITE UNDER CONSTRUCTION
       </div>
-      <p>Gentry Way's website is being renovated, and will be back online soon!</p>
+      <p>This website is in the process of being updated.  It will be back online August 2018.  Looking forward to see you then!</p>
+      <br>
+      <br>
+      <p>
+        <span class="icon has-text-white">
+          <i class="far fa-smile fa-6x"/>
+        </span>
+      </p>
     </div>
   </div>
 </template>
@@ -82,6 +89,7 @@ p {
     font-size: 8px;
     letter-spacing: 0.13em;
     margin-top: 1em;
+    max-width: 450px;
     line-height: 1.5em;
   }
 }
