@@ -15,7 +15,7 @@
       </button>
       <a v-if="isFirstPage&&!isOnlyPage"
          class="page-number-indicator button is-small">
-        <span>`FIRST PAGE</span>
+        <span>FIRST PAGE</span>
       </a>
       <a v-else-if="isLastPage"
          class="page-number-indicator button is-small">
@@ -50,6 +50,9 @@ export default {
       paginationInfo: 'paginationInfo',
       breadcrumb: 'breadcrumb',
     }),
+    activeCategory() {
+      return this.breadcrumb[this.breadcrumb.length - 1]
+    },
     isOnlyPage() {
       return this.paginationInfo.totalPages === 1
     },
