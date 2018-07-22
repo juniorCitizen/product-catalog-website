@@ -1,7 +1,8 @@
 <template>
   <div :class="classBinding">
     <home-menu-item/>
-    <catalog-menu-item/>
+    <!-- <catalog-menu-item/> -->
+    <products-menu-item/>
     <!-- <contact-menu-item/> -->
     <contacts-menu-item/>
   </div>
@@ -10,7 +11,8 @@
 <script>
 import vuexMappers from 'vuex'
 import HomeMenuItem from './HomeMenuItem'
-import CatalogMenuItem from './CatalogMenuItem'
+// import CatalogMenuItem from './CatalogMenuItem'
+import ProductsMenuItem from './ProductsMenuItem'
 // import ContactMenuItem from './ContactMenuItem'
 import ContactsMenuItem from './ContactsMenuItem'
 
@@ -18,7 +20,8 @@ export default {
   name: 'NavbarStart',
   components: {
     HomeMenuItem,
-    CatalogMenuItem,
+    // CatalogMenuItem,
+    ProductsMenuItem,
     // ContactMenuItem,
     ContactsMenuItem,
   },

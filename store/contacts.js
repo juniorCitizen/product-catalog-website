@@ -13,7 +13,7 @@ const getters = {
 }
 
 const actions = {
-  fetch(context) {
+  fetch({commit}) {
     let isDevMode = process.env.NODE_ENV === 'development'
     let apiUrl = process.env.apiUrl
     let accessUrl = apiUrl + '/contacts'
@@ -28,7 +28,7 @@ const actions = {
     })
       .then(res => {
         let contacts = res.data.story.content.contacts
-        context.commit('register', {contacts})
+        commit('register', {contacts})
         return Promise.resolve()
       })
       .catch(error => Promise.reject(error))
