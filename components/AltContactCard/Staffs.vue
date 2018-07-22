@@ -67,9 +67,9 @@ export default {
 
 .staff-card {
   max-width: max-content;
-  border-top-left-radius: 1% 5%;
-  border-left: 2px solid rgb(36, 145, 145);
-  border-bottom-left-radius: 1% 5%;
+  border-top-left-radius: 7px 10%;
+  border-left: 12px solid rgb(36, 145, 145);
+  border-bottom-left-radius: 7px 10%;
   padding-top: 5px;
   padding-left: 10px;
   padding-bottom: 5px;
