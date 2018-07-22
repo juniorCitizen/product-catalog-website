@@ -28,7 +28,8 @@ const actions = {
     })
       .then(res => {
         let contacts = res.data.story.content.contacts
-        return context.commit('register', {contacts})
+        context.commit('register', {contacts})
+        return Promise.resolve()
       })
       .catch(error => Promise.reject(error))
   },
