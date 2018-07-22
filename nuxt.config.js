@@ -56,6 +56,10 @@ module.exports = {
         rel: 'stylesheet',
         href: 'https://fonts.googleapis.com/css?family=Montserrat:300,400',
       },
+      {
+        rel: 'stylesheet',
+        href: 'https://fonts.googleapis.com/css?family=Anton',
+      },
     ],
   },
 
