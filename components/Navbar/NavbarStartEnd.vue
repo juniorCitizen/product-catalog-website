@@ -2,7 +2,8 @@
   <div :class="classBinding">
     <home-menu-item/>
     <catalog-menu-item/>
-    <contact-menu-item/>
+    <!-- <contact-menu-item/> -->
+    <contacts-menu-item/>
   </div>
 </template>
 
@@ -10,14 +11,16 @@
 import vuexMappers from 'vuex'
 import HomeMenuItem from './HomeMenuItem'
 import CatalogMenuItem from './CatalogMenuItem'
-import ContactMenuItem from './ContactMenuItem'
+// import ContactMenuItem from './ContactMenuItem'
+import ContactsMenuItem from './ContactsMenuItem'
 
 export default {
   name: 'NavbarStart',
   components: {
     HomeMenuItem,
     CatalogMenuItem,
-    ContactMenuItem,
+    // ContactMenuItem,
+    ContactsMenuItem,
   },
   computed: {
     ...vuexMappers.mapGetters('mobileDetect', {

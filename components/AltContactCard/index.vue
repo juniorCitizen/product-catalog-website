@@ -1,0 +1,50 @@
+<template>
+  <div class="contact-card">
+    <icon-info>
+      <template slot="fa-icon">
+        <i class="fas fa-globe"/>
+      </template>
+      <template slot="text">
+        <span class="country-text">
+          {{ contact.country }}
+        </span>
+      </template>
+    </icon-info>
+    <company-info :company="contact"/>
+    <staffs :staffs="contact.staffs"/>
+  </div>
+</template>
+
+<script>
+import IconInfo from './IconInfo'
+import CompanyInfo from './CompanyInfo'
+import Staffs from './Staffs'
+
+export default {
+  name: 'AltContactCard',
+  components: {
+    IconInfo,
+    CompanyInfo,
+    Staffs,
+  },
+  props: {
+    contact: {
+      type: Object,
+      default() {
+        return {}
+      },
+    },
+  },
+}
+</script>
+
+<style scoped>
+.contact-card {
+  margin: 15px;
+}
+
+.country-text {
+  font-size: 110%;
+  font-weight: bold;
+}
+</style>

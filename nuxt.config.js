@@ -5,11 +5,15 @@ const isDevMode = process.env.NODE_ENV === 'development'
 module.exports = {
   mode: 'universal',
   env: {
-    spaceId: process.env.STORYBLOK_SPACE_ID,
     apiUrl: 'https://api.storyblok.com/v1/cdn/stories',
+    spaceId: process.env.STORYBLOK_SPACE_ID,
     apiToken: isDevMode
       ? process.env.STORYBLOK_API_PREVIEW_TOKEN
       : process.env.STORYBLOK_API_PUBLIC_TOKEN,
+    altSpaceId: process.env.ALT_STORYBLOK_SPACE_ID,
+    altApiToken: isDevMode
+      ? process.env.ALT_STORYBLOK_API_PREVIEW_TOKEN
+      : process.env.ALT_STORYBLOK_API_PUBLIC_TOKEN,
   },
   /*
   ** Headers of the page
