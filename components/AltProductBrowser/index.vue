@@ -29,10 +29,11 @@ export default {
   },
   watch: {
     products() {
-      let el = document.getElementById('product-browser-container')
-      el.scroll({
+      // let el = document.getElementById('product-browser-container')
+      // el.scroll({
+      this.$el.scroll({
         top: 0,
-        behavior: 'instant',
+        behavior: 'smooth',
       })
     },
   },

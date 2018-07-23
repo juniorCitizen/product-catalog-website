@@ -94,19 +94,20 @@ export default {
     },
   },
   watch: {
-    windowHeight() {
-      let originalPositionRatio = this.yOffset / this.totalHeight
-      this.$nextTick(() => {
-        let curTotalHeight = document.body.scrollHeight
-        let newTargetPosition = Math.round(
-          curTotalHeight * originalPositionRatio
-        )
-        window.scrollTo(0, newTargetPosition)
-        this.yOffset = window.pageYOffset
-        this.windowHeight = window.innerHeight
-        this.totalHeight = document.body.scrollHeight
-      })
-    },
+    // temporarily disabled for debugging purposes
+    // windowHeight() {
+    //   let originalPositionRatio = this.yOffset / this.totalHeight
+    //   this.$nextTick(() => {
+    //     let curTotalHeight = document.body.scrollHeight
+    //     let newTargetPosition = Math.round(
+    //       curTotalHeight * originalPositionRatio
+    //     )
+    //     window.scrollTo(0, newTargetPosition)
+    //     this.yOffset = window.pageYOffset
+    //     this.windowHeight = window.innerHeight
+    //     this.totalHeight = document.body.scrollHeight
+    //   })
+    // },
   },
   mounted() {
     this.fetchSubcatagories({category: this.catalog})
