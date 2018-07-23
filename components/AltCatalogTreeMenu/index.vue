@@ -40,7 +40,8 @@ export default {
 div.menu-container {
   box-sizing: border-box;
   grid-area: tree-menu;
-  width: max-content;
+  max-width: 300px;
+  /* width: max-content; */
   justify-self: start;
   overflow-y: scroll;
   padding: 20px 20px 0px 20px;

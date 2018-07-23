@@ -93,7 +93,7 @@ a {
 span.submenu-label {
   color: darkgray;
   font-size: 75%;
-  white-space: nowrap;
+  white-space: normal;
 }
 .fade-enter-active,
 .fade-leave-active {
