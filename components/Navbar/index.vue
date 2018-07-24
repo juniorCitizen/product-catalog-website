@@ -1,6 +1,5 @@
 <template>
-  <div id="navbar-container"
-       :class="classBinding">
+  <div id="navbar-container">
     <header>
       <nav class="navbar"
            role="navigation">
@@ -32,11 +31,6 @@ export default {
       mobileMenuIsActive: false,
     }
   },
-  computed: {
-    classBinding() {
-      return {fixed: this.$route.name.toLowerCase() === 'home'}
-    },
-  },
   watch: {
     // keep this out of the vuex store due to the complexity to implement tracking before and after states
     $mq(newSize, prevSize) {
@@ -53,7 +47,7 @@ export default {
       }
     },
     $route(newRoute) {
-      if (newRoute.name.toLowerCase() !== 'catalog') {
+      if (newRoute.path !== '/catalog') {
         this.mobileMenuIsActive = false
       }
     },
@@ -64,10 +58,5 @@ export default {
 <style scoped>
 #navbar-container {
   width: 100vw;
-}
-#navbar-container.fixed {
-  position: fixed;
-  top: 0;
-  z-index: 1;
 }
 </style>

@@ -1,6 +1,6 @@
 <template>
   <nuxt-link
-    :class="{'is-active':$route.name.toLowerCase()==='contacts'}"
+    :class="classBinding"
     class="navbar-item"
     to="/contacts"
     tag="a">
@@ -11,6 +11,13 @@
 <script>
 export default {
   name: 'ContactsMenuItem',
+  computed: {
+    classBinding() {
+      return {
+        'is-active': this.$route.path === '/contacts',
+      }
+    },
+  },
 }
 </script>
 

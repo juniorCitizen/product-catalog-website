@@ -35,7 +35,7 @@ export default {
       return this.isMobile || this.isUnderBulmaNavLimit
     },
     isAtAltCatalogPage() {
-      return this.$route.name.toLowerCase() === 'products'
+      return this.$route.path === '/products'
     },
     classBinding() {
       return {

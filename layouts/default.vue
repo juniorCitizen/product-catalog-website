@@ -1,6 +1,5 @@
 <template>
-  <div id="default-layout-container"
-       :class="classBinding">
+  <div id="default-layout-container">
     <navbar/>
     <div id="content-grid-pane">
       <nuxt/>
@@ -25,13 +24,6 @@ export default {
     ...vuexMappers.mapGetters('mobileDetect', {
       isMobile: 'isMobile',
     }),
-    classBinding() {
-      return {
-        'grid-layout': !this.$route.name
-          ? false
-          : this.$route.name.toLowerCase() !== 'home' || this.isMobile,
-      }
-    },
   },
   watch: {
     $mq() {
@@ -61,9 +53,6 @@ export default {
 #default-layout-container {
   width: 100vw;
   height: 100vh;
-}
-
-#default-layout-container.grid-layout {
   display: grid;
   grid-template-rows: min-content auto min-content;
 }
