@@ -5,7 +5,6 @@
   "author": "David Tsai <chiayu.tsai.personal@gmail.com>",
   "private": false,
   "dependencies": {
-    "aos": "^2.3.0",
     "axios": "^0.18.0",
     "bluebird": "^3.5.1",
     "express": "^4.16.3",

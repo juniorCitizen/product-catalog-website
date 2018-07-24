@@ -74,16 +74,12 @@ module.exports = {
   css: [
     {src: '~/assets/css/global.css'},
     {src: '~/assets/css/pageTransition.css'},
-    {src: 'aos/dist/aos.css'},
   ],
 
   /*
   ** Plugins to load before mounting the App
   */
-  plugins: [
-    {src: '~/plugins/aos', ssr: false},
-    {src: '~/plugins/vueMq', ssr: false},
-  ],
+  plugins: [{src: '~/plugins/vueMq', ssr: false}],
 
   /*
   ** Nuxt.js modules
@@ -94,7 +90,7 @@ module.exports = {
   ** Build configuration
   */
   build: {
-    vendor: ['aos', 'axios', 'bluebird', 'mobile-detect', 'vue-mq'],
+    vendor: ['axios', 'bluebird', 'mobile-detect', 'vue-mq'],
     /*
     ** You can extend webpack config here
     */
