@@ -2,13 +2,13 @@ import axios from 'axios'
 
 const state = () => {
   return {
-    contacts: [],
+    companies: [],
   }
 }
 
 const getters = {
-  contacts(state) {
-    return state.contacts
+  companies(state) {
+    return state.companies
   },
 }
 
@@ -27,8 +27,8 @@ const actions = {
       },
     })
       .then(res => {
-        let contacts = res.data.story.content.contacts
-        commit('register', {contacts})
+        let companies = res.data.story.content.companies
+        commit('register', {companies})
         return Promise.resolve()
       })
       .catch(error => Promise.reject(error))
@@ -36,8 +36,8 @@ const actions = {
 }
 
 const mutations = {
-  register(state, {contacts}) {
-    state.contacts = contacts
+  register(state, {companies}) {
+    state.companies = companies
   },
 }
 

@@ -1,9 +1,8 @@
 <template>
-
   <section id="contacts">
-    <alt-contact-card v-for="contact in contacts"
-                      :key="contact._uid"
-                      :contact="contact"/>
+    <alt-contact-card v-for="company in companies"
+                      :key="company._uid"
+                      :company="company"/>
   </section>
 </template>
 
@@ -16,13 +15,13 @@ export default {
   layout: 'default',
   components: {AltContactCard},
   fetch({store}) {
-    let contacts = store.getters['contacts/contacts']
-    if (contacts.length === 0) {
+    let companies = store.getters['contacts/companies']
+    if (companies.length === 0) {
       return store.dispatch('contacts/fetch').catch(console.error)
     }
   },
   computed: {
-    ...vuexMappers.mapGetters('contacts', {contacts: 'contacts'}),
+    ...vuexMappers.mapGetters('contacts', {companies: 'companies'}),
   },
 }
 </script>

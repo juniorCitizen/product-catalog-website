@@ -22,7 +22,7 @@ export default {
     logos() {
       return this.certifications.map(certification => {
         return {
-          'background-image': `url(${this.urlHelper(certification.logo)})`,
+          'background-image': `url(${this.urlHelper(certification.logoUrl)})`,
         }
       })
     },

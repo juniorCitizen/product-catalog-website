@@ -12,3 +12,4 @@ dist
 
 nodemon.json
 .env
+deprecated

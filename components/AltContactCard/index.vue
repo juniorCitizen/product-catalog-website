@@ -6,12 +6,12 @@
       </template>
       <template slot="text">
         <span class="country-text">
-          {{ contact.country }}
+          {{ company.country }}
         </span>
       </template>
     </icon-info>
-    <company-info :company="contact"/>
-    <staffs :staffs="contact.staffs"/>
+    <company-info :company="company"/>
+    <staffs :staffs="company.staffs"/>
   </div>
 </template>
 
@@ -28,7 +28,7 @@ export default {
     Staffs,
   },
   props: {
-    contact: {
+    company: {
       type: Object,
       default() {
         return {}

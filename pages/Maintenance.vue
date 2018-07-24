@@ -1,21 +1,39 @@
 <template>
-  <div id="home">
-    Home
+  <div id="maintenance">
+    <div class="video-container">
+      <video src="https://a.storyblok.com/f/44812/x/412077967f/jewlry_making__sanding_a_ring.mp4"
+             autoplay="true"
+             loop="true"
+             type="video/mp4"
+             muted/>
+    </div>
+    <div class="video-overlay"/>
+    <div class="content-overlay">
+      <img :src="require('../assets/logo.png')">
+      <div class="caption">
+        WEBSITE UNDER CONSTRUCTION
+      </div>
+      <p>Our website being updated.  It will be back online August 2018.  Looking forward to see you then!</p>
+      <br>
+      <br>
+      <p>
+        <span class="icon has-text-white">
+          <i class="far fa-smile fa-6x"/>
+        </span>
+      </p>
+    </div>
   </div>
 </template>
 
 <script>
 export default {
-  name: 'Home',
+  name: 'Maintenance',
   layout: 'default',
-  fetch({redirect}) {
-    redirect(301, '/maintenance')
-  },
 }
 </script>
 
 <style scoped>
-#home {
+#maintenance {
   box-sizing: border-box;
   width: 100%;
   height: 100%;
@@ -30,9 +48,6 @@ export default {
   height: 100%;
   overflow: hidden;
   position: relative;
-}
-video {
-  pointer-events: none;
 }
 .video-overlay {
   position: absolute;
