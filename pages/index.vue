@@ -8,9 +8,8 @@
 export default {
   name: 'Home',
   layout: 'default',
-  fetch(context) {
-    console.log(context)
-    context.redirect(301, '/maintenance')
+  fetch({redirect}) {
+    redirect(301, '/maintenance')
   },
 }
 </script>
