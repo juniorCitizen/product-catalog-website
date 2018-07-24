@@ -29,8 +29,6 @@ export default {
   },
   watch: {
     products() {
-      // let el = document.getElementById('product-browser-container')
-      // el.scroll({
       this.$el.scroll({
         top: 0,
         behavior: 'smooth',
@@ -51,7 +49,7 @@ div.product-browser-container {
   grid-area: product-browser;
   align-self: stretch;
   justify-self: stretch;
-  width: 100%;
+  width: 99.5%;
   overflow-y: scroll;
 }
 div.product-browser-container::-webkit-scrollbar {

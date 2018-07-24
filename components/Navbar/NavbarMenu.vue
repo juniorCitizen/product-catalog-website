@@ -10,9 +10,7 @@ import vuexMappers from 'vuex'
 import NavbarStartEnd from './NavbarStartEnd'
 export default {
   name: 'NavbarMenu',
-  components: {
-    NavbarStartEnd,
-  },
+  components: {NavbarStartEnd},
   props: {
     mobileMenuIsActive: {
       type: Boolean,

@@ -30,16 +30,9 @@ export default {
     },
   },
   methods: {
-    // urlHelper(url) {
-    //   return url.replace(
-    //     '//a.storyblok.com',
-    //     '//img2.storyblok.com/filters:quality\\(50\\):format\\(jpg\\):fill\\(white\\)'
-    //   )
-    // },
     styleBinding(photos) {
       if (photos[0]) {
         return {
-          // 'background-image': `url(${this.urlHelper(photos[0])})`,
           'background-image': `url(${photos[0].thumbnailUrl})`,
         }
       } else {

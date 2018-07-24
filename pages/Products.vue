@@ -5,7 +5,7 @@
     <alt-breadcrumb/>
     <alt-product-browser/>
     <alt-pagination v-if="paginationInfo.totalPages>1"/>
-    <!-- <product-details v-if="activeProduct"/> -->
+    <alt-product-details v-if="activeProduct"/>
   </section>
 </template>
 
@@ -15,7 +15,7 @@ import AltCatalogTreeMenu from '~/components/AltCatalogTreeMenu'
 import AltBreadcrumb from '~/components/AltBreadcrumb'
 import AltProductBrowser from '~/components/AltProductBrowser'
 import AltPagination from '~/components/AltPagination'
-// import ProductDetails from '~/components/ProductDetails'
+import AltProductDetails from '~/components/AltProductDetails'
 export default {
   name: 'Products',
   layout: 'default',
@@ -24,7 +24,7 @@ export default {
     AltBreadcrumb,
     AltProductBrowser,
     AltPagination,
-    // ProductDetails,
+    AltProductDetails,
   },
   fetch({store}) {
     let catalog = store.getters['altCatalog/catalog']
