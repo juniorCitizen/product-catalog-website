@@ -13,7 +13,9 @@
       <div class="caption">
         WEBSITE UNDER CONSTRUCTION
       </div>
-      <p>Our website being updated.  It will be back online August 2018.  Looking forward to see you then!</p>
+      <p style="font-size: 110%;">Our website is being updated, and scheduled for relaunch at August 2018.  Looking forward to see you then!</p>
+      <br>
+      <p style="font-size: 110%;">You may check it's <a href="/products">current progress</a> or feel free to <a href="/contacts">contact us now</a>.</p>
       <br>
       <br>
       <p>
@@ -33,6 +35,10 @@ export default {
 </script>
 
 <style scoped>
+a:hover {
+  color: red;
+  font-weight: bolder;
+}
 #maintenance {
   box-sizing: border-box;
   width: 100%;
