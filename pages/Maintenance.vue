@@ -13,9 +13,24 @@
       <div class="caption">
         WEBSITE UNDER CONSTRUCTION
       </div>
-      <p style="font-size: 110%;">Our website is being updated, and scheduled for relaunch at August 2018.  Looking forward to see you then!</p>
-      <br>
-      <p style="font-size: 110%;">You may check it's <a href="/products">current progress</a> or feel free to <a href="/contacts">contact us now</a>.</p>
+      <p>
+        <span style="color:yellow;">TO EVERYONE WHO HAD VISITED OUR BOOTH AT THE CHENNAI MEDICALL EXHIBITION LAST WEEKEND</span>
+        - it was wonderful to have met you.  We will be contacting everyone by email very soon.  Do feel free to
+        <a style="color:yellow;"
+           href="mailto:david.tsai@gentry-way.com.tw">drop us an email now</a>
+        if there are any comments or questions.
+      </p>
+      <p style="font-size:80%;">
+        Our website is being updated, and scheduled for relaunch at August 2018.  Looking forward to see you then!
+        <br>
+        <br>
+        You can preview the website's
+        <a style="color:yellow;"
+           href="/products">current progress</a>
+        , or contact us directly with our contact information listed
+        <a style="color:yellow;"
+           href="/contacts">here</a>.
+      </p>
       <br>
       <br>
       <p>
@@ -89,10 +104,10 @@ p {
     font-size: 32px;
   }
   p {
-    font-size: 8px;
-    letter-spacing: 0.13em;
+    font-size: 0.95em;
+    letter-spacing: 0.15em;
     margin-top: 1em;
-    max-width: 450px;
+    max-width: 650px;
     line-height: 1.5em;
   }
 }
