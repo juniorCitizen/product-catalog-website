@@ -1,6 +1,6 @@
 {
   "name": "product-catalog-nuxt-storyblok",
-  "version": "0.1.0",
+  "version": "1.0.0",
   "description": "SSR product catalog website built with Nuxt and Storyblok",
   "author": "juniorCitizen <chiayu.tsai.personal@gmail.com>",
   "private": false,
