@@ -1,17 +1,16 @@
-require('dotenv-safe').config()
-
-const isDevMode = process.env.NODE_ENV === 'development'
+const inProdMode = process.env.NODE_ENV === 'production'
+if (!inProdMode) require('dotenv-safe').config()
 
 module.exports = {
   mode: 'universal',
   env: {
     apiUrl: 'https://api.storyblok.com/v1/cdn/stories',
     spaceId: process.env.STORYBLOK_SPACE_ID,
-    apiToken: isDevMode
+    apiToken: !inProdMode
       ? process.env.STORYBLOK_API_PREVIEW_TOKEN
       : process.env.STORYBLOK_API_PUBLIC_TOKEN,
     altSpaceId: process.env.ALT_STORYBLOK_SPACE_ID,
-    altApiToken: isDevMode
+    altApiToken: !inProdMode
       ? process.env.ALT_STORYBLOK_API_PREVIEW_TOKEN
       : process.env.ALT_STORYBLOK_API_PUBLIC_TOKEN,
   },
