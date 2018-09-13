@@ -21,8 +21,6 @@ module.exports = {
   plugins: ['vue'],
   // add your custom rules here
   rules: {
-    // 'prettier/prettier': ['error', {semi: false}],
-    // semi: ['error', 'never'],
     'no-console': 'off',
     'vue/max-attributes-per-line': [
       'error',
@@ -32,6 +30,22 @@ module.exports = {
           max: 1,
           allowFirstLine: true,
         },
+      },
+    ],
+    'prettier/prettier': [
+      'error',
+      {
+        printWidth: 80,
+        tabWidth: 2,
+        useTabs: false,
+        semi: false,
+        singleQuote: true,
+        trailingComma: 'es5',
+        bracketSpacing: false,
+        jsxBracketSameLine: true,
+        arrowParens: 'avoid',
+        // parser: 'babylon', // has problems linting vue files
+        proseWrap: 'never',
       },
     ],
   },
