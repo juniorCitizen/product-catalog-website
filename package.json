@@ -7,6 +7,7 @@
   "dependencies": {
     "axios": "^0.18.0",
     "bluebird": "^3.5.2",
+    "bulma": "^0.7.1",
     "express": "^4.16.3",
     "mobile-detect": "^1.4.3",
     "nuxt": "^1.4.2",

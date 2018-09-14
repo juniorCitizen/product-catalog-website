@@ -1,13 +1,13 @@
 module.exports = {
   root: true,
   env: {
-    es6: true,
     browser: true,
+    es6: true,
     node: true,
   },
   parserOptions: {
-    parser: 'babel-eslint',
     ecmaVersion: 6,
+    parser: 'babel-eslint',
     souceType: 'module',
   },
   extends: [
@@ -15,9 +15,7 @@ module.exports = {
     'plugin:vue/recommended',
     'plugin:prettier/recommended',
   ],
-  // required to lint *.vue files
   plugins: ['vue'],
-  // add your custom rules here
   rules: {
     'no-console': 'off',
     'vue/max-attributes-per-line': [
