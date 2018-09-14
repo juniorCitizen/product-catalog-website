@@ -87,6 +87,14 @@ module.exports = {
     vendor: ['axios', 'bluebird', 'mobile-detect', 'vue-mq'],
     postcss: {plugins: {'postcss-custom-properties': false}}, // https://github.com/nuxt/nuxt.js/issues/1670
     extend(config, ctx) {
+      // fontawesome treeshaking - https://samuelcoe.com/blog/fa-nuxt
+      config.resolve.alias['@fortawesome/fontawesome-free-brands$'] =
+        '@fortawesome/fontawesome-free-brands/shakable.es.js'
+      config.resolve.alias['@fortawesome/fontawesome-free-regular$'] =
+        '@fortawesome/fontawesome-free-regular/shakable.es.js'
+      config.resolve.alias['@fortawesome/fontawesome-free-solid$'] =
+        '@fortawesome/fontawesome-free-solid/shakable.es.js'
+      // run linting
       if (ctx.isDev && ctx.isClient) {
         config.module.rules.push({
           enforce: 'pre',
