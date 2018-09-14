@@ -9,7 +9,7 @@
                        :category="crumbSegment">
           <span v-if="index===0"
                 class="icon is-small">
-            <i class="fas fa-home"/>
+            <fa :icon="['fas', 'home']" />
           </span>
           <span class="crumb-name">
             {{ crumbSegment.name.toUpperCase() }}

@@ -5,7 +5,7 @@
          class="staff-card">
       <icon-info>
         <template slot="fa-icon">
-          <i class="fas fa-user-circle"/>
+          <fa :icon="['fas', 'user-circle']" />
         </template>
         <template slot="text">
           <span class="name-text">
@@ -15,7 +15,7 @@
       </icon-info>
       <icon-info>
         <template slot="fa-icon">
-          <i class="fas fa-envelope"/>
+          <fa :icon="['fas', 'envelope']" />
         </template>
         <template slot="text">
           <a :href="`mailto:${staff.email}`"
@@ -26,7 +26,7 @@
       </icon-info>
       <icon-info v-if="staff.mobile">
         <template slot="fa-icon">
-          <i class="fas fa-mobile"/>
+          <fa :icon="['fas', 'mobile']" />
         </template>
         <template slot="text">
           <span class="mobile-text">

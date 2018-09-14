@@ -3,7 +3,7 @@
      class="menu-label"
      @click="handleSelection">
     <span class="icon is-small">
-      <i :class="classBinding"/>
+      <fa :icon="classBinding" />
     </span>
     <span class="root-menu-label">
       {{ category.name }}
@@ -11,7 +11,8 @@
     <transition name="fade">
       <span v-show="category.isLoading"
             class="icon is-small">
-        <i class="fas fa-spinner fa-pulse"/>
+        <fa :icon="['fas', 'spinner']"
+            spin />
       </span>
     </transition>
   </p>
@@ -35,11 +36,8 @@ export default {
       activeRootCategoryIndex: 'activeRootCategoryIndex',
     }),
     classBinding() {
-      return {
-        fas: true,
-        'fa-caret-up': this.category.isActive,
-        'fa-caret-down': !this.category.isActive,
-      }
+      const caret = this.category.isActive ? 'caret-down' : 'caret-up'
+      return ['fas', caret]
     },
   },
   methods: {

@@ -7,6 +7,41 @@ const googleFontUrls = {
   anton: 'https://fonts.googleapis.com/css?family=Anton',
 }
 
+const nuxtFontawesomeModule = [
+  'nuxt-fontawesome',
+  {
+    component: 'fa',
+    imports: [
+      //import whole sets
+      // {set: '@fortawesome/free-brands-svg-icons', icons: ['fab']},
+      // {set: '@fortawesome/free-regular-svg-icons', icons: ['far']},
+      // {set: '@fortawesome/free-solid-svg-icons', icons: ['fas']},
+      // import individual icons
+      {set: '@fortawesome/free-regular-svg-icons', icons: ['faSmile']},
+      {
+        set: '@fortawesome/free-solid-svg-icons',
+        icons: [
+          'faAngleLeft',
+          'faAngleRight',
+          'faBuilding',
+          'faCaretDown',
+          'faCaretUp',
+          'faEnvelope',
+          'faFax',
+          'faGlobe',
+          'faHome',
+          'faLocationArrow',
+          'faMobile',
+          'faPhone',
+          'faSpinner',
+          'faTimesCircle',
+          'faUserCircle',
+        ],
+      },
+    ],
+  },
+]
+
 module.exports = {
   mode: 'universal',
   env: {
@@ -36,13 +71,6 @@ module.exports = {
     ],
     link: [
       {rel: 'icon', type: 'image/x-icon', href: '/favicon.ico'},
-      {
-        rel: 'stylesheet',
-        href: 'https://use.fontawesome.com/releases/v5.0.13/css/all.css',
-        integrity:
-          'sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp',
-        crossorigin: 'anonymous',
-      },
       {rel: 'stylesheet', href: googleFontUrls.montserrat},
       {rel: 'stylesheet', href: googleFontUrls.anton},
     ],
@@ -54,7 +82,7 @@ module.exports = {
     {src: '~/assets/css/pageTransition.css'},
   ],
   plugins: [{src: '~/plugins/vueMq', ssr: false}],
-  modules: [],
+  modules: [nuxtFontawesomeModule],
   build: {
     vendor: ['axios', 'bluebird', 'mobile-detect', 'vue-mq'],
     postcss: {plugins: {'postcss-custom-properties': false}}, // https://github.com/nuxt/nuxt.js/issues/1670

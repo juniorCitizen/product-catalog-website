@@ -7,7 +7,7 @@
               @click="toPage(paginationInfo.currentPage-1)">
         <span class="icon is-small"
               @click.prevent>
-          <i class="fas fa-angle-left"/>
+          <fa :icon="['fas', 'angle-left']" />
         </span>
         <span class="direction-button-text"
               @click.prevent>
@@ -40,7 +40,7 @@
           GO TO NEXT PAGE
         </span>
         <span class="icon is-small">
-          <i class="fas fa-angle-right"/>
+          <fa :icon="['fas', 'angle-right']" />
         </span>
       </button>
     </div>

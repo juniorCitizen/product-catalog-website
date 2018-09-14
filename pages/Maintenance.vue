@@ -35,7 +35,8 @@
         <br>
         <p>
           <span class="icon has-text-white">
-            <i class="far fa-smile fa-6x"/>
+            <fa :icon="['far', 'smile']"
+                style="font-size: 70px;" />
           </span>
         </p>
       </div>

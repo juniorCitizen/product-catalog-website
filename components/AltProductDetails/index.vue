@@ -2,8 +2,8 @@
   <div class="alt-product-details"
        @click.self="setActiveProductIndex(null)">
     <span class="icon is-small has-text-danger">
-      <i class="fas fa-times-circle"
-         @click="setActiveProductIndex(null)"/>
+      <fa :icon="['fas', 'times-circle']"
+          @click="setActiveProductIndex(null)" />
     </span>
     <product-details-modal>
       <product-title slot="product-title"/>

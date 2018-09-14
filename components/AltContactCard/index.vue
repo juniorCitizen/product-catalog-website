@@ -2,7 +2,7 @@
   <div class="contact-card">
     <icon-info>
       <template slot="fa-icon">
-        <i class="fas fa-globe"/>
+        <fa :icon="['fas', 'globe']" />
       </template>
       <template slot="text">
         <span class="country-text">

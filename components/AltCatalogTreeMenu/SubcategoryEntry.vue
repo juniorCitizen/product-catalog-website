@@ -8,7 +8,8 @@
     <transition name="fade">
       <span v-show="category.isLoading"
             class="icon is-small">
-        <i class="fas fa-spinner fa-pulse"/>
+        <fa :icon="['fas', 'spinner']"
+            spin />
       </span>
     </transition>
   </a>

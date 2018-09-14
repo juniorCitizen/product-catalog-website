@@ -2,7 +2,7 @@
   <div class="company-info">
     <icon-info>
       <template slot="fa-icon">
-        <i class="fas fa-building"/>
+        <fa :icon="['fas', 'building']" />
       </template>
       <template slot="text">
         <span class="company-title-text">
@@ -12,7 +12,7 @@
     </icon-info>
     <icon-info>
       <template slot="fa-icon">
-        <i class="fas fa-location-arrow"/>
+        <fa :icon="['fas', 'location-arrow']" />
       </template>
       <template slot="text">
         <div class="address-text">
@@ -22,7 +22,7 @@
     </icon-info>
     <icon-info>
       <template slot="fa-icon">
-        <i class="fas fa-phone"/>
+        <fa :icon="['fas', 'phone']" />
       </template>
       <template slot="text">
         <span class="phone-text">
@@ -32,7 +32,7 @@
     </icon-info>
     <icon-info>
       <template slot="fa-icon">
-        <i class="fas fa-fax"/>
+        <fa :icon="['fas', 'fax']" />
       </template>
       <template slot="text">
         <span class="fax-text">
