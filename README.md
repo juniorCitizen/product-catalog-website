@@ -1,6 +1,6 @@
-# product-catalog-website-nuxt
+# product-catalog-website
 
-> SSR Product catalog website using Nuxt.js frontend and Storyblok CMS
+> SSR product catalog website built with Nuxt and Storyblok
 
 ## Build Setup
 
