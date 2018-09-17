@@ -1,6 +1,7 @@
 <template>
-  <v-container fluid
-               fill-height>
+  <v-container fill-height
+               grid-list-xl
+               fluid>
     <v-layout fill-height
               align-start
               justify-start
@@ -17,8 +18,8 @@
 </template>
 
 <script>
-import storyblokLivePreview from '@/mixins/storyblokLivePreview'
 import CategoryCard from '@/components/cards/Category'
+import storyblokLivePreview from '@/mixins/storyblokLivePreview'
 export default {
   name: 'CatalogPage',
   components: {CategoryCard},

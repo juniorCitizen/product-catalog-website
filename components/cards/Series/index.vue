@@ -38,14 +38,14 @@ export default {
     }
   },
   computed: {
-    version() {
-      return process.env.NODE_ENV === 'development' ? 'draft' : 'published'
-    },
     content() {
       return this.series.content
     },
     productUuids() {
-      return this.series.content.products
+      return this.content.products
+    },
+    version() {
+      return process.env.NODE_ENV === 'development' ? 'draft' : 'published'
     },
   },
   mounted() {
@@ -53,13 +53,14 @@ export default {
   },
   methods: {
     getProducts() {
-      if (!this.productUuids.length) return []
+      if (!this.productUuids.length) return Promise.resolve()
       return this.$storyapi
         .get('cdn/stories', {
-          version: this.version,
-          starts_with: 'products',
-          sort_by: 'position:asc',
           by_uuids: this.productUuids.join(),
+          per_page: 1000,
+          sort_by: 'content.model:asc',
+          starts_with: 'products',
+          version: this.version,
         })
         .then(res => {
           this.products = res.data.stories

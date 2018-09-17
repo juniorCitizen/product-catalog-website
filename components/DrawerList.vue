@@ -47,7 +47,7 @@ export default {
   name: 'DrawerList',
   methods: {
     vListIconColor(path) {
-      return this.$route.path === path ? 'primary' : 'grey lighten-2'
+      return this.$route.path === path ? 'primary' : 'grey lighten-1'
     },
   },
 }

@@ -1,46 +1,63 @@
 <template>
-  <v-card>
-    <v-card-title>{{ content.name }}</v-card-title>
-    <template v-if="subcategoryUuids.length">
+  <v-card color="shade transparent">
+    <v-card-actions>
+      <div v-for="subcategory in subcategories"
+           :key="subcategory.uuid">
+        <subcategory-card :subcategory="subcategory"/>
+      </div>
+    </v-card-actions>
+    <v-card-title class="text-xs-center">
+      <v-layout>
+        <v-flex tag="h3">
+          {{ content.name }} Category
+        </v-flex>
+      </v-layout>
+    </v-card-title>
+    <!-- <template v-if="subcategoryUuids.length">
       <v-responsive v-for="subcategory in subcategories"
                     :key="subcategory.uuid">
         <category-card :category="subcategory"/>
       </v-responsive>
-    </template>
-    <template v-if="childSeriesUuids.length">
+    </template> -->
+    <!-- <template v-if="childSeriesUuids.length">
       <v-responsive v-for="childSeries in childrenSeries"
                     :key="childSeries.uuid">
         <series-card :series="childSeries"/>
       </v-responsive>
-    </template>
-    <template v-if="productUuids.length">
+    </template> -->
+    <!-- <template v-if="productUuids.length">
       <v-responsive v-for="product in products"
-                    :key="product.id">
-        <product-card :product="product"
-                      :product-id="product.id"/>
+                    :key="product.uuid">
+        <product-card :product="product"/>
       </v-responsive>
-    </template>
+    </template> -->
   </v-card>
 </template>
 
 <script>
-import CategoryCard from '@/components/cards/Category'
-import SeriesCard from '@/components/cards/Series'
-import ProductCard from '@/components/cards/Product'
+import SubcategoryCard from '@/components/cards/Subcategory'
+// import CategoryCard from '@/components/cards/Category'
+// import ProductCard from '@/components/cards/Product'
+// import SeriesCard from '@/components/cards/Series'
 export default {
   name: 'CategoryCard',
-  components: {CategoryCard, SeriesCard, ProductCard},
+  components: {
+    // CategoryCard,
+    // ProductCard,
+    // SeriesCard,
+    SubcategoryCard,
+  },
   props: {
     category: {
       type: Object,
       default() {
         return {
           content: {
+            childrenSeries: [],
             name: 'unnamed category',
             parentCategory: null,
-            subcategories: [],
-            childrenSeries: [],
             products: [],
+            subcategories: [],
           },
         }
       },
@@ -48,26 +65,26 @@ export default {
   },
   data() {
     return {
-      subcategories: [],
       childrenSeries: [],
       products: [],
+      subcategories: [],
     }
   },
   computed: {
-    version() {
-      return process.env.NODE_ENV === 'development' ? 'draft' : 'published'
+    childSeriesUuids() {
+      return this.content.childrenSeries
     },
     content() {
       return this.category.content
     },
+    productUuids() {
+      return this.content.products
+    },
     subcategoryUuids() {
       return this.content.subcategories
     },
-    childSeriesUuids() {
-      return this.content.childrenSeries
-    },
-    productUuids() {
-      return this.content.products
+    version() {
+      return process.env.NODE_ENV === 'development' ? 'draft' : 'published'
     },
   },
   mounted() {
@@ -83,32 +100,14 @@ export default {
       })
   },
   methods: {
-    getSubcategories() {
-      if (!this.subcategoryUuids.length) return []
-      return this.$storyapi
-        .get('cdn/stories', {
-          version: this.version,
-          starts_with: 'categories',
-          sort_by: 'position:asc',
-          by_uuids: this.subcategoryUuids.join(),
-        })
-        .then(res => {
-          this.subcategories = res.data.stories
-          return Promise.resolve()
-        })
-        .catch(error => {
-          console.log(error)
-          return Promise.reject()
-        })
-    },
     getChildrenSeries() {
-      if (!this.childSeriesUuids.length) return []
+      if (!this.childSeriesUuids.length) return Promise.resolve()
       return this.$storyapi
         .get('cdn/stories', {
-          version: this.version,
-          starts_with: 'series',
-          sort_by: 'position:asc',
           by_uuids: this.childSeriesUuids.join(),
+          sort_by: 'position:asc',
+          starts_with: 'series',
+          version: this.version,
         })
         .then(res => {
           this.childrenSeries = res.data.stories
@@ -119,14 +118,33 @@ export default {
           return Promise.reject()
         })
     },
-    getProducts() {
-      if (!this.productUuids.length) return []
+    getSubcategories() {
+      if (!this.subcategoryUuids.length) return Promise.resolve()
       return this.$storyapi
         .get('cdn/stories', {
+          by_uuids: this.subcategoryUuids.join(),
+          sort_by: 'position:asc',
+          starts_with: 'categories',
           version: this.version,
-          starts_with: 'products',
-          sort_by: 'content.model:asc',
+        })
+        .then(res => {
+          this.subcategories = res.data.stories
+          return Promise.resolve()
+        })
+        .catch(error => {
+          console.log(error)
+          return Promise.reject()
+        })
+    },
+    getProducts() {
+      if (!this.productUuids.length) return Promise.resolve()
+      return this.$storyapi
+        .get('cdn/stories', {
           by_uuids: this.productUuids.join(),
+          per_page: 1000,
+          sort_by: 'content.model:asc',
+          starts_with: 'products',
+          version: this.version,
         })
         .then(res => {
           this.products = res.data.stories

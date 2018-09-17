@@ -6,7 +6,6 @@
   "private": true,
   "dependencies": {
     "aos": "^3.0.0-beta.5",
-    "axios": "^0.18.0",
     "express": "^4.16.3",
     "nuxt": "^1.4.2",
     "storyblok-nuxt": "0.0.9",

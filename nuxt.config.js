@@ -49,16 +49,17 @@ module.exports = {
       {rel: 'stylesheet', type: 'text/css', href: webfontUrls.roboto},
     ],
   },
-  loading: false, // {color: '#3B8070'},
+  loading: {color: '#3B8070'},
   css: [
     '@/assets/vuetify.styl',
     '@/assets/global.css',
     '@/assets/routingTransitions.css',
   ],
+  router: {},
   plugins: [
-    {src: '@/plugins/vuetify'},
-    {src: '@/plugins/googleMaps'},
     {src: '@/plugins/aos', ssr: false},
+    {src: '@/plugins/googleMaps'},
+    {src: '@/plugins/vuetify'},
   ],
   modules: [modules.storyblok],
   vendor: [

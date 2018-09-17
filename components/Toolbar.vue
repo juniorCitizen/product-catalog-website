@@ -64,7 +64,7 @@ export default {
 
 <style scoped>
 .website-logo {
-  width: 105px;
+  width: 80px;
   background-color: #eeeeee;
 }
 </style>
