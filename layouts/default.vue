@@ -1,68 +1,48 @@
 <template>
-  <div id="default-layout-container">
-    <navbar/>
-    <div id="content-grid-pane">
+  <v-app id="default-layout">
+    <v-navigation-drawer v-model="drawerIsVisible"
+                         app
+                         disable-resize-watcher
+                         class="grey lighten-3">
+      <drawer-list/>
+    </v-navigation-drawer>
+    <toolbar @sideIconClicked="drawerIsVisible=!drawerIsVisible"/>
+    <v-content>
       <nuxt/>
-    </div>
-    <page-footer/>
-  </div>
+    </v-content>
+    <site-footer/>
+  </v-app>
 </template>
 
 <script>
-import vuexMappers from 'vuex'
-import MobileDetect from 'mobile-detect'
-import Navbar from '~/components/Navbar'
-import PageFooter from '~/components/PageFooter'
+import DrawerList from '@/components/DrawerList'
+import Toolbar from '@/components/Toolbar'
+import SiteFooter from '@/components/SiteFooter'
 
 export default {
   name: 'DefaultLayout',
   components: {
-    Navbar,
-    PageFooter,
+    DrawerList,
+    Toolbar,
+    SiteFooter,
   },
-  computed: {
-    ...vuexMappers.mapGetters('mobileDetect', {
-      isMobile: 'isMobile',
-    }),
+  data() {
+    return {
+      drawerIsVisible: false,
+    }
   },
   watch: {
-    $mq() {
-      this.register({mq: this.$mq})
+    $route() {
+      if (this.drawerIsVisible) {
+        this.drawerIsVisible = !this.drawerIsVisible
+      }
     },
-  },
-  mounted() {
-    let md = new MobileDetect(window.navigator.userAgent)
-    this.register({
-      mobile: md.mobile(),
-      phone: md.phone(),
-      tablet: md.tablet(),
-      os: md.os(),
-      userAgent: md.userAgent(),
-      mq: this.$mq,
-    })
-  },
-  methods: {
-    ...vuexMappers.mapMutations('mobileDetect', {
-      register: 'register',
-    }),
   },
 }
 </script>
 
 <style scoped>
-#default-layout-container {
+#default-layout {
   width: 100vw;
-  height: 100vh;
-  display: grid;
-  grid-template-rows: min-content auto min-content;
-}
-
-#content-grid-pane {
-  overflow-y: scroll;
-  overflow-x: hidden;
-}
-
-#content-grid-pane::-webkit-scrollbar {
-  width: 0;
 }
 </style>

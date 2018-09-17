@@ -1,25 +1,16 @@
 <template>
   <v-container fluid
                fill-height>
-    <v-layout column>
-      <v-flex>
-        <v-container class="display-3 pa-0 pb-4"
-                     fluid
-                     tag="h1">
-          Contact Us
-        </v-container>
-        <v-container class="pa-0"
-                     grid-list-xl
-                     fluid>
-          <v-layout wrap>
-            <v-flex v-for="company in companies"
-                    :key="company.id"
-                    sm6
-                    lg4>
-              <contact-card :company="company"/>
-            </v-flex>
-          </v-layout>
-        </v-container>
+    <v-layout fill-height
+              align-start
+              justify-start
+              wrap>
+      <v-flex v-for="category in categories"
+              :key="category.id"
+              sm12
+              md4
+              lg3>
+        <category-card :category="category"/>
       </v-flex>
     </v-layout>
   </v-container>
@@ -27,10 +18,10 @@
 
 <script>
 import storyblokLivePreview from '@/mixins/storyblokLivePreview'
-import ContactCard from '@/components/cards/Contact'
+import CategoryCard from '@/components/cards/Category'
 export default {
-  name: 'ContactsPage',
-  components: {ContactCard},
+  name: 'CatalogPage',
+  components: {CategoryCard},
   mixins: [storyblokLivePreview],
   mounted() {
     this.$storyblok.init()
@@ -42,12 +33,13 @@ export default {
     const version = context.isDev ? 'draft' : 'published'
     return context.app.$storyapi
       .get('cdn/stories', {
-        starts_with: 'companies',
+        starts_with: 'categories',
         sort_by: 'position:asc',
         version,
       })
       .then(res => {
-        return {companies: res.data.stories}
+        const filterFn = story => !story.content.parentCategory
+        return {categories: res.data.stories.filter(filterFn)}
       })
       .catch(error => {
         context.error({
