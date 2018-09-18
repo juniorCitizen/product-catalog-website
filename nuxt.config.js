@@ -49,7 +49,8 @@ module.exports = {
       {rel: 'stylesheet', type: 'text/css', href: webfontUrls.roboto},
     ],
   },
-  loading: {color: '#3B8070'},
+  // https://nuxtjs.org/api/configuration-loading
+  loading: false, // {color: '#3B8070'},
   css: [
     '@/assets/vuetify.styl',
     '@/assets/global.css',

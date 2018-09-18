@@ -1,15 +1,15 @@
 .page-enter {
   opacity: 0.4;
-  /* transform: translateX(100%); */
+  transform: translateX(100%);
 }
 
 .page-enter-active {
-  transition: all 0.6s ease-in-out;
+  transition: all 0.4s ease-in-out;
 }
 
 .page-leave-to {
   opacity: 0;
-  /* transform: translateX(-100%); */
+  transform: translateX(-100%);
 }
 
 .page-leave-active {

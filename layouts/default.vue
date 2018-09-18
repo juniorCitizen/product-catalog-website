@@ -11,31 +11,41 @@
       <nuxt/>
     </v-content>
     <site-footer/>
+    <loading-overlay/>
   </v-app>
 </template>
 
 <script>
+import {mapState} from 'vuex'
 import DrawerList from '@/components/DrawerList'
-import Toolbar from '@/components/Toolbar'
+import LoadingOverlay from '@/components/LoadingOverlay'
 import SiteFooter from '@/components/SiteFooter'
-
+import Toolbar from '@/components/Toolbar'
 export default {
   name: 'DefaultLayout',
   components: {
     DrawerList,
-    Toolbar,
+    LoadingOverlay,
     SiteFooter,
+    Toolbar,
   },
   data() {
     return {
+      loadingOverlayVisible: false,
       drawerIsVisible: false,
     }
+  },
+  computed: {
+    ...mapState({routingInProgress: 'routingInProgress'}),
   },
   watch: {
     $route() {
       if (this.drawerIsVisible) {
         this.drawerIsVisible = !this.drawerIsVisible
       }
+    },
+    routingInProgress(inProgress) {
+      this.loadingOverlayVisible = inProgress
     },
   },
 }

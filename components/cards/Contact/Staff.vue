@@ -10,10 +10,10 @@
         <div class="headline font-weight-black">
           {{ staff.content.name }}
         </div>
-        <div class="body-2 grey--text">
+        <div class="caption grey--text">
           {{ staff.content.mobile }}
         </div>
-        <div class="body-2">
+        <div class="caption">
           <a :href="`mailto:${staff.content.email}`">
             {{ staff.content.email }}
           </a>

@@ -3,9 +3,8 @@
                fill-height>
     <v-layout column>
       <v-flex>
-        <v-container class="display-3 pa-0 pb-4"
-                     fluid
-                     tag="h1">
+        <v-container class="headline pa-0 pb-4"
+                     fluid>
           Contact Us
         </v-container>
         <v-container class="pa-0"
@@ -13,7 +12,7 @@
                      fluid>
           <v-layout wrap>
             <v-flex v-for="company in companies"
-                    :key="company.id"
+                    :key="company.uuid"
                     sm6
                     lg4>
               <contact-card :company="company"/>
@@ -26,18 +25,13 @@
 </template>
 
 <script>
-import storyblokLivePreview from '@/mixins/storyblokLivePreview'
 import ContactCard from '@/components/cards/Contact'
+import postRouting from '@/mixins/postRouting'
+import storyblokLivePreview from '@/mixins/storyblokLivePreview'
 export default {
   name: 'ContactsPage',
   components: {ContactCard},
-  mixins: [storyblokLivePreview],
-  mounted() {
-    this.$storyblok.init()
-    this.$storyblok.on('change', function() {
-      window.location.reload()
-    })
-  },
+  mixins: [postRouting, storyblokLivePreview],
   asyncData(context) {
     const version = context.isDev ? 'draft' : 'published'
     return context.app.$storyapi

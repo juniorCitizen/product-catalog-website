@@ -8,7 +8,14 @@
                max-width="40"
                max-height="25"/>
       </v-avatar>
-      <h2>{{ content.name }}</h2>
+      <div>
+        <div class="headline font-weight-black">
+          {{ content.name }}
+        </div>
+        <div class="caption grey--text">
+          {{ country.content.name }}
+        </div>
+      </div>
     </v-card-title>
     <v-responsive>
       <location :coordinate="coordinate"/>
@@ -48,9 +55,11 @@
 import Location from './Location'
 import Certification from './Certification'
 import Staff from './Staff'
+import storyVersion from '@/mixins/storyVersion'
 export default {
   name: 'ContactCard',
   components: {Location, Certification, Staff},
+  mixins: [storyVersion],
   props: {
     company: {
       type: Object,
@@ -87,9 +96,6 @@ export default {
     }
   },
   computed: {
-    version() {
-      return process.env.NODE_ENV === 'development' ? 'draft' : 'published'
-    },
     content() {
       return this.company.content
     },

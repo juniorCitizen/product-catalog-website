@@ -12,10 +12,10 @@
     </v-toolbar-title>
     <v-spacer/>
     <v-toolbar-items class="hidden-sm-and-down">
-      <v-btn nuxt
-             to="/"
+      <v-btn :class="{'v-btn--active':$route.path==='/'}"
              flat
-             small>
+             small
+             @click.stop="toPath('/')">
         <v-icon left
                 small
                 class="mr-1">
@@ -23,10 +23,10 @@
         </v-icon>
         HOME
       </v-btn>
-      <v-btn nuxt
-             to="/catalog"
+      <v-btn :class="{'v-btn--active':$route.path==='/catalog'}"
              flat
-             small>
+             small
+             @click.stop="toPath('/catalog')">
         <v-icon left
                 small
                 class="mr-1">
@@ -34,10 +34,10 @@
         </v-icon>
         CATALOG
       </v-btn>
-      <v-btn nuxt
-             to="/contacts"
+      <v-btn :class="{'v-btn--active':$route.path==='/contacts'}"
              flat
-             small>
+             small
+             @click.stop="toPath('/contacts')">
         <v-icon left
                 small
                 class="mr-1">
@@ -50,8 +50,10 @@
 </template>
 
 <script>
+import preRouting from '@/mixins/preRouting'
 export default {
   name: 'Toolbar',
+  mixins: [preRouting],
   data() {
     return {
       logoImage: require('@/assets/logo.png'),
