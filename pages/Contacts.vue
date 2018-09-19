@@ -25,6 +25,7 @@
 </template>
 
 <script>
+import {mapState} from 'vuex'
 import postRouting from '@/mixins/postRouting'
 import storyblokLivePreview from '@/mixins/storyblokLivePreview'
 
@@ -34,23 +35,8 @@ export default {
   name: 'ContactsPage',
   components: {ContactCard},
   mixins: [postRouting, storyblokLivePreview],
-  asyncData(context) {
-    const version = context.isDev ? 'draft' : 'published'
-    return context.app.$storyapi
-      .get('cdn/stories', {
-        starts_with: 'companies',
-        sort_by: 'position:asc',
-        version,
-      })
-      .then(res => {
-        return {companies: res.data.stories}
-      })
-      .catch(error => {
-        context.error({
-          statusCode: error.response.status,
-          message: error.response.data,
-        })
-      })
+  computed: {
+    ...mapState('contacts', {companies: 'companies'}),
   },
 }
 </script>
