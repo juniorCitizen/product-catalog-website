@@ -2,7 +2,6 @@
   <v-app id="default-layout">
     <v-navigation-drawer v-model="drawerIsVisible"
                          app
-                         disable-resize-watcher
                          class="grey lighten-3">
       <drawer-list/>
     </v-navigation-drawer>
