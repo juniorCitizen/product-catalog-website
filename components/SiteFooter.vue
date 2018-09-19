@@ -5,9 +5,8 @@
             flat
             class="grey lighten-3">
     <v-layout align-center>
-      <v-flex v-if="$route.path.indexOf('/catalog')!==-1"
-              class="grey lighten-3 black--text body-1 ml-2">
-        breadcrumbs
+      <v-flex v-if="$route.path.lastIndexOf('/catalog')===0">
+        <breadcrumbs/>
       </v-flex>
       <v-flex class="grey lighten-3 black--text caption text-xs-right mr-2">
         <span class="copyright-text">
@@ -19,8 +18,11 @@
 </template>
 
 <script>
+import Breadcrumbs from '@/components/Breadcrumbs'
+
 export default {
   name: 'SiteFooter',
+  components: {Breadcrumbs},
 }
 </script>
 

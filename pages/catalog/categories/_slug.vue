@@ -104,10 +104,9 @@ export default {
     routingInProgress(inProgress) {
       if (inProgress) {
         const content = this.category.content
-        content.subcategories.slice(0)
-        content.childrenSeries.slice(0)
-        content.products.slice(0)
-        content.parentCategory = null
+        content.subcategories.splice(0)
+        content.childrenSeries.splice(0)
+        content.products.splice(0)
       }
     },
   },

@@ -3,7 +3,7 @@
           hover
           raised
           height="320"
-          @click.native.stop="toPath(`/catalog/${product.full_slug}`)">
+          @click.native.stop="processProductSelection">
     <v-card-title class="caption font-weight-black text-truncate">
       <div>
         <h4>PRODUCT MODEL: {{ product.content.model }}</h4>
@@ -38,6 +38,8 @@
 </template>
 
 <script>
+import {mapMutations} from 'vuex'
+
 import preRouting from '@/mixins/preRouting'
 import storyVersion from '@/mixins/storyVersion'
 
@@ -90,6 +92,9 @@ export default {
       })
   },
   methods: {
+    ...mapMutations('catalog', {
+      addBreadcrumbItem: 'addBreadcrumbItem',
+    }),
     getPhotos() {
       const id = this.product.content.photos
       return !id
@@ -107,6 +112,10 @@ export default {
               console.log(error)
               return Promise.reject()
             })
+    },
+    processProductSelection() {
+      this.addBreadcrumbItem(this.product)
+      this.toPath(`/catalog/${this.product.full_slug}`)
     },
   },
 }

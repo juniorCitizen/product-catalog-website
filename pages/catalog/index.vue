@@ -9,7 +9,7 @@
         </v-container>
         <v-container class="pa-0"
                      fluid>
-          <breadcrumbs/>
+          <breadcrumbs large/>
         </v-container>
         <v-container class="pa-0 mt-3"
                      grid-list-lg

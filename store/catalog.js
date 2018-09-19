@@ -27,17 +27,15 @@ export default {
     addBreadcrumbItem(state, payload) {
       state.breadcrumbItems.push({
         text: payload.name,
-        path: payload.full_slug,
+        path: '/catalog/' + payload.full_slug,
         disabled: true,
       })
       const length = state.breadcrumbItems.length
       state.breadcrumbItems[length - 2].disabled = false
     },
-    removeBreadcrumbItem(state) {
-      state.breadcrumbItems.pop()
-      if (state.breadcrumbItems.length > 1) {
-        state.breadcrumbItems[length - 1].disabled = false
-      }
+    navigateToBreadcrumb(state, index) {
+      state.breadcrumbItems.splice(index + 1)
+      state.breadcrumbItems[index].disabled = true
     },
   },
 }

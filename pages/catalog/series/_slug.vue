@@ -17,13 +17,7 @@ export default {
   watch: {
     routingInProgress(inProgress) {
       if (inProgress) {
-        this.series = {
-          content: {
-            name: 'unnamed series',
-            parentCategory: null,
-            products: [],
-          },
-        }
+        this.series.content.products.splice(0)
       }
     },
   },

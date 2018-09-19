@@ -3,7 +3,7 @@
           hover
           raised
           height="320"
-          @click.native.stop="toPath(`/catalog/${series.full_slug}`)">
+          @click.native.stop="processSeriesSelection">
     <v-card-title>
       <h4 class="caption font-weight-black text-truncate">
         {{ series.content.name }} Series
@@ -35,6 +35,8 @@
 </template>
 
 <script>
+import {mapMutations} from 'vuex'
+
 import preRouting from '@/mixins/preRouting'
 import storyVersion from '@/mixins/storyVersion'
 
@@ -81,6 +83,9 @@ export default {
       })
   },
   methods: {
+    ...mapMutations('catalog', {
+      addBreadcrumbItem: 'addBreadcrumbItem',
+    }),
     getPhotos() {
       const id = this.series.content.photos
       return !id
@@ -119,6 +124,10 @@ export default {
               console.log(error)
               return Promise.reject()
             })
+    },
+    processSeriesSelection() {
+      this.addBreadcrumbItem(this.series)
+      this.toPath(`/catalog/${this.series.full_slug}`)
     },
   },
 }

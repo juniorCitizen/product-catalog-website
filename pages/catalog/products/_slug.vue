@@ -17,27 +17,16 @@ export default {
   watch: {
     routingInProgress(inProgress) {
       if (inProgress) {
-        this.product = {
-          content: {
-            compatibleAcessories: [],
-            compatibleProducts: [],
-            description: 'no description',
-            features: null,
-            model: 'unnamed model',
-            name: 'unnamed product',
-            parentCategory: null,
-            parentSeries: null,
-            photos: null,
-            specifications: null,
-          },
-        }
+        const content = this.product.content
+        content.compatibleAccessories.splice(0)
+        content.compatibleProducts.splice(0)
       }
     },
   },
   asyncData(context) {
     return context.app.$storyapi
       .get('cdn/stories', {
-        starts_with: `product/${context.params.slug}`,
+        starts_with: `products/${context.params.slug}`,
         version: context.isDev ? 'draft' : 'published',
       })
       .then(res => {
