@@ -6,7 +6,7 @@
                      fluid>
           Main Product Categories
         </v-container>
-        <v-container class="pa-0"
+        <v-container class="pa-0 mt-3"
                      grid-list-lg
                      fluid>
           <v-layout fill-height

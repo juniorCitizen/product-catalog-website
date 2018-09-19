@@ -1,6 +1,8 @@
 <template>
   <v-card color="white"
           hover
+          raised
+          height="320"
           @click.native.stop="toPath(`/catalog/products/${product.slug}`)">
     <v-card-title class="caption font-weight-black text-truncate">
       <div>
@@ -10,14 +12,28 @@
         </h3>
       </div>
     </v-card-title>
-    <v-responsive v-if="photoUrls.length"
-                  class="pb-4">
-      <v-img :src="photoUrls[0]"
-             height="200"
-             max-width="200"
-             contain
-             class="ma-auto"/>
-    </v-responsive>
+    <v-img v-if="photoUrls.length"
+           :src="photoUrls[0]"
+           :lazy-src="placeholder"
+           height="220"
+           max-width="220"
+           contain
+           class="ma-auto">
+      <v-layout slot="placeholder"
+                fill-height
+                align-center
+                justify-center
+                ma-0>
+        <v-progress-circular indeterminate
+                             color="black"/>
+      </v-layout>
+    </v-img>
+    <v-img v-else
+           :src="placeholder"
+           height="220"
+           max-width="220"
+           contain
+           class="ma-auto"/>
   </v-card>
 </template>
 
@@ -56,6 +72,7 @@ export default {
           photoUrls: [],
         },
       },
+      placeholder: require('@/assets/logo.png'),
     }
   },
   computed: {

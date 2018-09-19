@@ -1,20 +1,36 @@
 <template>
   <v-card color="white"
           hover
+          raised
+          height="320"
           @click.native.stop="toPath(`/catalog/series/${series.slug}`)">
     <v-card-title>
       <h4 class="caption font-weight-black text-truncate">
-        {{ series.content.name }} SERIES
+        {{ series.content.name }} Series
       </h4>
     </v-card-title>
-    <v-responsive v-if="photoUrls.length"
-                  class="pb-2">
-      <v-img :src="photoUrls[0]"
-             height="100"
-             max-width="100"
-             contain
-             class="ma-auto"/>
-    </v-responsive>
+    <v-img v-if="photoUrls.length"
+           :src="photoUrls[0]"
+           :lazy-src="placeholder"
+           height="220"
+           max-width="220"
+           contain
+           class="ma-auto">
+      <v-layout slot="placeholder"
+                fill-height
+                align-center
+                justify-center
+                ma-0>
+        <v-progress-circular indeterminate
+                             color="black"/>
+      </v-layout>
+    </v-img>
+    <v-img v-else
+           :src="placeholder"
+           height="220"
+           max-width="220"
+           contain
+           class="ma-auto"/>
   </v-card>
 </template>
 
@@ -46,6 +62,7 @@ export default {
           photoUrls: [],
         },
       },
+      placeholder: require('@/assets/logo.png'),
       products: [],
     }
   },

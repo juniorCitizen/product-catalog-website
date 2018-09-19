@@ -33,12 +33,12 @@
                     wrap>
             <v-flex v-for="childSeries in childrenSeries"
                     :key="childSeries.uuid"
-                    xs6
-                    sm3
-                    md2
-                    lg1>
-              <series-card :series="childSeries"
-                           :large="false"/>
+                    xs12
+                    sm6
+                    md4
+                    lg3
+                    xl2>
+              <series-card :series="childSeries"/>
             </v-flex>
           </v-layout>
         </v-container>

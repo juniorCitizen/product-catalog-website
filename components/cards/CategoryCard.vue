@@ -2,8 +2,9 @@
   <v-card color="white"
           hover
           raised
+          height="320"
           @click.native.stop="toPath(`/catalog/categories/${category.slug}`)">
-    <v-card-title class="caption font-weight-black">
+    <v-card-title class="caption font-weight-black text-truncate">
       <div>
         <h4>PRODUCT CATEGORY</h4>
         <h2 class="grey--text font-weight-black">
@@ -15,13 +16,22 @@
       </div>
     </v-card-title>
     <v-responsive v-if="photoUrls.length"
-                  class="pb-4">
+                  class="pb-3">
       <v-img :src="photoUrls[0]"
              :lazy-src="placeholder"
              height="220"
              max-width="220"
              contain
-             class="ma-auto"/>
+             class="ma-auto">
+        <v-layout slot="placeholder"
+                  fill-height
+                  align-center
+                  justify-center
+                  ma-0>
+          <v-progress-circular indeterminate
+                               color="black"/>
+        </v-layout>
+      </v-img>
     </v-responsive>
   </v-card>
 </template>
@@ -51,13 +61,13 @@ export default {
   },
   data() {
     return {
-      placeholder: require('@/assets/logo.png'),
       childrenSeries: [],
       photos: {
         content: {
           photoUrls: [],
         },
       },
+      placeholder: require('@/assets/logo.png'),
       products: [],
       subcategories: [],
     }
