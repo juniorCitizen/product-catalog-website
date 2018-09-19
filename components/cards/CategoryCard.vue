@@ -3,7 +3,7 @@
           hover
           raised
           height="320"
-          @click.native.stop="toPath(`/catalog/categories/${category.slug}`)">
+          @click.native.stop="processCategorySelection">
     <v-card-title class="caption font-weight-black text-truncate">
       <div>
         <h4>PRODUCT CATEGORY</h4>
@@ -37,6 +37,8 @@
 </template>
 
 <script>
+import {mapMutations} from 'vuex'
+
 import preRouting from '@/mixins/preRouting'
 import storyVersion from '@/mixins/storyVersion'
 
@@ -101,6 +103,9 @@ export default {
       })
   },
   methods: {
+    ...mapMutations('catalog', {
+      addBreadcrumbItem: 'addBreadcrumbItem',
+    }),
     getChildrenSeries() {
       const uuids = this.category.content.childrenSeries
       return !uuids.length
@@ -179,6 +184,10 @@ export default {
               console.log(error)
               return Promise.reject()
             })
+    },
+    processCategorySelection() {
+      this.addBreadcrumbItem(this.category)
+      this.toPath(`/catalog/${this.category.full_slug}`)
     },
   },
 }

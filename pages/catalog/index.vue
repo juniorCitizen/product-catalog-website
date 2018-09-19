@@ -1,10 +1,15 @@
 <template>
-  <v-container fluid>
+  <v-container fluid
+               fill-height>
     <v-layout column>
       <v-flex>
-        <v-container class="headline pa-0 pb-4"
+        <v-container class="headline pa-0"
                      fluid>
           Main Product Categories
+        </v-container>
+        <v-container class="pa-0"
+                     fluid>
+          <breadcrumbs/>
         </v-container>
         <v-container class="pa-0 mt-3"
                      grid-list-lg
@@ -35,11 +40,12 @@ import {mapState} from 'vuex'
 import postRouting from '@/mixins/postRouting'
 import storyblokLivePreview from '@/mixins/storyblokLivePreview'
 
+import Breadcrumbs from '@/components/Breadcrumbs'
 import CategoryCard from '@/components/cards/CategoryCard'
 
 export default {
   name: 'CatalogPage',
-  components: {CategoryCard},
+  components: {Breadcrumbs, CategoryCard},
   mixins: [postRouting, storyblokLivePreview],
   computed: {
     ...mapState('catalog', {rootCategories: 'rootCategories'}),

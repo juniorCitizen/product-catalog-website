@@ -3,11 +3,11 @@
                fill-height>
     <v-layout column>
       <v-flex>
-        <v-container class="headline pa-0 pb-4"
+        <v-container class="headline pa-0"
                      fluid>
           Contact Us
         </v-container>
-        <v-container class="pa-0"
+        <v-container class="pa-0 mt-3"
                      grid-list-xl
                      fluid>
           <v-layout wrap>

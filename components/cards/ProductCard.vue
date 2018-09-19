@@ -3,7 +3,7 @@
           hover
           raised
           height="320"
-          @click.native.stop="toPath(`/catalog/products/${product.slug}`)">
+          @click.native.stop="toPath(`/catalog/${product.full_slug}`)">
     <v-card-title class="caption font-weight-black text-truncate">
       <div>
         <h4>PRODUCT MODEL: {{ product.content.model }}</h4>

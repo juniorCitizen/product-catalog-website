@@ -2,9 +2,13 @@
   <v-container fluid>
     <v-layout column>
       <v-flex>
-        <v-container class="headline pa-0 pb-4"
+        <v-container class="headline pa-0"
                      fluid>
           {{ category.content.name }} Category
+        </v-container>
+        <v-container class="pa-0"
+                     fluid>
+          <breadcrumbs/>
         </v-container>
         <v-container class="pa-0 mt-3 mb-3"
                      grid-list-lg
@@ -72,6 +76,7 @@ import postRouting from '@/mixins/postRouting'
 import storyVersion from '@/mixins/storyVersion'
 import storyblokLivePreview from '@/mixins/storyblokLivePreview'
 
+import Breadcrumbs from '@/components/Breadcrumbs'
 import CategoryCard from '@/components/cards/CategoryCard'
 import ProductCard from '@/components/cards/ProductCard'
 import SeriesCard from '@/components/cards/SeriesCard'
@@ -79,6 +84,7 @@ import SeriesCard from '@/components/cards/SeriesCard'
 export default {
   name: 'CategoryPage',
   components: {
+    Breadcrumbs,
     CategoryCard,
     ProductCard,
     SeriesCard,

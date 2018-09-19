@@ -12,10 +12,10 @@
     </v-toolbar-title>
     <v-spacer/>
     <v-toolbar-items class="hidden-sm-and-down">
-      <v-btn :class="{'v-btn--active':$route.path==='/'}"
+      <v-btn :class="classBinding('/')"
              flat
              small
-             @click.stop="toPath('/')">
+             @click.stop="processRoutingMenuSelection('/')">
         <v-icon left
                 small
                 class="mr-1">
@@ -23,10 +23,10 @@
         </v-icon>
         HOME
       </v-btn>
-      <v-btn :class="{'v-btn--active':$route.path==='/catalog'}"
+      <v-btn :class="classBinding('/catalog')"
              flat
              small
-             @click.stop="toPath('/catalog')">
+             @click.stop="processRoutingMenuSelection('/catalog')">
         <v-icon left
                 small
                 class="mr-1">
@@ -34,10 +34,10 @@
         </v-icon>
         CATALOG
       </v-btn>
-      <v-btn :class="{'v-btn--active':$route.path==='/contacts'}"
+      <v-btn :class="classBinding('/contacts')"
              flat
              small
-             @click.stop="toPath('/contacts')">
+             @click.stop="processRoutingMenuSelection('/contacts')">
         <v-icon left
                 small
                 class="mr-1">
@@ -50,6 +50,8 @@
 </template>
 
 <script>
+import {mapMutations} from 'vuex'
+
 import preRouting from '@/mixins/preRouting'
 
 export default {
@@ -62,12 +64,25 @@ export default {
       drawerIsVisible: false,
     }
   },
+  methods: {
+    ...mapMutations('catalog', {resetBreadcrumbs: 'resetBreadcrumbs'}),
+    classBinding(path) {
+      const fullMatch = this.$route.path === path
+      const partialMatch = this.$route.path.lastIndexOf(path) === 0
+      return path !== '/catalog'
+        ? {'v-btn--active': fullMatch}
+        : {'v-btn--active': partialMatch}
+    },
+    processRoutingMenuSelection(path) {
+      this.resetBreadcrumbs()
+      this.toPath(path)
+    },
+  },
 }
 </script>
 
 <style scoped>
 .website-logo {
   width: 80px;
-  background-color: #eeeeee;
 }
 </style>
