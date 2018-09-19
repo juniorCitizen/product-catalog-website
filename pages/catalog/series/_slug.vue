@@ -4,8 +4,10 @@
 
 <script>
 import {mapState} from 'vuex'
+
 import postRouting from '@/mixins/postRouting'
 import storyblokLivePreview from '@/mixins/storyblokLivePreview'
+
 export default {
   name: 'SeriesPage',
   mixins: [postRouting, storyblokLivePreview],

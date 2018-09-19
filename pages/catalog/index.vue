@@ -30,10 +30,13 @@
 </template>
 
 <script>
-import CategoryCard from '@/components/cards/Category'
 import {mapState} from 'vuex'
+
 import postRouting from '@/mixins/postRouting'
 import storyblokLivePreview from '@/mixins/storyblokLivePreview'
+
+import CategoryCard from '@/components/cards/CategoryCard'
+
 export default {
   name: 'CatalogPage',
   components: {CategoryCard},

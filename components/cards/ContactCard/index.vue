@@ -1,5 +1,7 @@
 <template>
-  <v-card class="contact-card">
+  <v-card color="white"
+          hover
+          raised>
     <v-card-title>
       <v-avatar class="mr-2"
                 tile>
@@ -52,10 +54,12 @@
 </template>
 
 <script>
-import Location from './Location'
-import Certification from './Certification'
-import Staff from './Staff'
 import storyVersion from '@/mixins/storyVersion'
+
+import Location from '@/components/cards/ContactCard/Location'
+import Certification from '@/components/cards/ContactCard/Certification'
+import Staff from '@/components/cards/ContactCard/Staff'
+
 export default {
   name: 'ContactCard',
   components: {Location, Certification, Staff},

@@ -15,12 +15,6 @@
 <script>
 export default {
   name: 'SiteFooter',
-  props: {
-    height: {
-      type: Number,
-      default: 32,
-    },
-  },
 }
 </script>
 

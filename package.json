@@ -10,7 +10,7 @@
     "nuxt": "^1.4.2",
     "storyblok-nuxt": "0.0.9",
     "vue2-google-maps": "^0.10.2",
-    "vuetify": "^1.2.3"
+    "vuetify": "^1.2.4"
   },
   "devDependencies": {
     "babel-eslint": "^9.0.0",

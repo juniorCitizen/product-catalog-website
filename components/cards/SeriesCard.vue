@@ -19,12 +19,11 @@
 </template>
 
 <script>
-import ProductCard from '@/components/cards/Product'
 import preRouting from '@/mixins/preRouting'
 import storyVersion from '@/mixins/storyVersion'
+
 export default {
   name: 'SeriesCard',
-  components: {ProductCard},
   mixins: [preRouting, storyVersion],
   props: {
     series: {

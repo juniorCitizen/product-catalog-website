@@ -66,19 +66,22 @@
 </template>
 
 <script>
-import CategoryCard from '@/components/cards/Category'
-import SeriesCard from '@/components/cards/Series'
-import ProductCard from '@/components/cards/Product'
 import {mapState} from 'vuex'
+
 import postRouting from '@/mixins/postRouting'
 import storyVersion from '@/mixins/storyVersion'
 import storyblokLivePreview from '@/mixins/storyblokLivePreview'
+
+import CategoryCard from '@/components/cards/CategoryCard'
+import ProductCard from '@/components/cards/ProductCard'
+import SeriesCard from '@/components/cards/SeriesCard'
+
 export default {
   name: 'CategoryPage',
   components: {
     CategoryCard,
-    SeriesCard,
     ProductCard,
+    SeriesCard,
   },
   mixins: [postRouting, storyVersion, storyblokLivePreview],
   data() {

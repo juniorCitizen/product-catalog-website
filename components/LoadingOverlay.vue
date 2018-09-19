@@ -4,7 +4,7 @@
             fullscreen
             persistent>
     <v-card color="black"
-            style="opacity:0.4;">
+            style="opacity:0.2;">
       <v-card-text>
         <v-progress-circular
           color="white"
@@ -17,6 +17,7 @@
 
 <script>
 import {mapState} from 'vuex'
+
 export default {
   name: 'LoadingOverlay',
   data() {

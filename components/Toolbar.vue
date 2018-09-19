@@ -51,6 +51,7 @@
 
 <script>
 import preRouting from '@/mixins/preRouting'
+
 export default {
   name: 'Toolbar',
   mixins: [preRouting],

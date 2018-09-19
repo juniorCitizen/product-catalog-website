@@ -44,6 +44,7 @@
 
 <script>
 import preRouting from '@/mixins/preRouting'
+
 export default {
   name: 'DrawerList',
   mixins: [preRouting],

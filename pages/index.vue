@@ -24,6 +24,7 @@
 <script>
 import postRouting from '@/mixins/postRouting'
 import storyblokLivePreview from '@/mixins/storyblokLivePreview'
+
 export default {
   name: 'HomePage',
   mixins: [postRouting, storyblokLivePreview],

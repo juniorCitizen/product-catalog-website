@@ -1,6 +1,7 @@
 <template>
   <v-card color="white"
           hover
+          raised
           @click.native.stop="toPath(`/catalog/categories/${category.slug}`)">
     <v-card-title class="caption font-weight-black">
       <div>
@@ -16,8 +17,9 @@
     <v-responsive v-if="photoUrls.length"
                   class="pb-4">
       <v-img :src="photoUrls[0]"
-             height="200"
-             max-width="200"
+             :lazy-src="placeholder"
+             height="220"
+             max-width="220"
              contain
              class="ma-auto"/>
     </v-responsive>
@@ -27,6 +29,7 @@
 <script>
 import preRouting from '@/mixins/preRouting'
 import storyVersion from '@/mixins/storyVersion'
+
 export default {
   name: 'CategoryCard',
   mixins: [preRouting, storyVersion],
@@ -48,6 +51,7 @@ export default {
   },
   data() {
     return {
+      placeholder: require('@/assets/logo.png'),
       childrenSeries: [],
       photos: {
         content: {

@@ -25,9 +25,11 @@
 </template>
 
 <script>
-import ContactCard from '@/components/cards/Contact'
 import postRouting from '@/mixins/postRouting'
 import storyblokLivePreview from '@/mixins/storyblokLivePreview'
+
+import ContactCard from '@/components/cards/ContactCard'
+
 export default {
   name: 'ContactsPage',
   components: {ContactCard},

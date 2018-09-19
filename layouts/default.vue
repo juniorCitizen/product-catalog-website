@@ -17,10 +17,12 @@
 
 <script>
 import {mapState} from 'vuex'
+
 import DrawerList from '@/components/DrawerList'
 import LoadingOverlay from '@/components/LoadingOverlay'
 import SiteFooter from '@/components/SiteFooter'
 import Toolbar from '@/components/Toolbar'
+
 export default {
   name: 'DefaultLayout',
   components: {

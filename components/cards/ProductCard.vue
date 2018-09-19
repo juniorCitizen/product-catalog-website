@@ -24,6 +24,7 @@
 <script>
 import preRouting from '@/mixins/preRouting'
 import storyVersion from '@/mixins/storyVersion'
+
 export default {
   name: 'ProductCard',
   mixins: [preRouting, storyVersion],
