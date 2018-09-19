@@ -13,7 +13,7 @@
                     align-start
                     justify-start
                     wrap>
-            <v-flex v-for="category in categories"
+            <v-flex v-for="category in rootCategories"
                     :key="category.uuid"
                     xs12
                     sm6
@@ -42,6 +42,7 @@ export default {
   components: {CategoryCard},
   mixins: [postRouting, storyblokLivePreview],
   computed: {
+    ...mapState('catalog', {rootCategories: 'rootCategories'}),
     ...mapState({routingInProgress: 'routingInProgress'}),
   },
   watch: {
@@ -49,23 +50,23 @@ export default {
       if (inProgress) this.categories = []
     },
   },
-  asyncData(context) {
-    return context.app.$storyapi
-      .get('cdn/stories', {
-        starts_with: 'categories',
-        sort_by: 'position:asc',
-        version: context.isDev ? 'draft' : 'published',
-      })
-      .then(res => {
-        const filterFn = story => !story.content.parentCategory
-        return {categories: res.data.stories.filter(filterFn)}
-      })
-      .catch(error => {
-        context.error({
-          statusCode: error.response.status,
-          message: error.response.data,
-        })
-      })
-  },
+  // asyncData(context) {
+  //   return context.app.$storyapi
+  //     .get('cdn/stories', {
+  //       starts_with: 'categories',
+  //       sort_by: 'position:asc',
+  //       version: context.isDev ? 'draft' : 'published',
+  //     })
+  //     .then(res => {
+  //       const filterFn = story => !story.content.parentCategory
+  //       return {categories: res.data.stories.filter(filterFn)}
+  //     })
+  //     .catch(error => {
+  //       context.error({
+  //         statusCode: error.response.status,
+  //         message: error.response.data,
+  //       })
+  //     })
+  // },
 }
 </script>

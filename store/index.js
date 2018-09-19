@@ -11,9 +11,18 @@ export default {
       const version = isDev ? 'draft' : 'published'
       return $storyapi
         .get('cdn/stories', {
-          starts_with: 'companies',
+          starts_with: 'categories',
           sort_by: 'position:asc',
           version,
+        })
+        .then(({data}) => {
+          const filterFn = story => !story.content.parentCategory
+          commit('catalog/register', data.stories.filter(filterFn))
+          return $storyapi.get('cdn/stories', {
+            starts_with: 'companies',
+            sort_by: 'position:asc',
+            version,
+          })
         })
         .then(({data}) => {
           commit('contacts/register', data.stories)

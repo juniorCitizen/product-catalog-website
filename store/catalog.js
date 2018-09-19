@@ -1,9 +1,15 @@
 export default {
   namespaced: true,
   state: () => {
-    return {}
+    return {
+      rootCategories: [],
+    }
   },
   getters: {},
   actions: {},
-  mutations: {},
+  mutations: {
+    register(state, payload) {
+      state.rootCategories.splice(0, state.rootCategories.length, ...payload)
+    },
+  },
 }
