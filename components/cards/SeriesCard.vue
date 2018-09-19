@@ -3,7 +3,7 @@
           hover
           @click.native.stop="toPath(`/catalog/series/${series.slug}`)">
     <v-card-title>
-      <h4 class="caption grey--text">
+      <h4 class="caption font-weight-black text-truncate">
         {{ series.content.name }} SERIES
       </h4>
     </v-card-title>

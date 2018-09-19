@@ -2,10 +2,10 @@
   <v-card color="white"
           hover
           @click.native.stop="toPath(`/catalog/products/${product.slug}`)">
-    <v-card-title class="caption font-weight-black">
+    <v-card-title class="caption font-weight-black text-truncate">
       <div>
         <h4>PRODUCT MODEL: {{ product.content.model }}</h4>
-        <h3 class="grey--text font-weight-black text-truncate">
+        <h3 class="grey--text font-weight-black">
           {{ product.content.name }}
         </h3>
       </div>
