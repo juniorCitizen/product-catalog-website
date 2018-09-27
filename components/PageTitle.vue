@@ -27,34 +27,41 @@ export default {
   name: 'PageTitle',
   computed: {
     ...mapState({routingInProgress: 'routingInProgress'}),
+    atHomePage() {
+      return this.$route.path === '/'
+    },
+    browsingCatalog() {
+      return this.$route.path.indexOf('/catalog') === 0
+    },
+    atContactPage() {
+      return this.$route.path === '/contacts'
+    },
     title() {
       if (this.routingInProgress) {
         return {
           key: 'routingInProgress',
           text: 'Loading...',
         }
-      }
-      switch (this.$route.path) {
-        case '/':
-          return {
-            key: 'atHomePage',
-            text: 'Home',
-          }
-        case '/catalog':
-          return {
-            key: 'atCatalogPage',
-            text: 'Product Catalog',
-          }
-        case '/contacts':
-          return {
-            key: 'atContactPage',
-            text: 'Contact Us',
-          }
-        default:
-          return {
-            key: 'default',
-            text: 'Loading...',
-          }
+      } else if (this.atHomePage) {
+        return {
+          key: 'atHomePage',
+          text: '',
+        }
+      } else if (this.browsingCatalog) {
+        return {
+          key: 'browsingCatalog',
+          text: 'Product Catalog',
+        }
+      } else if (this.atContactPage) {
+        return {
+          key: 'atContactPage',
+          text: 'Contact Us',
+        }
+      } else {
+        return {
+          key: 'default',
+          text: 'Loading...',
+        }
       }
     },
   },
@@ -74,4 +81,17 @@ export default {
 .fade-leave-to {
   opacity: 0;
 }
+
+/* .retract-enter-active {
+  transition: transform 0.7s ease-out;
+} */
+
+/* .retract-leave-active {
+  transition: transform 0.3s ease-in-out;
+} */
+
+/* .retract-enter,
+.retract-leave-to {
+  transform: translateY(-100%);
+} */
 </style>

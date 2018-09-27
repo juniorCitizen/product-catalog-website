@@ -17,7 +17,9 @@
                   column>
           <v-flex class="ma-0 pa-0"
                   xs12>
-            <page-title/>
+            <transition name="retract">
+              <page-title v-if="!atHomePage"/>
+            </transition>
             <v-container class="ma-0 pa-0"
                          grid-list-lg
                          fluid>
@@ -58,6 +60,9 @@ export default {
   },
   computed: {
     ...mapState({routingInProgress: 'routingInProgress'}),
+    atHomePage() {
+      return this.$route.path === '/'
+    },
   },
   watch: {
     routingInProgress(inProgress) {
@@ -71,5 +76,18 @@ export default {
 <style scoped>
 #default-layout {
   width: 100vw;
+}
+
+.retract-enter-active {
+  transition: transform 0.7s ease-out;
+}
+
+.retract-leave-active {
+  transition: transform 0.3s ease-in-out;
+}
+
+.retract-enter,
+.retract-leave-to {
+  transform: translateY(-100%);
 }
 </style>
