@@ -5,7 +5,6 @@
     "ADMIN_EMAIL": "david.tsai@gentry-way.com.tw",
     "WEBSITE_TITLE": "Gentry Way Co., Ltd.",
     "WEBSITE_DESC": "Gentry Way Product Catalog Website",
-    "DEFAULT_MAP_ZOOM": "5.5",
     "GOOGLE_MAPS_API_KEY": "AIzaSyCVYVy8DveZqMH9IJT2EEmcoeQN0Y74HJo",
     "DEVELOPMENT_STORYBLOK_PREVIEW_TOKEN": "cEip43daCbPQ8gRmIy5qNwtt",
     "STAGING_STORYBLOK_PUBLIC_TOKEN": "3ZQGOtwfrUxpu3mQlEJ2Gwtt",

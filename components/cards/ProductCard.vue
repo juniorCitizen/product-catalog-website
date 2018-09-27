@@ -93,7 +93,7 @@ export default {
   },
   methods: {
     ...mapMutations('catalog', {
-      addBreadcrumbItem: 'addBreadcrumbItem',
+      registerBreadcrumb: 'registerBreadcrumb',
     }),
     getPhotos() {
       const id = this.product.content.photos
@@ -114,7 +114,7 @@ export default {
             })
     },
     processProductSelection() {
-      this.addBreadcrumbItem(this.product)
+      this.registerBreadcrumb(this.product)
       this.toPath(`/catalog/${this.product.full_slug}`)
     },
   },

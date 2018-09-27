@@ -1,11 +1,11 @@
 <template>
   <v-breadcrumbs :large="large">
     <v-icon slot="divider">chevron_right</v-icon>
-    <v-breadcrumbs-item :disabled="breadcrumbItems[0].disabled"
+    <v-breadcrumbs-item :disabled="breadcrumbs[0].disabled"
                         @click.native.stop="homeCrumbSelection">
-      {{ breadcrumbItems[0].text }}
+      {{ breadcrumbs[0].text }}
     </v-breadcrumbs-item>
-    <template v-for="(item,index) in breadcrumbItems">
+    <template v-for="(item,index) in breadcrumbs">
       <v-breadcrumbs-item v-if="index>0"
                           :key="index"
                           :disabled="item.disabled"
@@ -31,7 +31,7 @@ export default {
     },
   },
   computed: {
-    ...mapState('catalog', {breadcrumbItems: 'breadcrumbItems'}),
+    ...mapState('catalog', {breadcrumbs: 'breadcrumbs'}),
   },
   methods: {
     ...mapMutations('catalog', {
@@ -44,7 +44,7 @@ export default {
     },
     crumbSelection(index) {
       this.navigateToBreadcrumb(index)
-      this.toPath(this.breadcrumbItems[index].path)
+      this.toPath(this.breadcrumbs[index].path)
     },
   },
 }

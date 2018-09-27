@@ -9,7 +9,6 @@ body {
   box-sizing: border-box;
   -ms-overflow-style: none;
   overflow: -moz-scrollbars-none;
-  font-family: Roboto, Arial, Helvetica, sans-serif;
 }
 
 html::-webkit-scrollbar,

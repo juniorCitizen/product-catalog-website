@@ -1,8 +1,8 @@
 <template>
   <GmapMap
     :center="coordinate"
-    :zoom="zoom"
-    class="google-maps"
+    :style="{height}"
+    :zoom="parseFloat(company.content.zoom)"
     map-type-id="terrain">
     <GmapMarker :position="coordinate"/>
   </GmapMap>
@@ -12,23 +12,30 @@
 export default {
   name: 'Location',
   props: {
-    coordinate: {
+    company: {
       type: Object,
       default() {
-        return {lat: 0, lng: 0}
+        return {
+          content: {
+            latitude: 0,
+            longitude: 0,
+            zoom: 5.5,
+          },
+        }
       },
     },
   },
   data() {
     return {
-      zoom: parseFloat(process.env.defaultMapZoom),
+      height: '300px',
     }
+  },
+  computed: {
+    coordinate() {
+      const lat = this.company.content.latitude
+      const lng = this.company.content.longitude
+      return {lat, lng}
+    },
   },
 }
 </script>
-
-<style scoped>
-.google-maps {
-  height: 300px;
-}
-</style>

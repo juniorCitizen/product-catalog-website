@@ -10,7 +10,7 @@ const storyblokTokens = {
 
 const webfontUrls = {
   materialIcons: 'https://fonts.googleapis.com/icon?family=Material+Icons',
-  // montserrat: 'https://fonts.googleapis.com/css?family=Montserrat:300,400',
+  montserrat: 'https://fonts.googleapis.com/css?family=Montserrat:300,400',
   roboto: 'https://fonts.googleapis.com/css?family=Roboto:300,400,500,700',
 }
 
@@ -30,7 +30,6 @@ module.exports = {
     adminEmail: process.env.ADMIN_EMAIL,
     websiteTitle: process.env.WEBSITE_TITLE,
     googleMapsApiKey: process.env.GOOGLE_MAPS_API_KEY,
-    defaultMapZoom: parseFloat(process.env.DEFAULT_MAP_ZOOM),
   },
   head: {
     title: process.env.WEBSITE_TITLE,

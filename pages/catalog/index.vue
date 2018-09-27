@@ -18,7 +18,7 @@
                     align-start
                     justify-start
                     wrap>
-            <v-flex v-for="category in rootCategories"
+            <v-flex v-for="category in catalog"
                     :key="category.uuid"
                     xs12
                     sm6
@@ -47,14 +47,20 @@ export default {
   name: 'CatalogPage',
   components: {Breadcrumbs, CategoryCard},
   mixins: [postRouting, storyblokLivePreview],
-  computed: {
-    ...mapState('catalog', {rootCategories: 'rootCategories'}),
-    ...mapState({routingInProgress: 'routingInProgress'}),
+  fetch({store}) {
+    const {dispatch} = store
+    return Promise.all([
+      dispatch('catalog/fetchAllSeries'),
+      dispatch('catalog/fetchAllPhotos'),
+      dispatch('catalog/fetchAllProducts'),
+      dispatch('catalog/fetchAllFeatures'),
+    ])
+      .then(() => Promise.resolve())
+      .catch(error => this.$nuxt.error(error))
   },
-  watch: {
-    routingInProgress(inProgress) {
-      if (inProgress) this.categories = []
-    },
+  computed: {
+    ...mapState('catalog', {catalog: 'catalog'}),
+    ...mapState({routingInProgress: 'routingInProgress'}),
   },
 }
 </script>

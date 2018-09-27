@@ -1,8 +1,10 @@
 <template>
   <v-app id="default-layout">
     <v-navigation-drawer v-model="drawerIsVisible"
-                         app
-                         class="grey lighten-3">
+                         class="grey lighten-3"
+                         stateless
+                         clipped
+                         app>
       <drawer-list/>
     </v-navigation-drawer>
     <toolbar @sideIconClicked="drawerIsVisible=!drawerIsVisible"/>

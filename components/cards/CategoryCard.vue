@@ -42,6 +42,11 @@ import {mapMutations} from 'vuex'
 import preRouting from '@/mixins/preRouting'
 import storyVersion from '@/mixins/storyVersion'
 
+const placeholder = {
+  logo: require('@/assets/logo.png'),
+  missing: require('@/assets/placeholder.svg'),
+}
+
 export default {
   name: 'CategoryCard',
   mixins: [preRouting, storyVersion],
@@ -51,11 +56,20 @@ export default {
       default() {
         return {
           content: {
-            childrenSeries: [],
             name: 'unnamed category',
-            parentCategory: null,
-            products: [],
+            photos: {
+              content: {
+                photoUrls: [
+                  {
+                    url: placeholder.missing,
+                  },
+                ],
+              },
+            },
             subcategories: [],
+            childrenSeries: [],
+            products: [],
+            parentCategory: null,
           },
         }
       },
@@ -66,10 +80,14 @@ export default {
       childrenSeries: [],
       photos: {
         content: {
-          photoUrls: [],
+          photoUrls: [
+            {
+              url: placeholder.missing,
+            },
+          ],
         },
       },
-      placeholder: require('@/assets/logo.png'),
+      placeholder: placeholder.logo,
       products: [],
       subcategories: [],
     }
@@ -104,7 +122,7 @@ export default {
   },
   methods: {
     ...mapMutations('catalog', {
-      addBreadcrumbItem: 'addBreadcrumbItem',
+      registerBreadcrumb: 'registerBreadcrumb',
     }),
     getChildrenSeries() {
       const uuids = this.category.content.childrenSeries
@@ -186,7 +204,7 @@ export default {
             })
     },
     processCategorySelection() {
-      this.addBreadcrumbItem(this.category)
+      this.registerBreadcrumb(this.category)
       this.toPath(`/catalog/${this.category.full_slug}`)
     },
   },

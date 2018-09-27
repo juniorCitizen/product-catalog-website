@@ -7,28 +7,13 @@ export default {
   },
   getters: {},
   actions: {
-    nuxtServerInit({commit}, {isDev, $storyapi}) {
-      const version = isDev ? 'draft' : 'published'
-      return $storyapi
-        .get('cdn/stories', {
-          starts_with: 'categories',
-          sort_by: 'position:asc',
-          version,
-        })
-        .then(({data}) => {
-          const filterFn = story => !story.content.parentCategory
-          commit('catalog/register', data.stories.filter(filterFn))
-          return $storyapi.get('cdn/stories', {
-            starts_with: 'companies',
-            sort_by: 'position:asc',
-            version,
-          })
-        })
-        .then(({data}) => {
-          commit('contacts/register', data.stories)
-          return Promise.resolve()
-        })
-        .catch(error => Promise.reject(error))
+    nuxtServerInit({dispatch}) {
+      return Promise.all([
+        dispatch('catalog/fetchAllCategories'),
+        dispatch('contacts/fetchAllCompanies'),
+      ])
+        .then(() => Promise.resolve())
+        .catch(error => this.$nuxt.error(error))
     },
   },
   mutations: {
