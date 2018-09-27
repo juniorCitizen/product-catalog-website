@@ -22,13 +22,13 @@ import {mapState} from 'vuex'
 import postRouting from '@/mixins/postRouting'
 import storyblokLivePreview from '@/mixins/storyblokLivePreview'
 
+import PageTitle from '@/components/PageTitle'
 import Breadcrumbs from '@/components/Breadcrumbs'
 import CategoryCard from '@/components/cards/CategoryCard'
-import PageTitle from '@/components/PageTitle'
 
 export default {
   name: 'CatalogPage',
-  components: {Breadcrumbs, CategoryCard, PageTitle},
+  components: {PageTitle, Breadcrumbs, CategoryCard},
   mixins: [postRouting, storyblokLivePreview],
   fetch({store}) {
     const {dispatch} = store
