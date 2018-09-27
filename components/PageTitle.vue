@@ -1,10 +1,9 @@
 <template>
-  <v-container class="pa-0 mb-1"
+  <v-container class="pa-0 ma-0"
                fluid>
     <v-layout>
       <v-flex>
-        <v-card class="pa-0"
-                color="green darken-4"
+        <v-card color="green darken-4"
                 flat>
           <v-card-title class="display-1 font-weight-black font-italic white--text">
             <transition name="fade"
@@ -41,11 +40,6 @@ export default {
         return {
           key: 'routingInProgress',
           text: 'Loading...',
-        }
-      } else if (this.atHomePage) {
-        return {
-          key: 'atHomePage',
-          text: '',
         }
       } else if (this.browsingCatalog) {
         return {

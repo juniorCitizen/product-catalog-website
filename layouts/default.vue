@@ -18,7 +18,7 @@
           <v-flex class="ma-0 pa-0"
                   xs12>
             <transition name="retract">
-              <page-title v-if="!atHomePage"/>
+              <page-title v-if="showPageTitle"/>
             </transition>
             <v-container class="ma-0 pa-0"
                          grid-list-lg
@@ -56,12 +56,14 @@ export default {
     return {
       loadingOverlayVisible: false,
       drawerIsVisible: false,
+      prevHeight: 0,
     }
   },
   computed: {
     ...mapState({routingInProgress: 'routingInProgress'}),
-    atHomePage() {
-      return this.$route.path === '/'
+    showPageTitle() {
+      const atHomePage = this.$route.path === '/'
+      return !atHomePage || (this.routingInProgress && atHomePage)
     },
   },
   watch: {
@@ -79,11 +81,12 @@ export default {
 }
 
 .retract-enter-active {
-  transition: transform 0.7s ease-out;
+  transition: all 1s ease-in-out;
 }
 
 .retract-leave-active {
-  transition: transform 0.3s ease-in-out;
+  transition: all 0.5s ease-out;
+  position: absolute;
 }
 
 .retract-enter,

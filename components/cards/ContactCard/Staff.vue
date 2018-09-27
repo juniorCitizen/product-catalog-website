@@ -3,7 +3,7 @@
     <v-list-tile-avatar>
       <v-icon class="pa-0"
               color="green darken-4"
-              medium>
+              x-large>
         person
       </v-icon>
     </v-list-tile-avatar>
