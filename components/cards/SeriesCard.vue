@@ -9,7 +9,7 @@
         {{ series.content.name }} Series
       </h4>
     </v-card-title>
-    <v-img :src="series.content.photo"
+    <v-img :src="series.content.photoUrl"
            height="220"
            max-width="220"
            contain
@@ -44,7 +44,7 @@ export default {
         return {
           content: {
             name: 'unnamed series',
-            photo: gentryLogo,
+            photoUrl: gentryLogo,
             parentCategory: null,
             products: [],
           },

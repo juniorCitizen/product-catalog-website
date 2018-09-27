@@ -16,7 +16,7 @@
       </div>
     </v-card-title>
     <v-responsive class="pb-3">
-      <v-img :src="category.content.photo"
+      <v-img :src="category.content.photoUrl"
              height="220"
              max-width="220"
              contain
@@ -52,7 +52,7 @@ export default {
         return {
           content: {
             name: 'unnamed category',
-            photo: gentryLogo,
+            photoUrl: gentryLogo,
             subcategories: [],
             childrenSeries: [],
             products: [],
