@@ -1,37 +1,19 @@
 <template>
-  <v-container fluid
-               fill-height>
-    <v-layout column>
-      <v-flex>
-        <v-container class="headline pa-0"
-                     fluid>
-          Main Product Categories
-        </v-container>
-        <v-container class="pa-0"
-                     fluid>
-          <breadcrumbs large/>
-        </v-container>
-        <v-container class="pa-0 mt-3"
-                     grid-list-lg
-                     fluid>
-          <v-layout fill-height
-                    align-start
-                    justify-start
-                    wrap>
-            <v-flex v-for="category in catalog"
-                    :key="category.uuid"
-                    xs12
-                    sm6
-                    md4
-                    lg3
-                    xl2>
-              <category-card :category="category"/>
-            </v-flex>
-          </v-layout>
-        </v-container>
-      </v-flex>
-    </v-layout>
-  </v-container>
+  <v-layout class="ma-0 pa-0"
+            wrap>
+    <v-flex xs12>
+      <breadcrumbs large/>
+    </v-flex>
+    <v-flex v-for="category in catalog"
+            :key="category.uuid"
+            xs12
+            sm6
+            md4
+            lg3
+            xl2>
+      <category-card :category="category"/>
+    </v-flex>
+  </v-layout>
 </template>
 
 <script>
@@ -42,10 +24,11 @@ import storyblokLivePreview from '@/mixins/storyblokLivePreview'
 
 import Breadcrumbs from '@/components/Breadcrumbs'
 import CategoryCard from '@/components/cards/CategoryCard'
+import PageTitle from '@/components/PageTitle'
 
 export default {
   name: 'CatalogPage',
-  components: {Breadcrumbs, CategoryCard},
+  components: {Breadcrumbs, CategoryCard, PageTitle},
   mixins: [postRouting, storyblokLivePreview],
   fetch({store}) {
     const {dispatch} = store

@@ -7,7 +7,12 @@
                 color="green darken-4"
                 flat>
           <v-card-title class="display-1 font-weight-black font-italic white--text">
-            {{ title }}
+            <transition name="fade"
+                        mode="out-in">
+              <span :key="title.key">
+                {{ title.text }}
+              </span>
+            </transition>
           </v-card-title>
         </v-card>
       </v-flex>
@@ -16,13 +21,57 @@
 </template>
 
 <script>
+import {mapState} from 'vuex'
+
 export default {
   name: 'PageTitle',
-  props: {
-    title: {
-      type: String,
-      default: 'Loading...',
+  computed: {
+    ...mapState({routingInProgress: 'routingInProgress'}),
+    title() {
+      if (this.routingInProgress) {
+        return {
+          key: 'routingInProgress',
+          text: 'Loading...',
+        }
+      }
+      switch (this.$route.path) {
+        case '/':
+          return {
+            key: 'atHomePage',
+            text: 'Home',
+          }
+        case '/catalog':
+          return {
+            key: 'atCatalogPage',
+            text: 'Product Catalog',
+          }
+        case '/contacts':
+          return {
+            key: 'atContactPage',
+            text: 'Contact Us',
+          }
+        default:
+          return {
+            key: 'default',
+            text: 'Loading...',
+          }
+      }
     },
   },
 }
 </script>
+
+<style scoped>
+.fade-enter-active {
+  transition: opacity 0.5s;
+}
+
+.fade-leave-active {
+  transition: opacity 0.5s;
+}
+
+.fade-enter,
+.fade-leave-to {
+  opacity: 0;
+}
+</style>

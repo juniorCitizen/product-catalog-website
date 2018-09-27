@@ -9,7 +9,23 @@
     </v-navigation-drawer>
     <toolbar @sideIconClicked="drawerIsVisible=!drawerIsVisible"/>
     <v-content>
-      <nuxt/>
+      <v-container class="ma-0 pa-0"
+                   fill-height
+                   fluid>
+        <v-layout class="ma-0 pa-0"
+                  fill-height
+                  column>
+          <v-flex class="ma-0 pa-0"
+                  xs12>
+            <page-title/>
+            <v-container class="ma-0 pa-0"
+                         grid-list-lg
+                         fluid>
+              <nuxt/>
+            </v-container>
+          </v-flex>
+        </v-layout>
+      </v-container>
     </v-content>
     <site-footer/>
     <loading-overlay/>
@@ -20,17 +36,19 @@
 import {mapState} from 'vuex'
 
 import DrawerList from '@/components/DrawerList'
-import LoadingOverlay from '@/components/LoadingOverlay'
-import SiteFooter from '@/components/SiteFooter'
 import Toolbar from '@/components/Toolbar'
+import PageTitle from '@/components/PageTitle'
+import SiteFooter from '@/components/SiteFooter'
+import LoadingOverlay from '@/components/LoadingOverlay'
 
 export default {
   name: 'DefaultLayout',
   components: {
     DrawerList,
-    LoadingOverlay,
-    SiteFooter,
     Toolbar,
+    PageTitle,
+    SiteFooter,
+    LoadingOverlay,
   },
   data() {
     return {
@@ -42,13 +60,9 @@ export default {
     ...mapState({routingInProgress: 'routingInProgress'}),
   },
   watch: {
-    $route() {
-      if (this.drawerIsVisible) {
-        this.drawerIsVisible = !this.drawerIsVisible
-      }
-    },
     routingInProgress(inProgress) {
       this.loadingOverlayVisible = inProgress
+      if (inProgress) this.drawerIsVisible = false
     },
   },
 }
