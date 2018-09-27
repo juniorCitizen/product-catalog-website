@@ -9,9 +9,7 @@
         {{ series.content.name }} Series
       </h4>
     </v-card-title>
-    <v-img v-if="photoUrls.length"
-           :src="photoUrls[0]"
-           :lazy-src="placeholder"
+    <v-img :src="series.content.photo"
            height="220"
            max-width="220"
            contain
@@ -25,12 +23,6 @@
                              color="black"/>
       </v-layout>
     </v-img>
-    <v-img v-else
-           :src="placeholder"
-           height="220"
-           max-width="220"
-           contain
-           class="ma-auto"/>
   </v-card>
 </template>
 
@@ -39,6 +31,8 @@ import {mapMutations} from 'vuex'
 
 import preRouting from '@/mixins/preRouting'
 import storyVersion from '@/mixins/storyVersion'
+
+import gentryLogo from '@/assets/logo.png'
 
 export default {
   name: 'SeriesCard',
@@ -50,6 +44,7 @@ export default {
         return {
           content: {
             name: 'unnamed series',
+            photo: gentryLogo,
             parentCategory: null,
             products: [],
           },
@@ -59,23 +54,11 @@ export default {
   },
   data() {
     return {
-      photos: {
-        content: {
-          photoUrls: [],
-        },
-      },
-      placeholder: require('@/assets/logo.png'),
       products: [],
     }
   },
-  computed: {
-    photoUrls() {
-      const photoUrls = this.photos.content.photoUrls
-      return photoUrls.map(photoUrl => photoUrl.url)
-    },
-  },
   mounted() {
-    return Promise.all([this.getPhotos(), this.getProducts()])
+    return this.getProducts()
       .then(() => Promise.resolve())
       .catch(error => {
         console.log(error)
@@ -86,24 +69,6 @@ export default {
     ...mapMutations('catalog', {
       registerBreadcrumb: 'registerBreadcrumb',
     }),
-    getPhotos() {
-      const id = this.series.content.photos
-      return !id
-        ? Promise.resolve()
-        : this.$storyapi
-            .get(`cdn/stories/${id}`, {
-              starts_with: 'photos',
-              version: this.version,
-            })
-            .then(res => {
-              this.photos = res.data.story
-              return Promise.resolve()
-            })
-            .catch(error => {
-              console.log(error)
-              return Promise.reject()
-            })
-    },
     getProducts() {
       const uuids = this.series.content.products
       return !uuids.length

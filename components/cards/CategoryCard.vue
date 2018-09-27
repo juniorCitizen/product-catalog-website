@@ -15,10 +15,8 @@
         </h2>
       </div>
     </v-card-title>
-    <v-responsive v-if="photoUrls.length"
-                  class="pb-3">
-      <v-img :src="photoUrls[0]"
-             :lazy-src="placeholder"
+    <v-responsive class="pb-3">
+      <v-img :src="category.content.photo"
              height="220"
              max-width="220"
              contain
@@ -42,10 +40,7 @@ import {mapMutations} from 'vuex'
 import preRouting from '@/mixins/preRouting'
 import storyVersion from '@/mixins/storyVersion'
 
-const placeholder = {
-  logo: require('@/assets/logo.png'),
-  missing: require('@/assets/placeholder.svg'),
-}
+import gentryLogo from '@/assets/logo.png'
 
 export default {
   name: 'CategoryCard',
@@ -57,15 +52,7 @@ export default {
         return {
           content: {
             name: 'unnamed category',
-            photos: {
-              content: {
-                photoUrls: [
-                  {
-                    url: placeholder.missing,
-                  },
-                ],
-              },
-            },
+            photo: gentryLogo,
             subcategories: [],
             childrenSeries: [],
             products: [],
@@ -78,16 +65,6 @@ export default {
   data() {
     return {
       childrenSeries: [],
-      photos: {
-        content: {
-          photoUrls: [
-            {
-              url: placeholder.missing,
-            },
-          ],
-        },
-      },
-      placeholder: placeholder.logo,
       products: [],
       subcategories: [],
     }
@@ -100,20 +77,13 @@ export default {
         this.category.content.subcategories.length
       )
     },
-    photoUrls() {
-      const photoUrls = this.photos.content.photoUrls
-      return photoUrls.map(photoUrl => photoUrl.url)
-    },
   },
   mounted() {
-    return this.getPhotos()
-      .then(() => {
-        return Promise.all([
-          this.getSubcategories(),
-          this.getChildrenSeries(),
-          this.getProducts(),
-        ])
-      })
+    return Promise.all([
+      this.getSubcategories(),
+      this.getChildrenSeries(),
+      this.getProducts(),
+    ])
       .then(() => Promise.resolve())
       .catch(error => {
         console.log(error)
@@ -137,24 +107,6 @@ export default {
             })
             .then(res => {
               this.childrenSeries = res.data.stories
-              return Promise.resolve()
-            })
-            .catch(error => {
-              console.log(error)
-              return Promise.reject()
-            })
-    },
-    getPhotos() {
-      const id = this.category.content.photos
-      return !id
-        ? Promise.resolve()
-        : this.$storyapi
-            .get(`cdn/stories/${id}`, {
-              starts_with: 'photos',
-              version: this.version,
-            })
-            .then(res => {
-              this.photos = res.data.story
               return Promise.resolve()
             })
             .catch(error => {
